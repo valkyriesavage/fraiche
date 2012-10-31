@@ -15,6 +15,7 @@ devices co-located with plants
     need to be adjusted (as informed by Pi)
   * four buttons controlling threshold and water amount can wake the device
     for transmit
+
 Raspberry Pi
   * machine learning performed on moisture data from plants, determining what
     times and moisture levels lead to watering.  this data will be used to

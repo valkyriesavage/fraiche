@@ -1,28 +1,41 @@
-This is some python code that I use to manage a group of xbee based sensor boards from a Raspberry Pi with an attached Xbee radio.  The main program is allsensors.py.
+This is a fork from tinajalabs' gateway_raspi
 
-You can see my rough notes and references at: 
-http://tinajalabs.wordpress.com/2012/09/02/raspberry-pi-as-an-xbee-wireless-sensor-network-gateway/
+This project is intended to experiment with using the Raspberry Pi as an XBee
+gateway, machine learning platform, and web server.  We are experimenting
+with different scheduling algorithms to keep client throughput high and also
+keep machine learning data fresh.
+
+The system components are as follows:
+
+devices co-located with plants
+  * solar panel, moisture sensor, XBee radio, 4 buttons, servo controlling
+    open-ness of drip irrigation valve
+  * every hour, wake up, take soil moisture reading, and transmit via XBee
+  * after transmit, wait several seconds to see if water levels or thresholds
+    need to be adjusted (as informed by Pi)
+  * four buttons controlling threshold and water amount can wake the device
+    for transmit
+Raspberry Pi
+  * machine learning performed on moisture data from plants, determining what
+    times and moisture levels lead to watering.  this data will be used to
+    automatically water the plants when the user desires.
+  * webserver runs a simple page that displays the moisture level of each plant
+    connected to the system.  users can also use this page to adjust settings
+    on when the plants should be watered, which are sent to the plant-based
+    XBees at next communication
+  * XBee mounted on Pi is a gateway for all XBees on plants; it receives
+    moisture level readings (which are fed into the machine learning algorithm)
+    twice an hour, except when devices are awoken sooner by user interaction
 
 To run it you'll need to create a default.cfg file (in the same directory) that looks like this:
 
 
 	[apikeys]
-	thingspeak_key: 
-	cosm_key: 
-	sense_key: 
-	twitterusername: 
-	twitterpassword: 
-	tinaja_key: 
+	nonsense: myfriend
 	[paths]
 	locallogpath: /var/www/tinajalog
-	tinajalogurl: 
-	senselogurl: http://api.sen.se/events/?sense_key=
-	thingspeaklogurl: api.thingspeak.com
 
 Look at the import commands and you'll see it will require the following python modules:
 
-* SUDS
-* EEML
 * pySerial
 * simplejson
-

@@ -14,7 +14,6 @@ while True:
     packet = xbee.find_packet(ser)
     if packet:
         xb = xbee(packet)
-	
+
 	print ">>> "
         print xb
-

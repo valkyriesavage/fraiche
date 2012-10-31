@@ -24,7 +24,7 @@ class SensorHistories:
     def __init__(self, f):
         if f:
             self.readfromfile(f)
-            
+
     def find(self, sensornum):
         for history in self.sensorhistories:
             if history.sensornum == sensornum:
@@ -38,21 +38,16 @@ class SensorHistories:
         curryear = 0
         currmonth = 0
         currdate = 0
-        
+
         currdailypowerusage = None
-    
+
         for line in f:
             try:
-                # chomp() off the new line at the end
-                if line and line[-1] == '\n':
-                    line = line[:-1]
-                    
-                    # debug print
-                    #print line, '\n'
+                line = line.strip()
                 #print line
                 if (line[0] == '#'):
                     continue
-                
+
                 # divide up into [0] date, [1] time, [2] sensornum, [3] Watts used
                 # this parsing isnt very flexible...it would be nice if it was rugged :(
                 foo = line.split(', ')
@@ -76,9 +71,9 @@ class SensorHistories:
                 if history.lasttime > datapointtime:
                     # this is the first datapoint for this sensor
                     history.lasttime = datapointtime
-                    # the next time we go through, we'll have a delta of time 
+                    # the next time we go through, we'll have a delta of time
                     continue
-                
+
                 # figure out how much time has elapsed since last datapoint
                 #print (datapointtime - history.lasttime), " seconds elapsed since last datapoint"
 
@@ -86,14 +81,14 @@ class SensorHistories:
                 #print powerused * (datapointtime - history.lasttime) / (60.0 * 60.0)
                 # add that to the current sensorhistory dayswatthr
                 history.dayswatthr += powerused * (datapointtime - history.lasttime) / (60.0 * 60.0)
-                
+
                 history.lasttime = datapointtime
             except:
                 print formatExceptionInfo()
-                
+
         for history in self.sensorhistories:
             history.lasttime = time.time()
-                
+
     def __str__(self):
         s = ""
         for history in self.sensorhistories:
@@ -117,12 +112,12 @@ class SensorHistory:
       self.cumulative5mwatthr = 0
       self.dayswatthr = 0
       self.dataPointCount = 0   # 02.18.2011 tps
-      
+
   def addwatthr(self, deltawatthr):
       self.cumulative5mwatthr +=  float(deltawatthr)
       self.dayswatthr += float(deltawatthr)
-  
-  # chrisjx, 08.27.2010, added this to genericise sensorhistory for any value type 
+
+  # chrisjx, 08.27.2010, added this to genericise sensorhistory for any value type
   def addvalue(self, deltawatthr):
       self.cumulative5mwatthr +=  float(deltawatthr)
       self.dayswatthr += float(deltawatthr)
@@ -137,11 +132,11 @@ class SensorHistory:
   def avgwattover5min(self):
       return self.cumulative5mwatthr * (60.0*60.0 / (time.time() - self.fiveminutetimer))
 
-  # chrisjx, 08.27.2010, added this to genericise sensorhistory for any value type 
+  # chrisjx, 08.27.2010, added this to genericise sensorhistory for any value type
   def avgunitsover5min(self):
       # 02.18.2011 tps Average of data points accumulated over past 5 minutes
       return self.cumulative5mwatthr / self.dataPointCount
       #return self.cumulative5mwatthr * (60.0*60.0 / (time.time() - self.fiveminutetimer))
-  
+
   def __str__(self):
       return "[ id#: %d, 5mintimer: %f, lasttime; %f, 5minwatthr: %f, daywatthr = %f]" % (self.sensornum, self.fiveminutetimer, self.lasttime, self.cumulative5mwatthr, self.dayswatthr)

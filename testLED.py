@@ -10,7 +10,7 @@ xbee = XBee(serial_port)
 
 thisDest = '\x00\x0f'
 
-xbee.send('remote_at', 
+xbee.send('remote_at',
           frame_id='C',
           dest_addr=thisDest,
           options='\x02',
@@ -23,21 +23,19 @@ print xbee.wait_read_frame()['status']
 xbee.remote_at(dest_addr=thisDest,command='D4',parameter='\x04')
 xbee.remote_at(dest_addr=thisDest,command='WR')
 
-
 led=False
-while 1:
+while True:
+  #set led status
+  led=not led
 
-        #set led status
-        led=not led
+  if led:
+    xbee.remote_at(dest_addr=thisDest,command='D4',parameter='\x04')
+    print "LED Off"
+  else:
+    xbee.remote_at(dest_addr=thisDest,command='D4',parameter='\x05')
+    print "LED On"
 
-        if led:
-		xbee.remote_at(dest_addr=thisDest,command='D4',parameter='\x04')
-                print "LED Off"
-        else:
-		xbee.remote_at(dest_addr=thisDest,command='D4',parameter='\x05')
-                print "LED On"
-
-        # wait 1 second
-        time.sleep(1)
+  # wait 1 second
+  time.sleep(1)
 
 serial_port.close()

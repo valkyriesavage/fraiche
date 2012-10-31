@@ -4,10 +4,10 @@
 import array
 
 class xbee(object):
-       
+
         START_IOPACKET   = '0x7e'
         SERIES1_IOPACKET = '0x83'
-       
+
         def find_packet(serial):
                 if hex(ord(serial.read())) == xbee.START_IOPACKET:
                         lengthMSB = ord(serial.read())
@@ -18,12 +18,12 @@ class xbee(object):
                         return None
 
         find_packet = staticmethod(find_packet)
-       
+
         def __init__(self, arg):
                 self.digital_samples = []
                 self.analog_samples = []
                 self.init_with_packet(arg)
-       
+
         def init_with_packet(self, p):
                 p = [ord(c) for c in p]
 

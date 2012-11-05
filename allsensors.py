@@ -9,7 +9,6 @@ print "--------------------------------------------"
 import serial, time, datetime, sys, random, math
 import syslog
 from xbee import xbee
-import twitter
 import sensorhistory
 import ConfigParser, os
 
@@ -20,29 +19,6 @@ print "imported simplejson lib..."
 
 SERIALPORT = "/dev/ttyAMA0"    # the com/serial port the XBee is connected to
 BAUDRATE = 9600      # the baud rate we talk to the xbee
-CURRENTSENSE = 4       # which XBee ADC has current draw data
-VOLTSENSE = 0          # which XBee ADC has mains voltage data
-MAINSVPP = 170 * 2     # +-170V is what 120Vrms ends up being (= 120*2sqrt(2))
-# Calibration for sensor #0
-# Calibration for sensor #1
-# Calibration for sensor #3
-# Calibration for sensor #4
-# Calibration for sensor #5
-# etc... approx ((2.4v * (10Ko/14.7Ko)) / 3
-vrefcalibration = [0,
-                   488,
-                   0,
-                   487,
-                   485,
-                   0,
-                   0,
-                   0,
-                   0,
-                   0,
-                   0,
-                   0,
-                   486]
-CURRENTNORM = 15.5  # conversion to amperes from ADC
 
 # set up the config file parser
 config = ConfigParser.ConfigParser()
@@ -69,14 +45,14 @@ if (sys.argv and len(sys.argv) > 1):
 ##############################################################
 # the main function
 def mainloop(idleevent):
-    global sensorhistories, DEBUG, COSM_KEY
+    global sensorhistories, DEBUG
 
     # grab one packet from the xbee, or timeout
     try:
         packet = xbee.find_packet(ser)
         if not packet:
-            # print "    no serial packet found... "+ time.strftime("%Y %m %d, %H:%M")
-            # syslog.syslog("TLSM.mainloop exception: no serial packet found..." )
+            print "    no serial packet found... "+ time.strftime("%Y %m %d, %H:%M")
+            syslog.syslog("TLSM.mainloop exception: no serial packet found..." )
             return
     except Exception, e:
         print "TLSM.mainloop exception: Serial packet: "+str(e)
@@ -107,30 +83,22 @@ def mainloop(idleevent):
 
     # ------------------------------------------------------------------
     # break out and do something for each device
-    # this should eventually be changed into an array or object class
-    # CJ, 03.12.2011, added SenseFeedKey to send feeds to Sen.se
 
     if xb.address_16 == 1: # Tomato
-        tLogApiKey = ""
         SenseFeedKeys = [0,0,0,0]
         cosmLogKey = "29631"
-        ThingSpeakKey = ""
 
         adcinputs = [0,1,2,3]
         for i in range(len(adcinputs)):
             cXbeeAddr = str(xb.address_16)
             cXbeeAdc = str(adcinputs[i])
             adcSensorNum = int(cXbeeAddr + cXbeeAdc)
-            avgunit = getmVolts(xb,adcinputs[i])
-            if adcinputs[i] == 1:
-                avgunit = calctemp(xb)
-
             SenseFeedKey = str(SenseFeedKeys[i])
 
             # print "adcSensorNum", adcSensorNum, avgunit
             sensorhistory = sensorhistories.find(adcSensorNum)
             addunithistory(sensorhistory, avgunit)
-            fiveminutelog(sensorhistory, tLogApiKey, cosmLogKey, SenseFeedKey, ThingSpeakKey, 1023, xb.rssi, adcinputs[i])
+            fiveminutelog(sensorhistory, xb.rssi, adcinputs[i])
 
 
     else:
@@ -142,7 +110,7 @@ def mainloop(idleevent):
 
 # sub-routines
 ##############################################################
-def fiveminutelog(loSensorHistory, LogApiKey, cosmLogKey, SenseLogKey, cThingSpeakKey, lnCosmMaxVal, xbRssi, adcinput):
+def fiveminutelog(loSensorHistory, xbRssi, adcinput):
     # Determine the minute of the hour (ie 6:42 -> '42')
     # currminute = (int(time.time())/60) % 10
     currminute = (int(time.time())/60) % 5
@@ -155,37 +123,10 @@ def fiveminutelog(loSensorHistory, LogApiKey, cosmLogKey, SenseLogKey, cThingSpe
         sensornum = loSensorHistory.sensornum
         avgunitsused = loSensorHistory.avgunitsover5min()
 
-        # print "\n"
-        # print "TLSM.fiveminutelog: " + time.strftime("%Y %m %d, %H:%M")+":  Sensor# "+str(sensornum)+" has averaged: "+str(avgunitsused)
         syslog.syslog("TLSM.fiveminutelog: Sensor# "+str(sensornum)+" has averaged: "+str(avgunitsused))
 
-        lnStartLogging = time.time()
         # log to the local CSV file
         logtocsv(sensornum, avgunitsused, logfile)
-        print "  #",sensornum,"time to CSV =", time.time() - lnStartLogging
-
-        lnStartLogging = time.time()
-        # send to the tinaja data logger
-        # logtotinaja(sensornum, avgunitsused, LogApiKey)
-        print "  #",sensornum,"time to Tinaja DL =", time.time() - lnStartLogging
-
-        lnStartLogging = time.time()
-        # send to the cosm data logger
-        logtocosm(sensornum, avgunitsused, cosmLogKey, lnCosmMaxVal, xbRssi, adcinput)
-        print "  #",sensornum,"time to Cosm DL =", time.time() - lnStartLogging
-
-        # CJ, 03.12.2011, added logtosense() to send feeds to Sen.se
-        lnStartLogging = time.time()
-        # send to the sen.se data logger
-        logtosense(sensornum, avgunitsused, SenseLogKey)
-        print "  #",sensornum,"time to Sense DL =", time.time() - lnStartLogging
-
-       # CJ, 05.04.2011, added logtothing() to send feeds to ThingSpeak
-        lnStartLogging = time.time()
-        # send to the ThingSpeak data logger
-        logtothing(sensornum, avgunitsused, cThingSpeakKey, adcinput)
-        print "  #",sensornum,"time to Thing Speak DL=", time.time() - lnStartLogging
-
 
         # Reset the 5 minute timer
         loSensorHistory.reset5mintimer()
@@ -208,7 +149,6 @@ def logtocsv(lnSensorNum, lnAvgUnits, loLogfile):
 ##############################################################
 def getlogfile():
 # open our datalogging file
-# CJ, 05.13.2011, included /logs/ directory under www
     global LOCALLOGPATH
 
     TimeStamp = "%s" % (time.strftime("%Y%m%d"))
@@ -232,8 +172,7 @@ def getlogfile():
 # do some setup here at the end
 
 try:
-    # LOCALLOGPATH = "/opt/www/tinajalog"
-    LOCALLOGPATH = ConfigSectionMap("paths")['locallogpath']
+    LOCALLOGPATH = "/usr/local/sensorhistory.log"
 
     print "Successfully configured..."
     syslog.syslog("TLSM.config: Successfully configured...")
@@ -264,7 +203,3 @@ print "The main loop is starting..."
 # the 'main loop' runs once a second or so
 while True:
     mainloop(None)
-
-    if islogcurrent(logfile.name) == False:
-        logfile = getlogfile()
-        # print "current log file=", logfile.name

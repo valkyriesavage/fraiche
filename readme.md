@@ -28,15 +28,7 @@ Raspberry Pi
     moisture level readings (which are fed into the machine learning algorithm)
     twice an hour, except when devices are awoken sooner by user interaction
 
-To run it you'll need to create a default.cfg file (in the same directory) that looks like this:
-
-
-	[apikeys]
-	nonsense: myfriend
-	[paths]
-	locallogpath: /var/www/tinajalog
-
 Look at the import commands and you'll see it will require the following python modules:
 
 * pySerial
-* simplejson
+* tornado

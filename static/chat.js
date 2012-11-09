@@ -50,7 +50,7 @@ var updater = {
     socket: null,
 
     start: function() {
-        var url = "ws://" + location.host + "/chatsocket";
+        var url = "ws://" + location.host + "/watersocket/" + location.search;
         if ("WebSocket" in window) {
 	    updater.socket = new WebSocket(url);
         } else {

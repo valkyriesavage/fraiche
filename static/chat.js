@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 function newMessage(form) {
     var message = form.formToDict();
-    updater.socket.send(JSON.stringify(message));
+    updater.socket.send(JSON.stringify(/*location.search + */message));
     form.find("input[type=text]").val("").select();
 }
 
@@ -50,7 +50,7 @@ var updater = {
     socket: null,
 
     start: function() {
-        var url = "ws://" + location.host + "/watersocket/" + location.search;
+        var url = "ws://" + location.host + "/plant/";
         if ("WebSocket" in window) {
 	    updater.socket = new WebSocket(url);
         } else {

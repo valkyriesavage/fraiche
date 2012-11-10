@@ -36,7 +36,7 @@ except Exception, e:
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
-            (r"/watersocket/(d+)", WaterDataSocketHandler),
+            (r"/plant/?(.*)", WaterDataSocketHandler),
             (r"/*", MainHandler),
         ]
         settings = dict(
@@ -63,11 +63,10 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
         # for iOS 5.0 Safari
         return True
 
-    def get(self, plant_num):
-        self.plant_num = plant_num
-
-    def open(self):
+    def open(self, plant_num):
         WaterDataSocketHandler.clients.add(self)
+        self.plant_num = plant_num
+        logging.info("got client on " + plant_num)
 
     def on_close(self):
         WaterDataSocketHandler.clients.remove(self)
@@ -94,7 +93,8 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
             "id": str(uuid.uuid4()),
             "body": parsed["body"],
             }
-        chat["html"] = self.render_string("message.html", message=chat + plant_num)
+        chat["html"] = self.render_string("message.html",
+                                          message=chat)
 
         WaterDataSocketHandler.update_cache(chat)
         WaterDataSocketHandler.send_updates(chat)

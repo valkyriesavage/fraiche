@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 function newMessage(form) {
     var message = form.formToDict();
-    updater.socket.send(JSON.stringify(/*location.search + */message));
+    updater.socket.send(JSON.stringify(message));
     form.find("input[type=text]").val("").select();
 }
 
@@ -50,7 +50,7 @@ var updater = {
     socket: null,
 
     start: function() {
-        var url = "ws://" + location.host + "/plant/";
+        var url = "ws://" + location.host + "/plant/" + window.location.search.substring(1);
         if ("WebSocket" in window) {
 	    updater.socket = new WebSocket(url);
         } else {
@@ -70,3 +70,22 @@ var updater = {
         node.slideDown();
     }
 };
+
+/*
+ * A note for SHIRY
+ *
+ * I am expecting on the backend that you will talk to location.host/plant/plant_num
+ * every time you send a message (or receive one)
+ *
+ * The data that you will get from me will be JSON, a list containing entries like
+ * {
+ *  "moisture" : <number between 0 and 1>,
+ *  "timestamp" : <UNIX timestamp>,
+ * };
+ *
+ * The data I am expecting from you will be JSON
+ * {
+ *  // tell me what you are sending and what it means
+ * }
+ *
+ */ 

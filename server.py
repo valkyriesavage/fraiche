@@ -34,76 +34,63 @@ except Exception, e:
     #exit
 '''
 class Application(tornado.web.Application):
-    def __init__(self):
-        handlers = [
-            (r"/plant/?(.*)", WaterDataSocketHandler),
-            (r"/*", MainHandler),
+  def __init__(self):
+    handlers = [
+        (r"/plant/(.*)", WaterDataSocketHandler),
+        (r"/*", MainHandler),
         ]
-        settings = dict(
-            cookie_secret="it'sarandomcookiesecrethopefullynooneguessesit!",
-            template_path=os.path.join(os.path.dirname(__file__), "templates"),
-            static_path=os.path.join(os.path.dirname(__file__), "static"),
-            xsrf_cookies=True,
-            autoescape=None,
+    settings = dict(
+        cookie_secret="it'sarandomcookiesecrethopefullynooneguessesit!",
+        template_path=os.path.join(os.path.dirname(__file__), "templates"),
+        static_path=os.path.join(os.path.dirname(__file__), "static"),
+        xsrf_cookies=True,
+        autoescape=None,
         )
-        tornado.web.Application.__init__(self, handlers, **settings)
+    tornado.web.Application.__init__(self, handlers, **settings)
 
 
 class MainHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("index.html", messages=WaterDataSocketHandler.cache)
+  def get(self):
+    self.render("index.html", messages=WaterDataSocketHandler.instructions)
 
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
-    clients = set()
-    cache = []
-    cache_size = 200
+  clients = {}
+  instructions = []
 
-    def allow_draft76(self):
-        # for iOS 5.0 Safari
-        return True
+  def allow_draft76(self):
+    # for iOS 5.0 Safari
+    return True
 
-    def open(self, plant_num):
-        WaterDataSocketHandler.clients.add(self)
-        self.plant_num = plant_num
-        logging.info("got client on " + plant_num)
+  def open(self, plant_num):
+    WaterDataSocketHandler.clients[plant_num] = self
+    self.plant_num = plant_num
+    logging.info("got client for plant " + plant_num)
 
-    def on_close(self):
-        WaterDataSocketHandler.clients.remove(self)
+  def on_close(self):
+    del WaterDataSocketHandler.clients[self.plant_num]
 
-    @classmethod
-    def update_cache(cls, chat):
-        cls.cache.append(chat)
-        if len(cls.cache) > cls.cache_size:
-            cls.cache = cls.cache[-cls.cache_size:]
+  @classmethod
+  def update_cache(cls, instruction):
+    cls.instructions.append(instruction)
 
-    @classmethod
-    def send_updates(cls, chat):
-        logging.info("sending message to %d clients", len(cls.clients))
-        for client in cls.clients:
-            try:
-                client.write_message(chat)
-            except:
-                logging.error("Error sending message", exc_info=True)
+  @classmethod
+  def send_updates(cls, data):
+    try:
+      clients[data[plant_num]].write_message(data)
+    except:
+      logging.error("Error sending message", exc_info=True)
 
-    def on_message(self, message):
-        logging.info("got message %r", message)
-        parsed = tornado.escape.json_decode(message)
-        chat = {
-            "id": str(uuid.uuid4()),
-            "body": parsed["body"],
-            }
-        chat["html"] = self.render_string("message.html",
-                                          message=chat)
-
-        WaterDataSocketHandler.update_cache(chat)
-        WaterDataSocketHandler.send_updates(chat)
+  def on_message(self, instruction):
+    logging.info("got message %r", instruction)
+    parsed = tornado.escape.json_decode(instruction)
+    WaterDataSocketHandler.update_cache(instruction)
 
 def main():
-    tornado.options.parse_command_line()
-    app = Application()
-    app.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
+  tornado.options.parse_command_line()
+  app = Application()
+  app.listen(options.port)
+  tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
-    main()
+  main()

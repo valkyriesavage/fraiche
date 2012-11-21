@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
-# original source: http://github.com/adafruit/Tweet-a-Watt/blob/master/wattcher.py
-# tps, 03.14.2011 - fix for data output spikes
 print "Sensor Manager..."
-print "CS294-84 project based on code from Tinaja labs"
+print "CS261A project based on code from Tinaja labs"
 print "-----------------------------------------------"
 
 import os, serial, syslog, time
@@ -12,6 +10,16 @@ from server import log_data_file
 
 SERIALPORT = "/dev/ttyAMA0"    # the com/serial port the XBee is connected to
 BAUDRATE = 9600      # the baud rate we talk to the xbee
+
+# open up the serial port to get data transmitted to xbee
+try:
+    ser = serial.Serial(SERIALPORT, BAUDRATE)
+    ser.open()
+    syslog.syslog("H2OIQ.opening: serial port opened...")
+except Exception, e:
+    syslog.syslog("H2OIQ.opening exception: serial port: "+str(e))
+    ser = open("noserialpresent.txt")
+
 
 ##############################################################
 # the main function
@@ -57,6 +65,7 @@ def mainloop(idleevent):
 
 
 def respond(xb):
+
   print xb.address_16
 
 ZERO_BYTES_FROM = 0
@@ -70,15 +79,6 @@ def log_data(plant_num, sensor_value):
 
 def alert_server(plant_num):
   urllib.urlopen('localhost:8888/sensorupdated/' + plant_num + '/' + sensor_data)
-
-# open up the serial port to get data transmitted to xbee
-try:
-    ser = serial.Serial(SERIALPORT, BAUDRATE)
-    ser.open()
-    syslog.syslog("H2OIQ.opening: serial port opened...")
-except Exception, e:
-    syslog.syslog("H2OIQ.opening exception: serial port: "+str(e))
-    exit()
 
 syslog.syslog("<<<  Starting the Smart Watering Sensor System for H2OIQ  >>>")
 

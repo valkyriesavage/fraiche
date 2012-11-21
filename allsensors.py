@@ -5,7 +5,6 @@ print "CS261A project based on code from Tinaja labs"
 print "-----------------------------------------------"
 
 import os, serial, syslog, time
-from xbee import xbee
 from server import log_data_file
 
 SERIALPORT = "/dev/ttyAMA0"    # the com/serial port the XBee is connected to
@@ -18,7 +17,7 @@ try:
     syslog.syslog("H2OIQ.opening: serial port opened...")
 except Exception, e:
     syslog.syslog("H2OIQ.opening exception: serial port: "+str(e))
-    ser = open("noserialpresent.txt")
+    ser = open("noserialpresent.txt", "w+")
 
 
 ##############################################################

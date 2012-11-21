@@ -3,7 +3,7 @@
 # Based off example code found in the Tornado package, and code from
 # the tinaja labs xbee package.
 
-import datetime, logging, math, os, random, serial, sys, syslog, time, uuid
+import os
 
 import tornado.escape
 import tornado.ioloop

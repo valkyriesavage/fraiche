@@ -168,3 +168,9 @@ pip-log.txt
 
 # loggering
 *.log
+
+# latex
+*.bib
+*.aux
+*.synctex.gz
+*.fls

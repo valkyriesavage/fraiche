@@ -42,7 +42,7 @@ class NaiveScheduler(Scheduler):
     return False
 
   def __dealWithClientRequest__(self):
-    __executeML__(self)
+    self.__executeML__()
 
   def __executeML__(self):
     # do it!
@@ -52,7 +52,7 @@ class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 1000000;
 
   def timeToRunML(self):
-    return time.time() - self.timeSinceLastLearning > self.THRESHOLD
+    return time.time() - self.lastMLRuntime > self.THRESHOLD
 
   def runML(self):
     # do it!
@@ -108,6 +108,10 @@ class LowLoadScheduler(Scheduler):
     runML = self.loadIsLow()
     self.recentClientRequests = []
     return runML
+
+  def __executeML__(self):
+    # do it
+    return
 
 class PredictiveScheduler(Scheduler):
 

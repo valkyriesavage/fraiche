@@ -103,7 +103,6 @@ class LowLoadScheduler(Scheduler):
                   map(lambda x: 1,
                       filter(lambda x: x + RECENCY_THRESHOLD > time.time(),
                              self.recentClientRequests)))
-            < RECENT_REQUESTS_LOW_THRESHOLD
 
   def timeToRunML(self):
     runML = self.loadIsLow()

@@ -1,72 +1,41 @@
 #!/usr/bin/env python
 
 print "Sensor Manager..."
-print "CS261A project based on code from Tinaja labs"
+print "CS294-84 project based on code from Tinaja labs"
 print "-----------------------------------------------"
 
 import os, serial, syslog, time
-from xbee import xbee
-from server import log_data_file
+from server import log_data_file, instructions_data_file
 
 SERIALPORT = "/dev/ttyAMA0"    # the com/serial port the XBee is connected to
 BAUDRATE = 9600      # the baud rate we talk to the xbee
-
-# open up the serial port to get data transmitted to xbee
-try:
-    ser = serial.Serial(SERIALPORT, BAUDRATE)
-    ser.open()
-    syslog.syslog("H2OIQ.opening: serial port opened...")
-except Exception, e:
-    syslog.syslog("H2OIQ.opening exception: serial port: "+str(e))
-    ser = open("noserialpresent.txt")
-
 
 ##############################################################
 # the main function
 def mainloop(idleevent):
 
-    # grab one packet from the xbee, or timeout
-    try:
-        packet = xbee.find_packet(ser)
-        if not packet:
-            syslog.syslog("H2OIQ.mainloop exception: no serial packet found..." )
-            return
+    data = ser.read()
 
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: Serial packet: "+str(e))
-        return
+    if not data:
+      return
 
-    try:
-        xb = xbee(packet)    # parse the packet
-        if not xb:
-            syslog.syslog("H2OIQ.mainloop exception: no xb packet found...")
-            return
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: xb packet: "+str(e))
-        return
-
-    # this traps an error when there is no address_16 attribute for xb
-    # why this happens is a mystery to me
-    try:
-        if xb.address_16 == 99:
-            return
-    except Exception, e:
-        syslog.syslog("H2OIQ.mainloop exception: xb attribute: "+str(e))
-        return
+    plant_num = 1
+    sensor_data = data
 
     # respond to the XBee
-    respond(xb)
+    respond(plant_num)
 
     # log the data
-    plant_num = xb.address_16
-    sensor_data = xb.analog_samples[0]
     log_data(plant_num, sensor_data)
     alert_sever(plant_num, sensor_data)
 
 
-def respond(xb):
-
-  print xb.address_16
+def respond(plant_num):
+  instructions_file = open(instructions_data_file(plant_num), 'w+')
+  for line in instructions_file:
+    ser.write(line)
+  instructions_file.truncate(0)
+  instructions_file.close()
 
 ZERO_BYTES_FROM = 0
 FILE_END = 2
@@ -79,6 +48,15 @@ def log_data(plant_num, sensor_value):
 
 def alert_server(plant_num):
   urllib.urlopen('localhost:8888/sensorupdated/' + plant_num + '/' + sensor_data)
+
+# open up the serial port to get data transmitted to xbee
+try:
+    ser = serial.Serial(SERIALPORT, BAUDRATE)
+    ser.open()
+    syslog.syslog("H2OIQ.opening: serial port opened...")
+except Exception, e:
+    syslog.syslog("H2OIQ.opening exception: serial port: "+str(e))
+    exit()
 
 syslog.syslog("<<<  Starting the Smart Watering Sensor System for H2OIQ  >>>")
 

@@ -24,52 +24,62 @@ Models:
 '''
 
 def gen_noisy_linear_data(start, slope, noise, timesteps):
-	vals = []
-	for i in xrange(timesteps):
-		mu = start + i * slope
-		vals.append(random.normalvariate(mu, noise)) # Allows sensor to return nonsensical values
-###		vals.append(min(max(0, random.normalvariate(mu, noise)), 100)) # Bounds to [0, 100]
-	return vals
+  vals = []
+  for i in xrange(timesteps):
+    mu = start + i * slope
+    vals.append(random.normalvariate(mu, noise)) # Allows sensor to return nonsensical values
+###    vals.append(min(max(0, random.normalvariate(mu, noise)), 100)) # Bounds to [0, 100]
+  return vals
+
+#### Factors
+### - rate at which plant uses water
+### - rainfall
+### - watering (i.e. brief period of very heavy rain)
+### - fog / mist
+### - sunlight
+### - wind
+### - soil type
+### - 
 
 class Model:
-	def __init__(self):
-		pass
+  def __init__(self):
+    pass
 
 class Least_Squares(Model):
-	def __init__(self):
-		self.sum_1 = 0.0
-		self.sum_x = 0.0
-		self.sum_x2 = 0.0
-		self.sum_y = 0.0
-		self.sum_xy = 0.0
+  def __init__(self):
+    self.sum_1 = 0.0
+    self.sum_x = 0.0
+    self.sum_x2 = 0.0
+    self.sum_y = 0.0
+    self.sum_xy = 0.0
 
-	def update(self, nval):
-		y = float(nval)
-		x = self.sum_1 + 1
-		self.sum_1 += 1.0
-		self.sum_x += x
-		self.sum_x2 += x * x
-		self.sum_y += y
-		self.sum_xy += x * y
+  def update(self, nval):
+    y = float(nval)
+    x = self.sum_1 + 1
+    self.sum_1 += 1.0
+    self.sum_x += x
+    self.sum_x2 += x * x
+    self.sum_y += y
+    self.sum_xy += x * y
 
-	def get_line(self):
-		av_xy = self.sum_xy / self.sum_1
-		av_y = self.sum_y / self.sum_1
-		av_x = self.sum_x / self.sum_1
-		av_x2 = self.sum_x2 / self.sum_1
-		beta = (av_xy - av_x * av_y) / (av_x2 - av_x * av_x)
-		alpha = av_y - beta * av_x
-		return (alpha, beta)
+  def get_line(self):
+    av_xy = self.sum_xy / self.sum_1
+    av_y = self.sum_y / self.sum_1
+    av_x = self.sum_x / self.sum_1
+    av_x2 = self.sum_x2 / self.sum_1
+    beta = (av_xy - av_x * av_y) / (av_x2 - av_x * av_x)
+    alpha = av_y - beta * av_x
+    return (alpha, beta)
 
-	def multiupdate(self, vals):
-		for val in vals:
-			self.update(val)
+  def multiupdate(self, vals):
+    for val in vals:
+      self.update(val)
 
 print "See how well simple least squares handles noise:"
 for noise in [0, 1] + [i * 3 for i in xrange(1, 20)]:
-	vals = gen_noisy_linear_data(90, -2, noise, 20)
-	print "sigma:", noise
-	print "vals:", ' '.join(["%.2f" % val for val in vals])
-	model = Least_Squares()
-	model.multiupdate(vals)
-	print "sls:", model.get_line()
+  vals = gen_noisy_linear_data(90, -2, noise, 20)
+  print "sigma:", noise
+  print "vals:", ' '.join(["%.2f" % val for val in vals])
+  model = Least_Squares()
+  model.multiupdate(vals)
+  print "sls:", model.get_line()

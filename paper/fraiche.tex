@@ -1,9 +1,34 @@
 \documentclass[a4paper]{article}  
-\usepackage{lipsum}
 \usepackage{microtype}
 \usepackage{mathpazo}
 \begin{document}
-\lipsum
+
+\title{Fast Response And Intelligently Controlled Harvest System}
+\author{Peggy Chi \and Jonathan Kummerfeld \and Valkyrie Savage}
+\maketitle
+
+\section{Abstract}
+
+\section{Introduction}
+
+Managing a community garden or small farm is currently a process that requires community members or the farmer to directly monitor their land in an ad-hoc manner.  In order to assist them in applying modern statistical methods to their land management, we are developing a system which has both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app.  The same web app will allow them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system.  Over time, the web app will store data about which plants the gardener waters under which conditions, and will learn how to initiate watering without prompting.
+
+We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system we will simulate a scaled up version. This will involve an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
+
+\section{Related Work}
+
+
+
+\section{Background}
+
+\section{Architecture}
+
+\section{Implementation}
+
+\section{Performance}
+
+\section{Conclusions}
+
 \bibliography{bib}
 \bibliographystyle{plainnat}
 \end{document}

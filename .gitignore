@@ -170,7 +170,8 @@ pip-log.txt
 *.log
 
 # latex
-*.bib
+*.bbl
+*.blg
 *.aux
 *.synctex.gz
 *.fls

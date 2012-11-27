@@ -3,27 +3,90 @@
 \usepackage{mathpazo}
 \begin{document}
 
-\title{Fast Response And Intelligently Controlled Harvest System}
+\title{Fast Response And Intelligently Controlled Harvest Environment}
 \author{Peggy Chi \and Jonathan Kummerfeld \and Valkyrie Savage}
 \maketitle
 
 \section{Abstract}
 
+FRAICHE is a complete small-scale sensing and watering system for deployment in community gardens.  The goal is to provide gardeners with a web interface detailing the current status of their plants as well as a machine-learned model of how they ought to care for their plants based on data from their historical plant interactions and the interactions of other gardeners with their plants.  FRAICHE is implemented using a Raspberry Pi, a system with minimal computing power, and we want to leverage this power as effectively as possible to deliver the freshest models to clients when they access the web interface.  In order to effectively test the system, we simulated a scaled up version.  We got RESULTS!
+
 \section{Introduction}
 
-Managing a community garden or small farm is currently a process that requires community members or the farmer to directly monitor their land in an ad-hoc manner.  In order to assist them in applying modern statistical methods to their land management, we are developing a system which has both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app.  The same web app will allow them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system.  Over time, the web app will store data about which plants the gardener waters under which conditions, and will learn how to initiate watering without prompting.
+Managing a community garden or small farm is currently a process that requires community members or the farmer to directly monitor their land in an ad-hoc manner.  Additionally, beginning gardeners who lack a large base of knowledge sometimes find it difficult to react effectively to the signals they see coming from their plants, watering them to the point of drowning or failing to notice when they are parched.  Computing has been leveraged to improve the ease of interaction with and analysis of many other physical processes, so we brought machine learning into this challenging gardening environment.
 
-We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system we will simulate a scaled up version. This will involve an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
+FRAICHE is a system with both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app.  The same web app allows them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system.  Over time, the web app stores data about which plants the gardener waters under which conditions, and will learn how to initiate watering without prompting.  The app also performs machine learning across gardeners: in this way, beginners are able to learn from the experience of those with more established watering practices.
+
+We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the systemwe simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models, and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
+
+We implemented several different possibilities for balancing the loads of serving clients, getting fresh sensor data, adn updating the machine-learned data:
+
+\begin{itemize}
+
+\item Na\"{\i}ve method - each time the server is queried by a gardener, the machine learning algorithm is fed all sensor data and the watering prediction algorithm is updated.
+
+\item Periodic offline computation - according to a schedule, the machine learning algorithm is fed blocks of data containing sensor readings and the prediction algorithm is updated.
+
+\item Sensor-triggered updates - the system reads the sensor data periodically, and when particular events are detected, the machine learning algorithm is given fresh data and started.
+
+\item Hybrid cheap/costly modeling - two different machine learning algorithms are used, one which does "online" computation with all new sensor readings and which is cheap but less accurate, and one which receives batched sensor readings as described above on a periodic basis.  These two models are combined before delivery to the gardner.
+
+\item Updates when load is low - when few clients are connected to and querying sensor readings, a machine learning algorithm update is begun with the stored sensor data.
+
+\item Updates prior to predicted high demand - a second machine learning algorithm observes the typical peaks and valleys in client query traffic, and prior to a predicted peak beings running the machine learning algorithm with fresh data.  This should ensure that the maximum number of clients receive the freshest models.
+
+\end{itemize}
 
 \section{Related Work}
 
+\subsection{Resource Management}
 
+There has been a bevy of work on resource management for both parallel clusters and multiple virtual machines running on a single physical machine.
+
+The Dominant Resource Fairness algorithm \cite{} is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand; it is a port of max-min allocation \cite{} where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
+
+Jockey \cite{} is another resource management system, and it is built to hold processes to particular Service Level Objectives (SLOs).  Jockey uses predictive algorithms to simulate each job and estimate the time to completion.  FRAICHE differs in that we are aiming to serve models that are as fresh as possible to clients, and the access times of clients are not as well- or strictly defined as SLOs.
+
+Lottery scheduling has been put to use for managing resources: the basic idea is to allot a certain number of tickets to each process requiring a resource based on that process's importance and relative need for the resource.  FRAICHE's goals are not to schedule many processes fairly to run in minimal time, but rather to run the model refinement algorithms as close as possible to clients' requests for plant data.
+
+For virtual machines sharing a physical computer, Xen has explored the resource management question.  However their main challenges lay in isolation of the various virtual machines from each other in order to ensure security, while our challenges lay mainly in scheduling.
+
+Work on scheduling for parallel clusters has included Lithe \cite{}, use of loosely-synchronized clocks \cite{}, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
+
+\subsection{?}
 
 \section{Background}
 
+
 \section{Architecture}
 
+FRAICHE is composed of two distinctly different physical systems.  One is the device co-located with plants in the garden.  This device is built on an ATMEL chip.  The second system is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
+
+\subsection{Co-located device}
+
+The co-located device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, an array of sensors for detecting moisture, temperature, etc., of the soil, a battery, and a solar panel.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (i.e. the user need not access the website to adjust watering thresholds: he or she can push a few buttons while looking at the plant if it seems to be too dry or too wet).
+
+This device awakens from sleep mode approximately once per hour or when the buttons are pushed.  Whenever it is awake, it begins the communication process described below.
+
+\subsection{Raspberry Pi}
+
+The Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the co-located devices.  It serves three purposes: it maintains communication with all co-located plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
+
+The RPi's communication with the co-located plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each co-located device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
+
+The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
+
 \section{Implementation}
+
+All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W.
+
+\subsection{Webserver}
+
+We elected to use a pre-made upen-source webserver for our implementation: Tornado \cite{}.  It was created by Facebook for ???? \cite{}.
+
+\subsection{Schedulers}
+
+\subsection{Machine Learning Algorithms}
 
 \section{Performance}
 

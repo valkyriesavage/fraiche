@@ -6,10 +6,11 @@ class Scheduler:
     self.lastFreshSensorDataTime = -1
     self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
+    self.modelFreshnessWhenServed = []
     return
 
   def gotSensorEvent(self):
-    self.lastFreshSensorDataTIme = time.time()
+    self.lastFreshSensorDataTime = time.time()
     self.__dealWithSensorEvent__()
 
   def __dealWithSensorEvent__(self):
@@ -17,6 +18,8 @@ class Scheduler:
     pass
 
   def gotClientRequest(self):
+    self.modelFreshnessWhenServed.append(
+         time.time() - self.modelFreshAtTime)
     self.__dealWithClientRequest__()
 
   def __dealWithClientRequest__(self):

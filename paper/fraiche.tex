@@ -57,6 +57,7 @@ Work on scheduling for parallel clusters has included Lithe \cite{}, use of loos
 
 \section{Background}
 
+??????????
 
 \section{Architecture}
 
@@ -82,11 +83,19 @@ All systems were composed in Python 2.7, and all tests were performed on a Raspb
 
 \subsection{Webserver}
 
-We elected to use a pre-made upen-source webserver for our implementation: Tornado \cite{}.  It was created by Facebook for ???? \cite{}.
+We elected to use a pre-made upen-source webserver for our implementation: Tornado \cite{}.  It was created by Friendfeed for their primary web stack, and later open sourced by Facebook after their acquisition \cite{}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
+
+The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the co-located device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The sensor and model data are updated whenver possible.
+
+In order to build a test harness which can simulate many sensors and many clients without the need for co-located devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
 
 \subsection{Schedulers}
 
+Six independent schedulers were built, as described in the Introduction: Na\"{\i}ve, Periodic Offline, Sensor-triggered, Hybrid, Low Load, and Predicted Demand.
+
 \subsection{Machine Learning Algorithms}
+
+\subsection{Simulation Harness}
 
 \section{Performance}
 

@@ -1,7 +1,8 @@
+import time
+
 from model.model import Least_Squares, StormHMM
 
 class Scheduler:
-  import time
 
   def __init__(self):
     self.haveFreshSensorData = False

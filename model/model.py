@@ -6,6 +6,9 @@ class Model:
   def __init__(self):
     pass
 
+  def update(self, nval):
+    pass
+
   def predict(self, steps_ahead):
     pass
 
@@ -35,6 +38,9 @@ class StormHMM(Model):
     self.emit_mat = [0 for i in xrange(states)]
 
   def train(self, data):
+    pass
+
+  def update(self, nval):
     pass
 
   def predict(self, steps_ahead):

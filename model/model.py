@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys, random
+import sys, random, time
 
 class Model:
   def __init__(self):
@@ -38,7 +38,9 @@ class StormHMM(Model):
     pass
 
   def predict(self, steps_ahead):
-    pass
+    # Very much a stub...
+    time.sleep(1)
+    return random.randint(10, 100)
 
 
 if __name__ == '__main__':

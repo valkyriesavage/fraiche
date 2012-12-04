@@ -6,7 +6,7 @@ print "Sensor Manager..."
 print "CS294-84 project based on code from Tinaja labs"
 print "-----------------------------------------------"
 
-import os, syslog, time
+import os, syslog, time, urllib
 from server import log_data_file
 
 world = Simulation()
@@ -19,7 +19,7 @@ def mainloop(idleevent):
 
   # log the data
   log_data(plant_num, state)
-  alert_server(state)
+  alert_server(plant_num, state)
 
 ZERO_BYTES_FROM = 0
 FILE_END = 2
@@ -30,7 +30,7 @@ def log_data(plant_num, sensor_value):
   lf.seek(ZERO_BYTES_FROM, FILE_END)
   lf.write(str(oclock) + " " + sensor_value + "\n")
 
-def alert_server(plant_num):
+def alert_server(plant_num, sensor_data):
   urllib.urlopen('localhost:8888/sensorupdated/' + plant_num + '/' + sensor_data)
 
 # open up the serial port to get data transmitted to xbee

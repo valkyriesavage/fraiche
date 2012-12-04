@@ -1,3 +1,5 @@
+from model.model import Least_Squares, StormHMM
+
 class Scheduler:
   import time
 
@@ -7,6 +9,7 @@ class Scheduler:
     self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
     self.modelFreshnessWhenServed = []
+    self.model = Least_Squares()
     return
 
   def gotSensorEvent(self):
@@ -36,8 +39,8 @@ class Scheduler:
     self.modelFreshAtTime = time.time()
 
   def __executeML__(self):
-    # children implement this
-    pass
+    self.model.update()
+    return
 
 class NaiveScheduler(Scheduler):
 
@@ -45,21 +48,13 @@ class NaiveScheduler(Scheduler):
     return False
 
   def __dealWithClientRequest__(self):
-    self.__executeML__()
-
-  def __executeML__(self):
-    # do it!
-    return
+    self.runML()
 
 class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 1000000;
 
   def timeToRunML(self):
-    return time.time() - self.lastMLRuntime > self.THRESHOLD
-
-  def runML(self):
-    # do it!
-    return
+    return time.time() - self.lastMLRuntime > LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):
 
@@ -73,8 +68,11 @@ class HybridScheduler(Scheduler):
     self.naiveScheduler.gotSensorEvent()
     self.periodicScheduler.gotSensorEvent()
 
-  def runML(self):
-    # do it!
+  def __executeML__(self):
+    if self.periodicScheduler.timeToRunML():
+      self.periodicScheduler.__executeML__()
+    if self.naiveScheduler.timeToRunML():
+      self.naiveScheduler.__executeML__()
     return
 
 class SensorBasedScheduler(Scheduler):
@@ -84,10 +82,6 @@ class SensorBasedScheduler(Scheduler):
 
   def __dealWithSensorEvent__(self):
     self.haveFreshSensorData = True
-
-  def __executeML__(self):
-    # do it!
-    return
 
 class LowLoadScheduler(Scheduler):
   RECENCY_THRESHOLD = 10000000
@@ -105,23 +99,21 @@ class LowLoadScheduler(Scheduler):
     return reduce(lambda x, y: x + y,
                   map(lambda x: 1,
                       filter(lambda x: x + RECENCY_THRESHOLD > time.time(),
-                             self.recentClientRequests)))
+                             self.recentClientRequests))) < RECENT_REQUESTS_LOW_THRESHOLD
 
   def timeToRunML(self):
     runML = self.loadIsLow()
     self.recentClientRequests = []
     return runML
 
-  def __executeML__(self):
-    # do it
-    return
-
 class PredictiveScheduler(Scheduler):
 
   def __dealWithClientRequest__(self):
     # feed me to a ML algo!
+    if not self.clientModel:
+      self.clientModel = LeastSquares()
+    self.clientModel.update()
     pass
 
   def timeToRunML(self):
-    # return ML says so
-    return False
+    return self.clientModel.predict()

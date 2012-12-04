@@ -6,35 +6,40 @@ class Model:
   def __init__(self):
     pass
 
+  def predict(self, steps_ahead):
+    pass
+
 class Least_Squares(Model):
   def __init__(self):
-    self.sum_1 = 0.0
-    self.sum_x = 0.0
-    self.sum_x2 = 0.0
-    self.sum_y = 0.0
-    self.sum_xy = 0.0
+    self.av_delta = 0.0
+    self.pval = None
+    self.history = 10.0
 
   def update(self, nval):
-    y = float(nval)
-    x = self.sum_1 + 1
-    self.sum_1 += 1.0
-    self.sum_x += x
-    self.sum_x2 += x * x
-    self.sum_y += y
-    self.sum_xy += x * y
-
-  def get_line(self):
-    av_xy = self.sum_xy / self.sum_1
-    av_y = self.sum_y / self.sum_1
-    av_x = self.sum_x / self.sum_1
-    av_x2 = self.sum_x2 / self.sum_1
-    beta = (av_xy - av_x * av_y) / (av_x2 - av_x * av_x)
-    alpha = av_y - beta * av_x
-    return (alpha, beta)
+    if self.pval is not None:
+      delta = float(nval) - self.pval
+      self.av_delta *= (self.history - 1) / self.history
+      self.av_delta += delta / self.history
+    self.pval = float(nval)
 
   def multiupdate(self, vals):
     for val in vals:
       self.update(val)
+
+  def predict(self, steps_ahead):
+    return self.pval + self.av_delta * steps_ahead
+
+class StormHMM(Model):
+  def __init__(self, states=4):
+    self.tras_mat = [[0 for i in xrange(states)] for j in xrange(states)]
+    self.emit_mat = [0 for i in xrange(states)]
+
+  def train(self, data):
+    pass
+
+  def predict(self, steps_ahead):
+    pass
+
 
 if __name__ == '__main__':
   for line in sys.stdin:
@@ -42,4 +47,4 @@ if __name__ == '__main__':
     print "vals:", ' '.join(["%.2f" % val for val in vals])
     model = Least_Squares()
     model.multiupdate(vals)
-    print "sls:", model.get_line()
+    print "sls:", ' '.join([str(model.predict(steps)) for steps in xrange(20)])

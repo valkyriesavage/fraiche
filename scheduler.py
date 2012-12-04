@@ -1,5 +1,4 @@
 import time
-
 from model.model import Least_Squares, StormHMM
 
 class Scheduler:

@@ -1,32 +1,43 @@
-var incoming_data;
-var ideal_tomato = [0.2, 0.2, 1, 0.95, 0.9, 0.75, 0.6, 0.4, 0.2];
+var NUM_POINTS = 30;
+
+var incoming_data = [];
+var display_data = [];
+var ideal_tomato = [10, 15, 20, 26, 38, 49, 59, 70, 89, 95, 100, 99, 87, 76, 65, 58, 50, 45, 38, 30, 25, 20, 14, 10, 10, 10, 10, 10, 10, 10];
+var water_flag = false;
+var ticker = [];
 
 $(document).ready(function() {
-	// post the new instructions to the watering system
-	$(".waterform").live("submit", function() {
-          newInstruction($(this));
-          return false;
-        });
+  // initialize tickers
+  for (var i = 0; i < NUM_POINTS; ++i) {
+    ticker.push(0);
+  }
 
-        // toggle between modes
-        $("#toggleform-manual").live("submit", function() {
-          document.getElementById('wd-form-manual').style.display='none';
-          document.getElementById('wd-form-auto').style.display='block';
-          document.getElementById('wd-form-toggle-manual').style.display='none';
-          document.getElementById('wd-form-toggle-auto').style.display='block';
-          return false;
-        });
-        
-        $("#toggleform-auto").live("submit", function() {
-          document.getElementById('wd-form-auto').style.display='none';
-          document.getElementById('wd-form-manual').style.display='block';
-          document.getElementById('wd-form-toggle-auto').style.display='none';
-          document.getElementById('wd-form-toggle-manual').style.display='block';
-          return false;
-        });
+  // post the new instructions to the watering system
+  $(".waterform").live("submit", function() {
+    newInstruction($(this));
+    water_flag = true;
+    return false;
+  });
 
-	// graph the new moisture readings
-	updater.start();
+  // toggle between modes
+  $("#toggleform-manual").live("submit", function() {
+    document.getElementById('wd-form-manual').style.display='none';
+    document.getElementById('wd-form-auto').style.display='block';
+    document.getElementById('wd-form-toggle-manual').style.display='none';
+    document.getElementById('wd-form-toggle-auto').style.display='block';
+    return false;
+  });
+
+  $("#toggleform-auto").live("submit", function() {
+    document.getElementById('wd-form-auto').style.display='none';
+    document.getElementById('wd-form-manual').style.display='block';
+    document.getElementById('wd-form-toggle-auto').style.display='none';
+    document.getElementById('wd-form-toggle-manual').style.display='block';
+    return false;
+  });
+
+  // graph the new moisture readings
+  updater.start();
 });
 
 function newInstruction(form) {
@@ -47,63 +58,81 @@ jQuery.fn.formToDict = function() {
 
 
 var updater = {
-	socket: null,
+  socket: null,
 
-	start: function() {
-		var url = "ws://" + location.host + "/plant/plant_1";
-		if ("WebSocket" in window) {
-			updater.socket = new WebSocket(url);
-		} else {
-			updater.socket = new MozWebSocket(url);
-		}
-		updater.socket.onmessage = function(event) {
-                        // parse the incoming JSON into a JavaScript array
-                        // of Javascript Objects containig property,value pairs
-			updater.updateIncoming(JSON.parse(event.data));
-		}
-	},
+  start: function() {
+    var url = "ws://" + location.host + "/plant/plant_1";
+    if ("WebSocket" in window) {
+      updater.socket = new WebSocket(url);
+    } else {
+      updater.socket = new MozWebSocket(url);
+    }
+    updater.socket.onmessage = function(event) {
+      // parse the incoming JSON into a JavaScript array
+      // of Javascript Objects containig property,value pairs
+      updater.updateIncoming(JSON.parse(event.data));
+    }
+  },
 
-	updateIncoming: function(incoming) {
-		// TODO what is the format of data coming in?
-		// TODO update the incoming data variable
-		incoming_data = incoming;
-                drawChart();
-	}
+  updateIncoming: function(incoming) {
+    // append our data to existing data
+    incoming_data.push.apply(incoming_data, incoming);
+    display_data = incoming_data.slice(incoming_data.length-NUM_POINTS-1, incoming_data.length);
+    if (water_flag == true) {
+      ticker[ticker.length - incoming.length] = 1;
+      water_flag = false;
+    } else {
+      // move the ticker position in time with the data
+      for (var i = 0; i < incoming.length; ++i) {
+        ticker.shift();
+        ticker.push(0);
+      }
+    }
+    drawChart();
+  }
 };
 
 google.load("visualization", "1", {packages:["annotatedtimeline"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-        if (typeof(incoming_data) == 'undefined') return;
+google.setOnLoadCallback(drawChart);
 
-        var data = new google.visualization.DataTable();
-        // add columns
-        data.addColumn('datetime', 'date');
-        data.addColumn('number', 'ideal %moisture');
-        data.addColumn('number', 'recorded %moisture');
-        // add empty rows
-        data.addRows(incoming_data.length)
-        // populate the rows
-	// go over the incoming data variable
-        for (var row = 0; row < incoming_data.length; ++row) {
-          for (var date in incoming_data[row]) {
-            // multiply by 1000 so that the date is in milliseconds, not seconds
-	    data.setCell(row, 0, new Date(parseInt(date) * 1000));
-            data.setCell(row, 1, ideal_tomato[row]);
-            data.setCell(row, 2, parseFloat(incoming_data[row][date]));
-          }
-        }
+function drawChart() {
+  if (typeof(incoming_data) == 'undefined') return;
 
-        var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
-        formatter.format(data,0);
-
-        var options = {
-          title: 'Tomatoes',
-          hAxis: {
-            format: 'EEE, MMM d, H:mm'
-          }
-        };
-
-        var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('tomato_chart_div'));
-        chart.draw(data, options);
+  var data = new google.visualization.DataTable();
+  // add columns
+  data.addColumn('datetime', 'date');
+  data.addColumn('number', 'ideal %moisture');
+  data.addColumn('number', 'recorded %moisture');
+  data.addColumn('string', 'title1');
+  // add empty rows
+  data.addRows(display_data.length);
+  // populate the rows
+  // go over the incoming data variable
+  for (var row = 0; row < display_data.length; ++row) {
+    for (var date in display_data[row]) {
+      // multiply by 1000 so that the date is in milliseconds, not seconds
+      data.setCell(row, 0, new Date(parseInt(date) * 1000));
+      data.setCell(row, 1, ideal_tomato[row]);
+      data.setCell(row, 2, parseFloat(display_data[row][date]));
+      if (1 == ticker[row]) {
+        data.setCell(row, 3, 'watered');
+      } else {
+        data.setCell(row, 3, undefined);
       }
+    }
+  }
+
+  var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
+  formatter.format(data,0);
+
+  var options = {
+    title: 'Tomatoes',
+    hAxis: {
+      format: 'EEE, MMM d, H:mm'
+    },
+    displayAnnotations: true
+  };
+
+  var chart = new google.visualization.AnnotatedTimeLine(document.getElementById('tomato_chart_div'));
+  chart.draw(data, options);
+}

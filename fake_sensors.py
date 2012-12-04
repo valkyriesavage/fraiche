@@ -31,7 +31,7 @@ def log_data(plant_num, sensor_value):
   lf.write(str(oclock) + " " + sensor_value + "\n")
 
 def alert_server(plant_num, sensor_data):
-  urllib.urlopen('localhost:8888/sensorupdated/' + plant_num + '/' + sensor_data)
+  urllib.urlopen('http://127.0.0.1:8888/sensorupdated/' + plant_num + '/' + sensor_data)
 
 # open up the serial port to get data transmitted to xbee
 syslog.syslog("<<<  Starting the Smart Watering Sensor System for H2OIQ  >>>")

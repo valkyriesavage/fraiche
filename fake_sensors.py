@@ -38,3 +38,4 @@ syslog.syslog("<<<  Starting the Smart Watering Sensor System for H2OIQ  >>>")
 
 while True:
   mainloop(None)
+  time.sleep(2)

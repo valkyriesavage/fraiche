@@ -45,6 +45,8 @@ class Scheduler:
     return self.model[plant_num].predict(1)
 
   def runMLUpdate(self):
+    if not self.timeToRunML():
+      return
     self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()

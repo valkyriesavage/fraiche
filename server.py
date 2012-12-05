@@ -72,7 +72,7 @@ class SensorUpdatedHandler(tornado.web.RequestHandler):
     self.scheduler.gotSensorEvent(plant_num, value)
     touch(log_data_file(plant_num))
     f = open(log_data_file(plant_num), 'a')
-    f.write(time.time() + " " + value + "\n")
+    f.write(str(time.time()) + " " + value + "\n")
     f.close()
     WaterDataSocketHandler.send_latest_data(plant_num, value)
 

@@ -21,7 +21,7 @@ def log_data(plant_num, sensor_value):
   lf.close()
 
 def alert_server(plant_num, sensor_data):
-  urllib.urlopen('http://127.0.0.1:8888/sensorupdated/' + plant_num + '/' + sensor_data)
+  urllib.urlopen('http://169.229.63.33:8888/sensorupdated/' + plant_num + '/' + sensor_data)
 
 if __name__ == '__main__':
   world = Simulation()

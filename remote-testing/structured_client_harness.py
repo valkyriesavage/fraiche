@@ -1,17 +1,21 @@
 import random
 from math import floor, pi, sin
 from multiprocessing import Process
+import sys
+import time
 
 from client import Client
 
-MAX_NUM_CLIENTS = 5
+MAX_NUM_CLIENTS = 1
 
 clients = []
 for i in range(MAX_NUM_CLIENTS):
   clients.append(Client())
 
 def main(which_client):
+  start = time.time()
   clients[which_client].activate()
+  print (time.time() - start)
 
 def scale(val, src, dst):
   return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
@@ -23,6 +27,10 @@ def randomize_with_sin(counter):
   return int(floor(scaled))
 
 if __name__ == '__main__':
+  if not len(sys.argv) >= 2:
+    print "usage: " + sys.argv[0] + " numclients"
+    sys.exit(0)
+  MAX_NUM_CLIENTS = int(sys.argv[1])
   while True:
     counter = 0
     while counter < 2*pi:

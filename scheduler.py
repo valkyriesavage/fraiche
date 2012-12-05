@@ -9,25 +9,28 @@ class Scheduler:
     self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
     self.modelFreshnessWhenServed = []
-    self.model = Least_Squares()
+    self.model = {}
     self.notUpdatedValues = []
     return
 
-  def gotSensorEvent(self, value):
+  def gotSensorEvent(self, plant_num, value):
+    if plant_num not in self.model:
+      self.model[plant_num] = Least_Squares()
     self.lastFreshSensorDataTime = time.time()
-    self.notUpdatedValues.append(value)
-    self.__dealWithSensorEvent__(value)
+    self.notUpdatedValues.append((plant_num, value))
+    self.__dealWithSensorEvent__(plant_num, value)
 
-  def __dealWithSensorEvent__(self, value):
+  def __dealWithSensorEvent__(self, plant_num, value):
     # children implement this
     pass
 
-  def gotClientRequest(self):
+  def gotClientRequest(self, plant_name):
+    plant_num = plant_name.split('_')[-1]
     self.modelFreshnessWhenServed.append(
          time.time() - self.modelFreshAtTime)
-    self.__dealWithClientRequest__()
+    self.__dealWithClientRequest__(plant_num)
 
-  def __dealWithClientRequest__(self):
+  def __dealWithClientRequest__(self, plant_num):
     # children implement this
     pass
 
@@ -35,23 +38,30 @@ class Scheduler:
     # children implement this
     pass
 
-  def runML(self):
+  def runMLPredict(self, plant_num):
+    return self.__executeMLPredict__(plant_num)
+
+  def __executeMLPredict__(self, plant_num):
+    return self.model[plant_num].predict(1)
+
+  def runMLUpdate(self):
     self.lastMLRuntime = time.time()
-    self.__executeML__()
+    self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()
 
-  def __executeML__(self):
-    for value in self.notUpdatedValues:
-      self.model.update(value)
-    return
+  def __executeMLUpdate__(self):
+    print self.notUpdatedValues
+    for num in self.model:
+      self.model[num].update([val[1] for val in self.notUpdatedValues if val[0] == num])
 
 class NaiveScheduler(Scheduler):
 
   def timeToRunML(self):
     return False
 
-  def __dealWithClientRequest__(self):
-    self.runML()
+  def __dealWithClientRequest__(self, plant_num):
+    self.runMLUpdate()
+    return self.runMLPredict(plant_num)
 
 class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 1000000;
@@ -67,7 +77,7 @@ class HybridScheduler(Scheduler):
   def timeToRunML(self):
     return self.periodicScheduler.timeToRunML() or self.naiveScheduler.timeToRunML()
 
-  def __dealWithSensorEvent__(self, value):
+  def __dealWithSensorEvent__(self, plant_num, value):
     self.naiveScheduler.gotSensorEvent(value)
     self.periodicScheduler.gotSensorEvent(value)
 
@@ -83,7 +93,7 @@ class SensorBasedScheduler(Scheduler):
   def timeToRunML(self):
     return self.haveFreshSensorData
 
-  def __dealWithSensorEvent__(self, value):
+  def __dealWithSensorEvent__(self, plant_num, value):
     self.haveFreshSensorData = True
 
 class LowLoadScheduler(Scheduler):

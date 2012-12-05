@@ -64,7 +64,7 @@ class SensorUpdatedHandler(tornado.web.RequestHandler):
     self.scheduler = scheduler
 
   def get(self, plant_num, value):
-    self.scheduler.gotSensorEvent(value)
+    self.scheduler.gotSensorEvent(plant_num, value)
     WaterDataSocketHandler.send_latest_data(plant_num, value)
 
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
@@ -79,7 +79,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     return True
 
   def open(self, plant_num):
-    self.scheduler.gotClientRequest()
+    self.scheduler.gotClientRequest(plant_num)
     plant_num = plant_num.strip('?plant=_')
     WaterDataSocketHandler.clients[plant_num] = self
     self.plant_num = plant_num

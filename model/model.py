@@ -18,18 +18,20 @@ class Least_Squares(Model):
     self.pval = None
     self.history = 10.0
 
-  def update(self, nval):
-    if self.pval is not None:
-      delta = float(nval) - self.pval
-      self.av_delta *= (self.history - 1) / self.history
-      self.av_delta += delta / self.history
-    self.pval = float(nval)
-
-  def multiupdate(self, vals):
-    for val in vals:
-      self.update(val)
+  def update(self, nvals):
+    if type(nvals) != type([]):
+      nvals = [nvals]
+    for nval in nvals:
+      if self.pval is not None:
+        delta = float(nval) - self.pval
+        self.av_delta *= (self.history - 1) / self.history
+        self.av_delta += delta / self.history
+      self.pval = float(nval)
+    time.sleep(0.2)
 
   def predict(self, steps_ahead):
+    if self.pval is None:
+      return 0
     return self.pval + self.av_delta * steps_ahead
 
 class StormHMM(Model):
@@ -54,5 +56,5 @@ if __name__ == '__main__':
     vals = [float(val) for val in line.strip().split()]
     print "vals:", ' '.join(["%.2f" % val for val in vals])
     model = Least_Squares()
-    model.multiupdate(vals)
+    model.update(vals)
     print "sls:", ' '.join([str(model.predict(steps)) for steps in xrange(20)])

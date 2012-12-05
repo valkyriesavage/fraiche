@@ -61,7 +61,7 @@ var updater = {
   socket: null,
 
   start: function() {
-    var url = "ws://" + location.host + "/plant/plant_1";
+    var url = "ws://" + location.host + "/plant/" + location.search.replace('?plant=', '');
     if ("WebSocket" in window) {
       updater.socket = new WebSocket(url);
     } else {

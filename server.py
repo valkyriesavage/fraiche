@@ -20,12 +20,17 @@ define("scheduler", default="naive", help="which algorithm to schedule with", ty
 def log_data_file(plant_num):
   return "sensor-data/" + plant_num + ".log"
 
+def touch(fname, times=None):
+  # from stackoverflow question 1158076
+  with file(fname, 'a'):
+    os.utime(fname, times)
+
 class Application(tornado.web.Application):
   def __init__(self, sched):
     self.setScheduler(sched)
 
     handlers = [
-        (r"/plant/(.*)", WaterDataSocketHandler, dict(scheduler=self.scheduler)),
+        (r"/plant/(\d*)", WaterDataSocketHandler, dict(scheduler=self.scheduler)),
         (r"/sensorupdated/(.*)/(.*)", SensorUpdatedHandler, dict(scheduler=self.scheduler)),
         (r"/*", MainHandler, dict(scheduler=self.scheduler)),
         ]
@@ -57,7 +62,7 @@ class MainHandler(tornado.web.RequestHandler):
     self.scheduler = scheduler
 
   def get(self):
-    self.render("index.html", messages=[])
+    self.render("tomatoes.html")
 
 class SensorUpdatedHandler(tornado.web.RequestHandler):
   def initialize(self, scheduler):
@@ -65,6 +70,10 @@ class SensorUpdatedHandler(tornado.web.RequestHandler):
 
   def get(self, plant_num, value):
     self.scheduler.gotSensorEvent(plant_num, value)
+    touch(log_data_file(plant_num))
+    f = open(log_data_file(plant_num), 'a')
+    f.write(value)
+    f.close()
     WaterDataSocketHandler.send_latest_data(plant_num, value)
 
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
@@ -79,8 +88,8 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     return True
 
   def open(self, plant_num):
+    logging.info("we are here on plant_num " + plant_num)
     self.scheduler.gotClientRequest(plant_num)
-    plant_num = plant_num.strip('?plant=_')
     WaterDataSocketHandler.clients[plant_num] = self
     self.plant_num = plant_num
     logging.info("got client for plant " + plant_num)

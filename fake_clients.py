@@ -26,13 +26,15 @@ def randomize_with_sin(counter):
   return int(floor(scaled))
 
 if __name__ == '__main__':
-  if not len(sys.argv) >= 2:
-    print "usage: " + sys.argv[0] + " numclients"
+  if not len(sys.argv) >= 3:
+    print "usage: " + sys.argv[0] + " numclients numplantsperclient"
     print "make sure you ran 'python logging_server.py' beforehand!"
     sys.exit(0)
   MAX_NUM_CLIENTS = int(sys.argv[1])
+  plants_per_client = int(sys.argv[2])
   for i in range(MAX_NUM_CLIENTS):
-    clients.append(Client())
+    clients.append(Client(range(i*plants_per_client,
+                                (i+1)*plants_per_client)))
   while True:
     counter = 0
     while counter < 2*pi:

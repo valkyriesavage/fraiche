@@ -1,1 +1,1 @@
-python server.py --scheduler=naive &
+python server.py --scheduler=naive --freshness=personal-naive &

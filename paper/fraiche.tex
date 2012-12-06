@@ -1,6 +1,8 @@
 \documentclass[a4paper]{acm_proc_article-sp}  
 \usepackage{microtype}
 \usepackage{mathpazo}
+\usepackage{listings}
+\lstset{language=python}
 \begin{document}
 
 \title{Fast Response And Intelligently Controlled Harvest Environment}
@@ -63,17 +65,17 @@ Work on scheduling for parallel clusters has included Lithe \cite{}, use of loos
 
 FRAICHE is composed of two distinctly different physical systems.  One is the device co-located with plants in the garden.  This device is built on an ATMEL chip.  The second system is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
 
-\subsection{Co-located device}
+\subsection{In-garden device}
 
-The co-located device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, an array of sensors for detecting moisture, temperature, etc., of the soil, a battery, and a solar panel.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (i.e. the user need not access the website to adjust watering thresholds: he or she can push a few buttons while looking at the plant if it seems to be too dry or too wet).
+The in-garden device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, an array of sensors for detecting moisture, temperature, etc., of the soil, a battery, and a solar panel.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (i.e. the user need not access the website to adjust watering thresholds: he or she can push a few buttons while looking at the plant if it seems to be too dry or too wet).
 
 This device awakens from sleep mode approximately once per hour or when the buttons are pushed.  Whenever it is awake, it begins the communication process described below.
 
 \subsection{Raspberry Pi}
 
-The Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the co-located devices.  It serves three purposes: it maintains communication with all co-located plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
+The Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
-The RPi's communication with the co-located plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each co-located device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
+The RPi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
 
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
 
@@ -83,15 +85,51 @@ All systems were composed in Python 2.7, and all tests were performed on a Raspb
 
 \subsection{Webserver}
 
-We elected to use a pre-made upen-source webserver for our implementation: Tornado \cite{}.  It was created by Friendfeed for their primary web stack, and later open sourced by Facebook after their acquisition \cite{}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
+We elected to use a pre-made open-source webserver for our implementation: Tornado \cite{}.  It was created by Friendfeed for their primary web stack, and later open sourced by Facebook after their acquisition \cite{}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
 
-The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the co-located device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The sensor and model data are updated whenver possible.
+The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The sensor and model data are updated whenever possible.
 
-In order to build a test harness which can simulate many sensors and many clients without the need for co-located devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
+In order to build a test harness which can simulate many sensors and many clients without the need for in-garden devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
 
 \subsection{Schedulers}
 
-Six independent schedulers were built, as described in the Introduction: Na\"{\i}ve, Periodic Offline, Sensor-triggered, Hybrid, Low Load, and Predicted Demand.
+Six independent schedulers were built, as described in the Introduction: Na\"{\i}ve, Periodic Offline, Sensor-triggered, Hybrid, Low Load, and Predicted Demand.  The scheduler API is as follows:
+
+\begin{lstlisting}
+gotSensorEvent(plant_num, value) # by default, does nothing
+gotClientRequest(plant_name) # by default, does nothing
+timeToRunML() # returns bool ; by default, returns false
+runMLPredict() # returns float
+runMLUpdate() # returns float
+\end{lstlisting}
+
+\lstinline|gotSensorEvent|, \lstinline|gotClientRequest|, and \lstinline|timeToRunML| are over-riden by subclasses as appropriate.  All subclasses use the default \lstinline|runMLPredict|, which returns a float indicating the predicted soil moisture at the next time step, and the default \lstinline|runMLUpdate|, which feeds all not-yet-used sensor date to the model.
+
+The server calls \lstinline|gotSensorEvent| and \lstinline|gotClientRequest| when it gets appropriate events and before it handles them internally.  A periodic callback is implemented to ping the scheduler every 5 seconds querying whether it needs to run its ML algorithm.  This is important for the scheduling algorithms that do not have event-based model updates.
+
+\subsubsection{Na\"{i}ve Scheduler}
+
+The na\"{i}ve scheduler is very simple: when its \lstinline|gotClientRequest| function is called, it takes all sensor data not yet incorporated into the model and updates the model with it.  It uses default functionality for the remainder of the functions.
+
+\subsubsection{Periodic Offline Scheduler}
+
+The periodic offline scheduler has a period of 5 minutes.  Once five minutes has elapsed since the last time its model was updated, all new data are fed to the model.
+
+\subsubsection{Sensor-triggered Scheduler}
+
+The sensor-triggered scheduler overrides \lstinline|gotSensorEvent| to update the model after each sensor reading is recorded.
+
+\subsubsection{Hybrid Scheduler}
+
+The hybrid scheduler has an instance of the periodic offline scheduler and an instance of the sensor-triggered scheduler, which each run their own model updates when appropriate.
+
+\subsubsection{Low Load Scheduler}
+
+The low load scheduler defines ``low load'' as fewer than 15 client requests in the preceding 5 minutes.  If this load is seen at one of the periodic callback checkpoints, the model is updated with all fresh sensor data.
+
+\subsubsection{Predicted Demand Scheduler}
+
+The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  This meta scheduler models client request traffic.  When the meta-scheduler reports that client demand is predicted to increase in the near future, the models of plant moisture are updated with all fresh sensor data.
 
 \subsection{Machine Learning Algorithms}
 
@@ -99,7 +137,29 @@ Six independent schedulers were built, as described in the Introduction: Na\"{\i
 
 \section{Performance}
 
+We simulated three scenarios for FRAICHE: personal garden, community garden, and small farm.  Each of these scenarios has a distinctive balance between clients and plants.  All simulations were performed on the Raspberry Pi with client requests and sensor updates issued from a MacBook Pro.
+
+Client request batches were issued in 15 second time steps.  A sine curve with some noise determined how many clients made fresh requests at each step.
+
+Sensor update batches were also issued in 15 second time steps.  All sensors reported new data at each time step.
+
+\subsection{Personal Garden}
+
+A personal garden is characterized by a single person caring for a small number of plants.  For the purposes of our simulation, we chose 5 to be a small number of plants: this scenario has one client and five plants.
+
+\subsection{Community Garden}
+
+A community garden is made up of many people tending many plants.  We simulated 50 clients and 100 plants.
+
+\subsection{Small Farm}
+
+A small farm comprises many plants and a single farmer.  For our simulation, we ran one client and 100 plants.
+
 \section{Conclusions}
+
+\subsection{Future Work}
+
+In the future, we would like to explore ...?
 
 \bibliography{bib}
 \bibliographystyle{plainnat}

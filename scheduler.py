@@ -66,7 +66,7 @@ class NaiveScheduler(Scheduler):
     return self.runMLPredict(plant_num)
 
 class PeriodicScheduler(Scheduler):
-  LEARNING_THRESHOLD = 1000000;
+  LEARNING_THRESHOLD = 5*60*1000;
 
   def timeToRunML(self):
     return time.time() - self.lastMLRuntime > LEARNING_THRESHOLD

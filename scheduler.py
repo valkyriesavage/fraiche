@@ -118,7 +118,8 @@ class LowLoadScheduler(Scheduler):
 
   def timeToRunML(self):
     runML = self.loadIsLow()
-    self.recentClientRequests = []
+    if runML:
+      self.recentClientRequests = []
     return runML
 
 class PredictiveScheduler(Scheduler):

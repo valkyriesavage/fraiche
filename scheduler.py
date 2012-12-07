@@ -52,9 +52,9 @@ class Scheduler:
     self.modelFreshAtTime = time.time()
 
   def __executeMLUpdate__(self):
-    print self.notUpdatedValues
     for num in self.model:
       self.model[num].update([val[1] for val in self.notUpdatedValues if val[0] == num])
+    self.notUpdatedValues = []
 
 class NaiveScheduler(Scheduler):
 

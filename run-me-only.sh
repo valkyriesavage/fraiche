@@ -19,7 +19,7 @@ do
     fi
     python logging_server.py 1&>experiment-results/personal-naive.log &
     echo $! > logging_server_pid
-    ssh pi@169.229.63.33 "/home/pi/fraiche/run-me-on-pi.sh `</dev/null` >nohup.out 2>&1 &"
+    ssh pi@169.229.63.33 "python /home/pi/fraiche/server.py --scheduler=$scheduler --freshness=$gardentype-$scheduler `</dev/null` >nohup.out 2>&1 &"
     python fake_sensors.py $sensornum 15 &
     echo $! > fake_sensors_pid
     python fake_clients.py $clientnum $plantsperclient 5 &

@@ -16,7 +16,7 @@ def mainloop(world, plants, use_localhost):
 
 def log_data(plant_num, sensor_value):
   oclock = time.time()
-  lf = open(log_data_file(plant_num), "a")
+  lf = open(log_data_file(plant_num) + '.log.fake', "a")
   lf.write(str(oclock) + " " + sensor_value + "\n")
   lf.close()
 

@@ -76,6 +76,7 @@ var updater = {
 
   updateIncoming: function(incoming) {
     // append our data to existing data
+console.log("log: "+ incoming + ", type:" + typeof incoming);
     incoming_data.push.apply(incoming_data, incoming);
     display_data = incoming_data.slice(incoming_data.length-NUM_POINTS-1, incoming_data.length);
     if (water_flag == true) {
@@ -121,6 +122,9 @@ function drawChart() {
       }
     }
   }
+
+// console.log(data);
+console.log(incoming_data);
 
   var formatter = new google.visualization.DateFormat({pattern: "EEE, MMM d, H:m"});
   formatter.format(data,0);

@@ -87,6 +87,7 @@ class SensorUpdatedHandler(tornado.web.RequestHandler):
 class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
 
   clients = {}
+  lastTimestamp = 0
 
   def initialize(self, scheduler):
     self.scheduler = scheduler
@@ -114,6 +115,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
       for line in data_file:
         timestamp, reading = line.strip().split()
         data.append({timestamp: reading})
+      lastTimestamp = timestamp
     except IOError:
       pass
     try:
@@ -127,7 +129,9 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
       return
     client = cls.clients[plant_num]
     try:
-      client.write_message(sensor_reading);
+      cls.lastTimestamp += 10
+      data = [{str(cls.lastTimestamp): sensor_reading}]
+      client.write_message(tornado.escape.json_encode(data));
     except:
       logging.error("Error sending message", exc_info=True)
 

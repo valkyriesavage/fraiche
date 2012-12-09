@@ -128,6 +128,7 @@ class PredictiveScheduler(Scheduler):
   queries = 0
 
   def __dealWithClientRequest__(self, plant_num):
+    print dir(self)
     cur = time.time()
     time_since = cur - last_request
     queries += 1

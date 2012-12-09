@@ -19,9 +19,9 @@ Managing a community garden or small farm is currently a process that requires c
 
 FRAICHE is a system with both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app.  The same web app allows them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system.  Over time, the web app stores data about which plants the gardener waters under which conditions, and will learn how to initiate watering without prompting.  The app also performs machine learning across gardeners: in this way, beginners are able to learn from the experience of those with more established watering practices.
 
-We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the systemwe simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models, and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
+We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system, we simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models, and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
 
-We implemented several different possibilities for balancing the loads of serving clients, getting fresh sensor data, adn updating the machine-learned data:
+We implemented several different possibilities for balancing the loads of serving clients, getting fresh sensor data, and updating the machine-learned data:
 
 \begin{itemize}
 
@@ -87,7 +87,7 @@ All systems were composed in Python 2.7, and all tests were performed on a Raspb
 
 We elected to use a pre-made open-source webserver for our implementation: Tornado \cite{}.  It was created by Friendfeed for their primary web stack, and later open sourced by Facebook after their acquisition \cite{}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
 
-The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The sensor and model data are updated whenever possible.
+The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The most recent 15 historical data points for plant moisture are transmitted when the page is loaded, afterwards sensor and model data are updated whenever new data are available.
 
 In order to build a test harness which can simulate many sensors and many clients without the need for in-garden devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
 
@@ -134,6 +134,10 @@ The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  T
 \subsection{Machine Learning Algorithms}
 
 \subsection{Simulation Harness}
+
+The simulation harness we constructed is also written in Python.  It builds off the splinter \cite{} library which can instantiate multiple full web browsers.  This feature is necessary for measuring the load time accurately: the client's page is only considered to be "loaded" when the 15 most recent historical data points (transmitted via WebSockets, as described above) are found in the page's JavaScript.
+
+Client processes are forked from the main process: each client has a configurable list of plants from which list one plant is chosen randomly to query at each time step.  
 
 \section{Performance}
 

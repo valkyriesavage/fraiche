@@ -128,12 +128,11 @@ class PredictiveScheduler(Scheduler):
   queries = 0
 
   def __dealWithClientRequest__(self, plant_num):
-    print dir(self)
     cur = time.time()
-    time_since = cur - last_request
-    queries += 1
-    av_diff = av_diff * ((queries-1) / float(queries)) + (time_since / float(queries))
-    last_request = cur
+    time_since = cur - self.last_request
+    self.queries += 1
+    self.av_diff = self.av_diff * ((self.queries-1) / float(self.queries)) + (time_since / float(self.queries))
+    self.last_request = cur
 
   def timeToRunML(self):
-    return time.time() > 0.9*av_diff + last_request
+    return time.time() > 0.9*self.av_diff + self.last_request

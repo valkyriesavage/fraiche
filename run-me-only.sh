@@ -33,6 +33,7 @@ do
     kill `cat logging_server_pid`
     kill `cat fake_sensors_pid`
     kill `cat fake_clients_pid`
+    kill `ps aux | grep firefox | cut -d " " -f 3`
     ssh pi@169.229.63.33 'killall python'
   done
 done

@@ -166,12 +166,12 @@ pip-log.txt
 /php
 /default.cfg
 
-# loggering
-*.log
-
 # latex
 *.bbl
 *.blg
 *.aux
 *.synctex.gz
 *.fls
+
+# pid tracking
+*_pid

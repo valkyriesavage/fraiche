@@ -29,6 +29,7 @@ class Scheduler:
     self.modelFreshnessWhenServed.write(
          str(time.time() - self.modelFreshAtTime) + '\n')
     self.__dealWithClientRequest__(plant_num)
+    return self.runMLPredict(plant_num)
 
   def __dealWithClientRequest__(self, plant_num):
     # children implement this
@@ -63,7 +64,6 @@ class NaiveScheduler(Scheduler):
 
   def __dealWithClientRequest__(self, plant_num):
     self.runMLUpdate()
-    return self.runMLPredict(plant_num)
 
 class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 5*60*1000;
@@ -103,7 +103,7 @@ class LowLoadScheduler(Scheduler):
   RECENT_REQUESTS_LOW_THRESHOLD = 15
   recentClientRequests = []
 
-  def __dealWithClientRequest__(self):
+  def __dealWithClientRequest__(self, plant_num):
     self.recentClientRequests.append(time.time())
 
   def loadIsLow(self):
@@ -123,12 +123,16 @@ class LowLoadScheduler(Scheduler):
     return runML
 
 class PredictiveScheduler(Scheduler):
+  last_request = 0
+  av_diff = 0
+  queries = 0
 
-  def __dealWithClientRequest__(self):
-    # feed me to a ML algo!
-    if not self.clientModel:
-      self.clientModel = LeastSquares()
-    self.clientModel.update(time.time())
+  def __dealWithClientRequest__(self, plant_num):
+    cur = time.time()
+    time_since = cur - last_request
+    queries += 1
+    av_diff = av_diff * ((queries-1) / float(queries)) + (time_since / float(queries))
+    last_request = cur
 
   def timeToRunML(self):
-    return self.clientModel.predict()
+    return time.time() > 0.9*av_diff + last_request

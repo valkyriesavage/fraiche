@@ -10,6 +10,7 @@ class Client():
 
   def activate(self):
     self.b.visit(self.url + str(random.choice(self.plants)))
+    print("url = " + self.url + str(random.choice(self.plants)))
     while not self.b.evaluate_script("incoming_data.length") > 2:
       pass
 

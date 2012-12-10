@@ -30,7 +30,7 @@ do
   python fake_clients.py $clientnum $plantsperclient 5 &
   echo $! > fake_clients_pid
 
-  sleep 1800
+  sleep 900
 
   kill `cat logging_server_pid`
   kill `cat fake_sensors_pid`

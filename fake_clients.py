@@ -39,7 +39,7 @@ if __name__ == '__main__':
   while True:
     counter = 0
     while counter < 2*pi:
-      counter += .001
+      counter += .1
       client_number = randomize_with_sin(counter)
       for i in range(client_number):
         p = multiprocessing.Process(target=main, args=(i,))

@@ -3,13 +3,23 @@
 ssh pi@169.229.63.33 "ls"
 # Note - if you tried to run and didn't get past here, remember to ssh-copy-id to the pi
 
-for scheduler in "naive" "periodic" "hybrid" "load" "sensor" # "predictive"
+for scheduler in "periodic" "naive" #"periodic" "hybrid" "load" "sensor" "predictive"
 do
-  gardentype="community" # for gardentype in "personal" "farm" "community"
+  gardentype="personal" # for gardentype in "personal" "farm" "community"
   echo "$gardentype $scheduler:::::::"
-  sensornum=100
-  clientnum=8
-  plantsperclient=3
+  if [ "$gardentype" == "personal" ]; then
+    sensornum=5
+    clientnum=1
+    plantsperclient=5
+  else if [ "$gardentype" == "farm" ]; then
+    sensornum=100
+    clientnum=1
+    plantsperclient=100
+  else # "$gardentype" == "community"
+    sensornum=100
+    clientnum=8
+    plantsperclient=3
+  fi
   cmdpi="python server.py --scheduler=$scheduler --freshness=$gardentype-$scheduler >>nohup-$gardentype-$scheduler.out 2>&1 &"
   ssh pi@169.229.63.33 "cd fraiche; echo $cmdpi > nohup-$gardentype-$scheduler.out; $cmdpi"
   sleep 5

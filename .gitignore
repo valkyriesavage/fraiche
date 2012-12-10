@@ -172,6 +172,10 @@ pip-log.txt
 *.aux
 *.synctex.gz
 *.fls
+paper/*.log
 
 # pid tracking
 *_pid
+
+# other crap
+sensor-data/

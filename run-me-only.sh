@@ -3,9 +3,9 @@
 ssh pi@169.229.63.33 "ls"
 # Note - if you tried to run and didn't get past here, remember to ssh-copy-id to the pi
 
-for scheduler in "naive" "periodic" "hybrid" "load" "sensor" "predictive"
+for scheduler in "naive" "periodic" "hybrid" "load" "sensor" # "predictive"
 do
-  gardentype="community"
+  gardentype="community" # for gardentype in "personal" "farm" "community"
   echo "$gardentype $scheduler:::::::"
   sensornum=100
   clientnum=8

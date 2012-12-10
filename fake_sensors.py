@@ -1,18 +1,16 @@
 #!/usr/bin/env python
 
-import os, syslog, time, urllib, sys, string
+import os, syslog, time, urllib, sys, string, random
 
 from server import log_data_file
 from model.gen_data import Simulation
 
 ##############################################################
 # the main function
-def mainloop(world, plants, use_localhost):
-  for i in xrange(plants):
-    plant_num = str(i)
-    state = str(world.get_approximate_state()[0])
-    log_data(plant_num, state)
-    alert_server(plant_num, state, use_localhost)
+def mainloop(world, plant_num, use_localhost):
+  state = str(world.get_approximate_state()[0])
+  log_data(str(plant_num), state)
+  alert_server(str(plant_num), state, use_localhost)
 
 def log_data(plant_num, sensor_value):
   oclock = time.time()
@@ -42,7 +40,17 @@ if __name__ == '__main__':
   # open up the serial port to get data transmitted to xbee
   syslog.syslog("<<<  Starting the Smart Watering Sensor System for H2OIQ  >>>")
 
+  timing = []
+  for i in xrange(plants):
+    timing.append(random.random() * wait_time)
+  timing.sort()
+  diffs = [timing[0] + wait_time - timing[-1]]
+  for i in xrange(1, len(timing)):
+    diffs.append(timing[i] - timing[i-1])
+  print diffs
+
   while True:
-    mainloop(world, plants, localhost)
-    time.sleep(wait_time)
+    for i in xrange(len(diffs)):
+      mainloop(world, i, localhost)
+      time.sleep(diffs[i])
     world.timestep()

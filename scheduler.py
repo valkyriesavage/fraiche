@@ -18,6 +18,8 @@ class Scheduler:
       self.model[plant_num] = Least_Squares()
     self.lastFreshSensorDataTime = time.time()
     self.notUpdatedValues.append((plant_num, value))
+
+    # Apply scheduler specific actions
     self.__dealWithSensorEvent__(plant_num, value)
 
   def __dealWithSensorEvent__(self, plant_num, value):
@@ -26,31 +28,31 @@ class Scheduler:
 
   def gotClientRequest(self, plant_name):
     plant_num = plant_name.split('_')[-1]
+    # Apply scheduler specific actions
+    self.__dealWithClientRequest__(plant_num)
+
+    # Record request freshness
     self.modelFreshnessWhenServed.write(
          str(time.time() - self.modelFreshAtTime) + '\n')
-    self.__dealWithClientRequest__(plant_num)
-    return self.runMLPredict(plant_num)
+
+    # Return prediction
+    return self.model[plant_num].predict(1)
 
   def __dealWithClientRequest__(self, plant_num):
     # children implement this
     pass
 
-  def timeToRunML(self):
-    # children implement this
-    pass
-
-  def runMLPredict(self, plant_num):
-    return self.__executeMLPredict__(plant_num)
-
-  def __executeMLPredict__(self, plant_num):
-    return self.model[plant_num].predict(1)
-
-  def runMLUpdate(self):
-    if not self.timeToRunML():
+  def considerMLUpdate(self):
+    # Periodiclly called by tornado
+    if not self.isTimeToRunML():
       return
     self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()
+
+  def isTimeToRunML(self):
+    # children implement this
+    pass
 
   def __executeMLUpdate__(self):
     for num in self.model:
@@ -58,41 +60,29 @@ class Scheduler:
     self.notUpdatedValues = []
 
 class NaiveScheduler(Scheduler):
-
-  def timeToRunML(self):
+  def isTimeToRunML(self):
     return False
 
   def __dealWithClientRequest__(self, plant_num):
-    self.runMLUpdate()
+    self.__executeMLUpdate__()
 
 class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 5*60*1000;
 
-  def timeToRunML(self):
+  def isTimeToRunML(self):
     return time.time() - self.lastMLRuntime > LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):
-
   periodicScheduler = PeriodicScheduler('ignoreme')
-  naiveScheduler = NaiveScheduler('ignoremetoo')
 
-  def timeToRunML(self):
-    return self.periodicScheduler.timeToRunML() or self.naiveScheduler.timeToRunML()
+  def isTimeToRunML(self):
+    return self.periodicScheduler.timeToRunML()
 
-  def __dealWithSensorEvent__(self, plant_num, value):
-    self.naiveScheduler.gotSensorEvent(value)
-    self.periodicScheduler.gotSensorEvent(value)
-
-  def __executeML__(self):
-    if self.periodicScheduler.timeToRunML():
-      self.periodicScheduler.__executeML__()
-    if self.naiveScheduler.timeToRunML():
-      self.naiveScheduler.__executeML__()
-    return
+  def __dealWithClientRequest__(self, plant_num):
+    self.__executeMLUpdate__()
 
 class SensorBasedScheduler(Scheduler):
-
-  def timeToRunML(self):
+  def isTimeToRunML(self):
     return self.haveFreshSensorData
 
   def __dealWithSensorEvent__(self, plant_num, value):
@@ -116,11 +106,12 @@ class LowLoadScheduler(Scheduler):
                       filter(lambda x: x + RECENCY_THRESHOLD > time.time(),
                              self.recentClientRequests))) < RECENT_REQUESTS_LOW_THRESHOLD
 
-  def timeToRunML(self):
-    runML = self.loadIsLow()
-    if runML:
+  def isTimeToRunML(self):
+    if self.loadIsLow():
       self.recentClientRequests = []
-    return runML
+      return True
+    else:
+      return False
 
 class PredictiveScheduler(Scheduler):
   last_request = 0
@@ -130,9 +121,9 @@ class PredictiveScheduler(Scheduler):
   def __dealWithClientRequest__(self, plant_num):
     cur = time.time()
     time_since = cur - self.last_request
+    self.av_diff = self.av_diff * (self.queries / float(self.queries+1)) + (time_since / float(self.queries+1))
     self.queries += 1
-    self.av_diff = self.av_diff * ((self.queries-1) / float(self.queries)) + (time_since / float(self.queries))
     self.last_request = cur
 
-  def timeToRunML(self):
-    return time.time() > 0.9*self.av_diff + self.last_request
+  def isTimeToRunML(self):
+    return time.time() > 0.7*self.av_diff + self.last_request

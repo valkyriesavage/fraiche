@@ -75,7 +75,7 @@ The in-garden device contains several components within a 3D printed body and is
 
 This device awakens from sleep mode approximately once per hour or when the buttons are pushed.  Whenever it is awake, it begins the communication process described below.
 
-\subsection{Raspberry Pi}
+\subsection{Raspberry Pi(s)}
 
 The Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
@@ -83,7 +83,9 @@ The RPi's communication with the in-garden plant systems takes the form of a ver
 
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
 
-In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud) which serves as a data repository.  The ????
+// to add: sort of mentioned how low-cost our system is
+
+In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository.  The ????
 
 \section{Implementation}
 
@@ -141,7 +143,9 @@ The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  T
 
 \subsection{Client-side Modeling}
 
-\subsection{Inter-Pi}
+Using Javascript... as we receive the data update
+
+\subsection{Inter-Pi/A World of Multiple Pis}
 
 \subsection{Simulation Harness}
 
@@ -168,6 +172,10 @@ A community garden is made up of many people tending many plants.  We simulated 
 \subsection{Small Farm}
 
 A small farm comprises many plants and a single farmer.  For our simulation, we ran one client and 100 plants.
+
+\subsection{Load Balancing Between Pis}
+
+lala
 
 \section{Conclusions}
 

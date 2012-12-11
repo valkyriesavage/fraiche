@@ -77,19 +77,17 @@ This device awakens from sleep mode approximately once per hour or when the butt
 
 \subsection{Raspberry Pi(s)}
 
-The Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
+The Rapsberry Pi is a low-cost (~USD35), portable single-board computer that is released earlier this year in 2012. In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
 The RPi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
 
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
 
-// to add: sort of mentioned how low-cost our system is
-
-In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository.  The ????
+In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcasted to the whole gardening distributed network. 
 
 \section{Implementation}
 
-All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W.
+All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B, running Linu Debian.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W. The web user interface runs Javascript to display the latest data with visual graphs.
 
 \subsection{Webserver}
 
@@ -143,9 +141,16 @@ The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  T
 
 \subsection{Client-side Modeling}
 
+One inspiration from working with Raaspberry Pi is to leverage computation to the clients, which (blah blah)
 Using Javascript... as we receive the data update
 
-\subsection{Inter-Pi/A World of Multiple Pis}
+\subsection{A World of Multiple Pis}
+
+Consider more devices...
+
+Report to the central storage: We chose to use the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud. 
+
+Inter-Pi communication: http requests, web sockets
 
 \subsection{Simulation Harness}
 
@@ -167,21 +172,34 @@ A personal garden is characterized by a single person caring for a small number 
 
 \subsection{Community Garden}
 
+PhantomJS
+
 A community garden is made up of many people tending many plants.  We simulated 50 clients and 100 plants.
 
 \subsection{Small Farm}
 
 A small farm comprises many plants and a single farmer.  For our simulation, we ran one client and 100 plants.
 
+\subsection{Client-side Modeling}
+
+lala
+
 \subsection{Load Balancing Between Pis}
 
 lala
+graph of latency here
 
 \section{Conclusions}
 
 \subsection{Future Work}
 
 In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks
+
+acquiring real-time weather conditions (e.g. weather.com XML format)
+
+trigger on sensors
+
+compare with other watering systems (ETO)
 
 \bibliography{bib}
 \bibliographystyle{plainnat}

@@ -71,6 +71,8 @@ class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 5*60*1000;
 
   def isTimeToRunML(self):
+    if self.modelFreshAtTime < 0:
+      return True
     return time.time() - self.modelFreshAtTime > LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):

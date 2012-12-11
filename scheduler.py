@@ -66,7 +66,9 @@ class NaiveScheduler(Scheduler):
     return False
 
   def __dealWithClientRequest__(self, plant_num):
+    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
+    self.modelFreshAtTime = time.time()
 
 class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 5*60*1000;
@@ -90,14 +92,18 @@ class HybridScheduler(Scheduler):
     return self.periodicScheduler.timeToRunML()
 
   def __dealWithClientRequest__(self, plant_num):
+    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
+    self.modelFreshAtTime = time.time()
 
 class SensorBasedScheduler(Scheduler):
   def isTimeToRunML(self):
-    return self.haveFreshSensorData
+    return false
 
   def __dealWithSensorEvent__(self, plant_num, value):
-    self.haveFreshSensorData = True
+    self.lastMLRuntime = time.time()
+    self.__executeMLUpdate__()
+    self.modelFreshAtTime = time.time()
 
 class LowLoadScheduler(Scheduler):
   RECENCY_THRESHOLD = 10000000

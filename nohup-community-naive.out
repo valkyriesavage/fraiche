@@ -1,0 +1,502 @@
+python server.py --scheduler=naive --freshness=community-naive
+[I 121211 10:44:51 web:1447] 200 GET /?plant=2 (24.130.25.228) 63.35ms
+[I 121211 10:44:51 web:1447] 200 GET /?plant=0 (128.32.45.31) 6.11ms
+[I 121211 10:44:52 web:1447] 304 GET /?plant=0 (128.32.45.31) 5.93ms
+[I 121211 10:44:52 web:1447] 304 GET /?plant=2 (24.130.25.228) 7.73ms
+[I 121211 10:44:52 scheduler:38] freshness :1355251493.86
+    
+[I 121211 10:44:53 scheduler:38] freshness :1355251494.27
+    
+[I 121211 10:44:53 web:1447] 200 GET /?plant=5 (128.32.45.31) 6.28ms
+[I 121211 10:44:53 web:1447] 304 GET /?plant=5 (128.32.45.31) 5.80ms
+[I 121211 10:44:54 scheduler:38] freshness :1355251495.76
+    
+[I 121211 10:44:54 web:1447] 200 GET /?plant=8 (128.32.45.31) 6.02ms
+[I 121211 10:44:54 web:1447] 304 GET /?plant=8 (128.32.45.31) 7.13ms
+[I 121211 10:44:57 scheduler:38] freshness :1355251498.15
+    
+[I 121211 10:44:57 web:1447] 200 GET /?plant=9 (128.32.45.31) 6.13ms
+[I 121211 10:44:57 web:1447] 304 GET /?plant=9 (128.32.45.31) 5.87ms
+[I 121211 10:44:59 scheduler:38] freshness :1355251500.21
+    
+[I 121211 10:44:59 web:1447] 200 GET /?plant=13 (128.32.45.31) 6.03ms
+[I 121211 10:44:59 web:1447] 304 GET /?plant=13 (128.32.45.31) 5.81ms
+[I 121211 10:45:01 scheduler:38] freshness :1355251502.46
+    
+[I 121211 10:45:01 web:1447] 200 GET /?plant=17 (128.32.45.31) 6.01ms
+[I 121211 10:45:01 web:1447] 304 GET /?plant=17 (128.32.45.31) 5.79ms
+[I 121211 10:45:03 scheduler:38] freshness :1355251504.88
+    
+[I 121211 10:45:03 web:1447] 200 GET /?plant=18 (128.32.45.31) 6.11ms
+[I 121211 10:45:03 web:1447] 200 GET /sensorupdated/0/23.1999986507 (50.131.237.137) 11.42ms
+[I 121211 10:45:04 web:1447] 304 GET /?plant=18 (128.32.45.31) 5.84ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/1/25.2307790809 (50.131.237.137) 7.70ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/2/22.7485161829 (50.131.237.137) 7.79ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/3/23.3247441824 (50.131.237.137) 6.25ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/4/21.2497850248 (50.131.237.137) 6.45ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/5/21.0713412269 (50.131.237.137) 8.01ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/6/22.9636114636 (50.131.237.137) 10.01ms
+[I 121211 10:45:04 web:1447] 200 GET /sensorupdated/7/23.6593670669 (50.131.237.137) 6.11ms
+[I 121211 10:45:05 web:1447] 200 GET /sensorupdated/8/24.2578781806 (50.131.237.137) 7.63ms
+[I 121211 10:45:07 scheduler:38] freshness :1355251508.66
+    
+[I 121211 10:45:07 web:1447] 200 GET /sensorupdated/9/21.7947561082 (50.131.237.137) 7.73ms
+[I 121211 10:45:07 web:1447] 200 GET /?plant=23 (128.32.45.31) 6.04ms
+[I 121211 10:45:08 web:1447] 200 GET /sensorupdated/10/20.872604659 (50.131.237.137) 6.24ms
+[I 121211 10:45:08 web:1447] 200 GET /sensorupdated/11/22.3938965945 (50.131.237.137) 6.24ms
+[I 121211 10:45:08 web:1447] 200 GET /sensorupdated/12/21.3204977979 (50.131.237.137) 6.38ms
+[I 121211 10:45:08 web:1447] 200 GET /sensorupdated/13/23.5139210954 (50.131.237.137) 7.84ms
+[I 121211 10:45:08 web:1447] 200 GET /sensorupdated/14/21.2336418134 (50.131.237.137) 19.18ms
+[I 121211 10:45:09 web:1447] 200 GET /sensorupdated/15/19.7756449075 (50.131.237.137) 6.29ms
+[I 121211 10:45:09 web:1447] 200 GET /sensorupdated/16/20.5649983796 (50.131.237.137) 6.22ms
+[I 121211 10:45:09 web:1447] 200 GET /sensorupdated/17/25.3214030746 (50.131.237.137) 7.93ms
+[I 121211 10:45:10 web:1447] 200 GET /sensorupdated/18/21.9295091797 (50.131.237.137) 7.99ms
+[I 121211 10:45:10 web:1447] 200 GET /?plant=23 (128.32.45.31) 6.08ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/19/23.0586868718 (50.131.237.137) 6.16ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/20/21.6531371651 (50.131.237.137) 6.07ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/21/23.9828105097 (50.131.237.137) 6.15ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/22/21.525994066 (50.131.237.137) 11.89ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/23/19.2600730578 (50.131.237.137) 6.27ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/24/23.6511041176 (50.131.237.137) 6.13ms
+[I 121211 10:45:11 web:1447] 200 GET /sensorupdated/25/23.923324212 (50.131.237.137) 6.32ms
+[I 121211 10:45:12 web:1447] 200 GET /sensorupdated/26/22.3483470616 (50.131.237.137) 6.28ms
+[I 121211 10:45:12 web:1447] 200 GET /sensorupdated/27/21.5176355147 (50.131.237.137) 6.27ms
+[I 121211 10:45:12 web:1447] 200 GET /sensorupdated/28/23.1180799499 (50.131.237.137) 6.24ms
+[I 121211 10:45:13 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 98.76ms
+[I 121211 10:45:13 web:1447] 200 GET /sensorupdated/29/25.4678349314 (50.131.237.137) 6.26ms
+[I 121211 10:45:13 web:1447] 200 GET /sensorupdated/30/25.6612220416 (50.131.237.137) 6.19ms
+[I 121211 10:45:13 web:1447] 200 GET /sensorupdated/31/21.6814491673 (50.131.237.137) 6.38ms
+[I 121211 10:45:13 web:1447] 200 GET /sensorupdated/32/24.751580939 (50.131.237.137) 6.35ms
+[I 121211 10:45:14 web:1447] 200 GET /sensorupdated/33/22.7678239699 (50.131.237.137) 534.70ms
+[I 121211 10:45:14 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 18.04ms
+[I 121211 10:45:14 web:1447] 200 GET /static/chart.css (128.32.45.31) 7.92ms
+[I 121211 10:45:14 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 7.52ms
+[I 121211 10:45:14 web:1447] 200 GET /sensorupdated/34/23.832234675 (50.131.237.137) 6.16ms
+[I 121211 10:45:14 web:1447] 200 GET /sensorupdated/35/19.2190546405 (50.131.237.137) 6.33ms
+[I 121211 10:45:15 web:1447] 200 GET /sensorupdated/36/20.618807853 (50.131.237.137) 6.24ms
+[I 121211 10:45:15 web:1447] 200 GET /sensorupdated/37/21.8803350323 (50.131.237.137) 6.15ms
+[I 121211 10:45:22 scheduler:38] freshness :1355251523.84
+    
+[W 121211 10:45:22 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.62ms
+[I 121211 10:45:22 web:1447] 200 GET /sensorupdated/38/23.0757313246 (50.131.237.137) 7.68ms
+[I 121211 10:45:23 web:1447] 200 GET /sensorupdated/39/24.061479923 (50.131.237.137) 6.31ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/40/22.2004101934 (50.131.237.137) 6.26ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/41/25.1664573213 (50.131.237.137) 6.91ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/42/24.4793823054 (50.131.237.137) 10.73ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/43/25.4771380774 (50.131.237.137) 7.49ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/44/23.381678318 (50.131.237.137) 6.21ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/45/19.1241624316 (50.131.237.137) 6.40ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/46/26.0260556867 (50.131.237.137) 6.29ms
+[I 121211 10:45:24 web:1447] 200 GET /sensorupdated/47/21.7829528693 (50.131.237.137) 6.33ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/48/20.6046017648 (50.131.237.137) 6.28ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/49/22.329488876 (50.131.237.137) 6.01ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/50/24.6935507105 (50.131.237.137) 6.26ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/51/19.2992550838 (50.131.237.137) 7.51ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/52/22.0802037306 (50.131.237.137) 6.19ms
+[W 121211 10:45:25 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.38ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/53/22.9181573538 (50.131.237.137) 7.49ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/54/20.1084733856 (50.131.237.137) 6.40ms
+[I 121211 10:45:25 web:1447] 200 GET /sensorupdated/55/19.0250657601 (50.131.237.137) 6.34ms
+[I 121211 10:45:26 web:1447] 200 GET /sensorupdated/56/20.4128513352 (50.131.237.137) 6.27ms
+[I 121211 10:45:26 web:1447] 200 GET /sensorupdated/57/23.2820472109 (50.131.237.137) 6.52ms
+[I 121211 10:45:26 web:1447] 200 GET /sensorupdated/58/19.7973070448 (50.131.237.137) 6.30ms
+[I 121211 10:45:26 web:1447] 200 GET /sensorupdated/59/18.7294592236 (50.131.237.137) 6.46ms
+[I 121211 10:45:27 web:1447] 200 GET /sensorupdated/60/25.4974748297 (50.131.237.137) 6.29ms
+[I 121211 10:45:27 web:1447] 200 GET /sensorupdated/61/21.5829373453 (50.131.237.137) 6.09ms
+[I 121211 10:45:27 web:1447] 200 GET /sensorupdated/62/19.3337096335 (50.131.237.137) 10.62ms
+[I 121211 10:45:27 web:1447] 200 GET /sensorupdated/63/23.2174901545 (50.131.237.137) 12.97ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/64/24.9153150674 (50.131.237.137) 6.23ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/65/21.3280275338 (50.131.237.137) 6.34ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/66/19.5229673457 (50.131.237.137) 6.32ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/67/23.1773468528 (50.131.237.137) 6.22ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/68/20.6908870199 (50.131.237.137) 6.37ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/69/20.8595095713 (50.131.237.137) 6.35ms
+[I 121211 10:45:28 web:1447] 200 GET /sensorupdated/70/23.6050362608 (50.131.237.137) 6.33ms
+[I 121211 10:45:29 web:1447] 200 GET /sensorupdated/71/24.3731661216 (50.131.237.137) 7.87ms
+[I 121211 10:45:29 web:1447] 200 GET /sensorupdated/72/21.4068450215 (50.131.237.137) 6.33ms
+[I 121211 10:45:29 web:1447] 200 GET /sensorupdated/73/22.1050572795 (50.131.237.137) 6.35ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/74/22.9431339558 (50.131.237.137) 6.24ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/75/21.0718390893 (50.131.237.137) 6.36ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/76/22.982081527 (50.131.237.137) 6.28ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/77/20.286834463 (50.131.237.137) 7.99ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/78/20.5429955168 (50.131.237.137) 6.16ms
+[I 121211 10:45:30 web:1447] 200 GET /sensorupdated/79/21.3597147286 (50.131.237.137) 6.42ms
+[I 121211 10:45:30 web:1447] 200 GET /?plant=1 (128.32.45.31) 8.04ms
+[I 121211 10:45:31 web:1447] 304 GET /?plant=1 (128.32.45.31) 6.18ms
+[I 121211 10:45:31 web:1447] 200 GET /sensorupdated/80/20.5191315415 (50.131.237.137) 10.50ms
+[I 121211 10:45:31 web:1447] 200 GET /sensorupdated/81/20.8903517015 (50.131.237.137) 6.31ms
+[I 121211 10:45:31 web:1447] 200 GET /sensorupdated/82/22.5707002675 (50.131.237.137) 7.88ms
+[I 121211 10:45:31 web:1447] 200 GET /sensorupdated/83/25.907858471 (50.131.237.137) 6.40ms
+[I 121211 10:45:48 scheduler:38] freshness :1355251549.81
+    
+[I 121211 10:45:48 web:1447] 200 GET /?plant=5 (128.32.45.31) 6.08ms
+[I 121211 10:45:48 web:1447] 200 GET /sensorupdated/84/21.78334565 (50.131.237.137) 7.79ms
+[I 121211 10:45:48 web:1447] 200 GET /?plant=2 (50.131.237.137) 5.96ms
+[W 121211 10:45:48 iostream:425] Read error on 29: [Errno 104] Connection reset by peer
+[W 121211 10:45:48 iostream:359] error on read
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 354, in _handle_read
+        if self._read_to_buffer() == 0:
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 421, in _read_to_buffer
+        chunk = self._read_from_socket()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 402, in _read_from_socket
+        chunk = self.socket.recv(self.read_chunk_size)
+    error: [Errno 104] Connection reset by peer
+[I 121211 10:45:48 web:1447] 200 GET /sensorupdated/85/24.1069752969 (50.131.237.137) 6.68ms
+[I 121211 10:45:48 web:1447] 200 GET /?plant=2 (50.131.237.137) 6.80ms
+[I 121211 10:45:49 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.88ms
+[I 121211 10:45:49 web:1447] 200 GET /sensorupdated/86/21.1165179398 (50.131.237.137) 6.32ms
+[I 121211 10:45:49 web:1447] 200 GET /sensorupdated/87/23.2123366502 (50.131.237.137) 6.21ms
+[I 121211 10:45:49 web:1447] 200 GET /sensorupdated/88/20.8511482183 (50.131.237.137) 6.41ms
+[I 121211 10:45:49 web:1447] 304 GET /?plant=5 (128.32.45.31) 5.87ms
+[I 121211 10:45:49 web:1447] 200 GET /sensorupdated/89/21.8564541687 (50.131.237.137) 6.18ms
+[I 121211 10:45:49 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.45ms
+[I 121211 10:45:49 web:1447] 200 GET /static/chart.css (50.131.237.137) 8.23ms
+[I 121211 10:45:49 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.68ms
+[I 121211 10:46:07 scheduler:38] freshness :1355251568.53
+    
+[I 121211 10:46:07 web:1447] 200 GET /sensorupdated/90/24.2500413628 (50.131.237.137) 6.20ms
+[W 121211 10:46:07 web:1447] 404 GET /favicon.ico (50.131.237.137) 5.63ms
+[I 121211 10:46:25 scheduler:38] freshness :1355251586.8
+    
+[I 121211 10:46:25 web:1447] 200 GET /?plant=7 (128.32.45.31) 5.95ms
+[W 121211 10:46:25 web:1447] 404 GET /favicon.ico (50.131.237.137) 5.59ms
+[I 121211 10:46:25 web:1447] 200 GET /sensorupdated/91/21.0115531008 (50.131.237.137) 7.38ms
+[I 121211 10:46:26 web:1447] 304 GET /?plant=7 (128.32.45.31) 5.93ms
+[I 121211 10:46:26 web:1447] 200 GET /sensorupdated/92/21.7526499786 (50.131.237.137) 6.24ms
+[I 121211 10:46:26 web:1447] 200 GET /sensorupdated/93/20.9828908143 (50.131.237.137) 6.34ms
+[I 121211 10:46:27 web:1447] 200 GET /sensorupdated/94/22.8164536358 (50.131.237.137) 6.38ms
+[I 121211 10:46:27 web:1447] 200 GET /sensorupdated/95/18.2648163459 (50.131.237.137) 6.46ms
+[I 121211 10:46:46 scheduler:38] freshness :1355251607.45
+    
+[I 121211 10:46:46 web:1447] 200 GET /sensorupdated/96/21.6148729217 (50.131.237.137) 6.52ms
+[I 121211 10:46:46 web:1447] 200 GET /?plant=9 (128.32.45.31) 6.03ms
+[I 121211 10:46:46 web:1447] 200 GET /sensorupdated/97/21.522205014 (50.131.237.137) 6.21ms
+[I 121211 10:46:46 web:1447] 200 GET /sensorupdated/98/22.5705955007 (50.131.237.137) 7.91ms
+[I 121211 10:46:46 web:1447] 200 GET /sensorupdated/99/19.0228080932 (50.131.237.137) 6.23ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/0/14.711128795 (50.131.237.137) 8.55ms
+[I 121211 10:46:47 web:1447] 304 GET /?plant=9 (128.32.45.31) 5.77ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/1/13.4009655573 (50.131.237.137) 10.10ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/2/14.0945101214 (50.131.237.137) 27.27ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/3/13.210095027 (50.131.237.137) 7.26ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/4/14.0482513805 (50.131.237.137) 8.24ms
+[I 121211 10:46:47 web:1447] 200 GET /sensorupdated/5/13.4814638435 (50.131.237.137) 10.01ms
+[I 121211 10:46:48 web:1447] 200 GET /sensorupdated/6/11.8030610739 (50.131.237.137) 11.06ms
+[I 121211 10:46:48 web:1447] 200 GET /sensorupdated/7/16.7396047332 (50.131.237.137) 11.77ms
+[I 121211 10:46:48 web:1447] 200 GET /sensorupdated/8/16.7039845024 (50.131.237.137) 9.14ms
+[I 121211 10:46:48 web:1447] 200 GET /sensorupdated/9/12.9757067866 (50.131.237.137) 8.16ms
+[I 121211 10:47:08 scheduler:38] freshness :1355251629.61
+    
+[I 121211 10:47:08 web:1447] 200 GET /sensorupdated/10/13.2669656831 (50.131.237.137) 8.09ms
+[I 121211 10:47:08 web:1447] 200 GET /?plant=12 (128.32.45.31) 6.19ms
+[I 121211 10:47:08 web:1447] 200 GET /?plant=1 (24.130.25.228) 6.47ms
+[I 121211 10:47:08 web:1447] 304 GET /?plant=12 (128.32.45.31) 7.04ms
+[I 121211 10:47:09 web:1447] 200 GET /?plant=1 (24.130.25.228) 6.36ms
+[I 121211 10:47:09 web:1447] 200 GET /sensorupdated/11/14.1421574335 (50.131.237.137) 9.82ms
+[I 121211 10:47:09 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 7.91ms
+[I 121211 10:47:09 web:1447] 200 GET /sensorupdated/12/15.00533167 (50.131.237.137) 8.12ms
+[I 121211 10:47:09 web:1447] 200 GET /sensorupdated/13/13.8558563581 (50.131.237.137) 11.28ms
+[I 121211 10:47:09 web:1447] 200 GET /sensorupdated/14/12.8122775235 (50.131.237.137) 8.07ms
+[I 121211 10:47:29 scheduler:38] freshness :1355251650.67
+    
+[I 121211 10:47:29 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 12.52ms
+[I 121211 10:47:29 web:1447] 200 GET /?plant=17 (128.32.45.31) 5.93ms
+[I 121211 10:47:29 web:1447] 200 GET /sensorupdated/15/11.5917477067 (50.131.237.137) 8.19ms
+[I 121211 10:47:29 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.59ms
+[I 121211 10:47:29 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 8.37ms
+[I 121211 10:47:49 scheduler:38] freshness :1355251670.8
+    
+[I 121211 10:47:49 web:1447] 200 GET /sensorupdated/16/10.0142157696 (50.131.237.137) 8.40ms
+[E 121211 10:47:49 web:1064] Uncaught exception GET /?plant=17 (128.32.45.31)
+    HTTPRequest(protocol='http', host='169.229.63.33:8888', method='GET', uri='/?plant=17', version='HTTP/1.1', remote_ip='128.32.45.31', body='', headers={'Connection': 'keep-alive', 'Accept-Language': 'en-US,en;q=0.5', 'Accept-Encoding': 'gzip, deflate', 'If-None-Match': '"9d5ed0ee3b8ffcd0547957a9ccb771907a775fb1"', 'Host': '169.229.63.33:8888', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:17.0) Gecko/20100101 Firefox/17.0'})
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1021, in _execute
+        getattr(self, self.request.method.lower())(*args, **kwargs)
+      File "server.py", line 66, in get
+        self.render("tomatoes.html")
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 580, in render
+        self.finish(html)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 701, in finish
+        self.request.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 433, in finish
+        self.connection.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 187, in finish
+        self._finish_request()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 223, in _finish_request
+        self.stream.read_until(b("\r\n\r\n"), self._header_callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 153, in read_until
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:47:49 web:718] Cannot send error response after headers written
+[E 121211 10:47:49 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1065, in _handle_request_exception
+        self.send_error(500, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 720, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[E 121211 10:47:49 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xfdb060>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1065, in _handle_request_exception
+        self.send_error(500, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 720, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[I 121211 10:47:49 web:1447] 304 GET /?plant=1 (128.32.45.31) 8.50ms
+[I 121211 10:47:49 web:1447] 200 GET /?plant=5 (24.130.25.228) 6.04ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=17 (128.32.45.31) 6.08ms
+[I 121211 10:47:49 web:1447] 200 GET /?plant=19 (128.32.45.31) 6.11ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=18 (128.32.45.31) 6.31ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=23 (128.32.45.31) 6.06ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=5 (128.32.45.31) 10.83ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=7 (128.32.45.31) 5.71ms
+[I 121211 10:47:49 web:1447] 304 GET /?plant=9 (128.32.45.31) 6.44ms
+[I 121211 10:47:50 web:1447] 304 GET /?plant=12 (128.32.45.31) 7.49ms
+[E 121211 10:47:50 web:727] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 725, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 771, in write_error
+        "message": httplib.responses[status_code],
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 701, in finish
+        self.request.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 433, in finish
+        self.connection.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 187, in finish
+        self._finish_request()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 223, in _finish_request
+        self.stream.read_until(b("\r\n\r\n"), self._header_callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 153, in read_until
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:47:50 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[E 121211 10:47:50 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xfdb390>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[W 121211 10:47:50 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.59ms
+[I 121211 10:47:50 web:1447] 200 GET /sensorupdated/17/13.2889906691 (50.131.237.137) 10.09ms
+[E 121211 10:47:50 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    KeyError: '1'
+[E 121211 10:47:50 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xfb0630>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    KeyError: '1'
+[I 121211 10:47:50 web:1447] 200 GET /?plant=5 (24.130.25.228) 8.96ms
+[I 121211 10:47:50 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 7.92ms
+[I 121211 10:47:50 web:1447] 200 GET /sensorupdated/18/14.0431282931 (50.131.237.137) 8.20ms
+[I 121211 10:47:51 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 8.59ms
+[I 121211 10:47:51 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.93ms
+[I 121211 10:47:51 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.46ms
+[I 121211 10:48:11 scheduler:38] freshness :1355251692.2
+    
+[I 121211 10:48:11 web:1447] 304 GET /?plant=19 (128.32.45.31) 6.33ms
+[I 121211 10:48:11 web:1447] 200 GET /sensorupdated/19/11.1571036709 (50.131.237.137) 8.25ms
+[I 121211 10:48:31 scheduler:38] freshness :1355251712.3
+    
+[I 121211 10:48:51 scheduler:38] freshness :1355251732.35
+    
+[I 121211 10:49:11 scheduler:38] freshness :1355251752.4
+    
+[I 121211 10:49:11 web:1447] 200 GET /?plant=8 (24.130.25.228) 5.96ms
+[I 121211 10:49:31 scheduler:38] freshness :1355251772.46
+    
+[W 121211 10:49:31 iostream:547] Write error on 22: [Errno 32] Broken pipe
+[E 121211 10:49:31 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:49:31 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0x102cde0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:49:51 scheduler:38] freshness :1355251792.55
+    
+[W 121211 10:49:51 iostream:547] Write error on 26: [Errno 32] Broken pipe
+[E 121211 10:49:51 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:49:51 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0x102ce40>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed

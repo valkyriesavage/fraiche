@@ -1,0 +1,1224 @@
+python server.py --scheduler=hybrid --freshness=community-hybrid
+[I 121211 10:50:40 web:1447] 200 GET /?plant=1 (24.130.25.228) 67.83ms
+[I 121211 10:50:41 web:1447] 304 GET /?plant=1 (24.130.25.228) 5.94ms
+[I 121211 10:50:41 scheduler:38] freshness :1355251842.96
+    
+[I 121211 10:50:42 web:1447] 200 GET /?plant=5 (24.130.25.228) 5.82ms
+[I 121211 10:50:43 web:1447] 304 GET /?plant=5 (24.130.25.228) 5.73ms
+[I 121211 10:50:43 scheduler:38] freshness :1355251844.65
+    
+[I 121211 10:50:43 web:1447] 200 GET /?plant=8 (24.130.25.228) 6.07ms
+[I 121211 10:50:44 web:1447] 200 GET /?plant=8 (24.130.25.228) 6.41ms
+[I 121211 10:50:44 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 98.77ms
+[I 121211 10:50:44 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.49ms
+[I 121211 10:50:44 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.70ms
+[I 121211 10:50:44 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 7.38ms
+[I 121211 10:50:45 scheduler:38] freshness :1355251846.24
+    
+[W 121211 10:50:45 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.75ms
+[W 121211 10:50:45 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.37ms
+[I 121211 10:50:46 web:1447] 200 GET /?plant=10 (24.130.25.228) 5.76ms
+[I 121211 10:50:46 web:1447] 200 GET /?plant=10 (24.130.25.228) 7.41ms
+[I 121211 10:50:46 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 7.98ms
+[I 121211 10:50:47 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 8.92ms
+[I 121211 10:50:47 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.54ms
+[I 121211 10:50:47 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 7.51ms
+[I 121211 10:50:48 scheduler:38] freshness :1355251849.17
+    
+[W 121211 10:50:48 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.36ms
+[W 121211 10:50:48 web:1447] 404 GET /favicon.ico (24.130.25.228) 6.83ms
+[I 121211 10:50:49 web:1447] 200 GET /?plant=14 (24.130.25.228) 5.67ms
+[I 121211 10:50:49 web:1447] 200 GET /?plant=14 (24.130.25.228) 5.98ms
+[I 121211 10:50:49 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 7.80ms
+[I 121211 10:50:50 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 7.63ms
+[I 121211 10:50:50 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.56ms
+[I 121211 10:50:50 web:1447] 200 GET /static/chart.css (24.130.25.228) 8.62ms
+[I 121211 10:50:51 scheduler:38] freshness :1355251852.05
+    
+[E 121211 10:50:51 web:727] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 725, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 771, in write_error
+        "message": httplib.responses[status_code],
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 701, in finish
+        self.request.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 433, in finish
+        self.connection.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 187, in finish
+        self._finish_request()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 223, in _finish_request
+        self.stream.read_until(b("\r\n\r\n"), self._header_callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 153, in read_until
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:50:51 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[E 121211 10:50:51 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xbf5e70>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[W 121211 10:50:51 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.52ms
+[I 121211 10:50:51 web:1447] 200 GET /?plant=17 (24.130.25.228) 9.77ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/0/23.78905746 (50.131.237.137) 9.69ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/1/22.0091193675 (50.131.237.137) 6.38ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/2/24.6762815167 (50.131.237.137) 6.66ms
+[I 121211 10:50:52 web:1447] 200 GET /?plant=17 (24.130.25.228) 6.13ms
+[I 121211 10:50:52 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 17.80ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/3/23.234851808 (50.131.237.137) 6.18ms
+[I 121211 10:50:52 web:1447] 200 GET /?plant=0 (128.32.45.31) 6.88ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/4/21.5150356668 (50.131.237.137) 6.31ms
+[I 121211 10:50:52 web:1447] 200 GET /sensorupdated/5/22.3380823363 (50.131.237.137) 6.35ms
+[I 121211 10:50:53 web:1447] 200 GET /sensorupdated/6/21.2820295341 (50.131.237.137) 6.58ms
+[I 121211 10:50:53 web:1447] 200 GET /?plant=0 (128.32.45.31) 6.31ms
+[I 121211 10:50:53 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 7.89ms
+[I 121211 10:50:53 web:1447] 200 GET /sensorupdated/7/22.2485188307 (50.131.237.137) 6.20ms
+[I 121211 10:50:53 web:1447] 200 GET /sensorupdated/8/22.8449085045 (50.131.237.137) 6.34ms
+[I 121211 10:50:53 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.46ms
+[I 121211 10:50:53 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.38ms
+[I 121211 10:50:53 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 7.29ms
+[I 121211 10:50:53 web:1447] 200 GET /sensorupdated/9/20.6643496214 (50.131.237.137) 6.21ms
+[I 121211 10:50:56 scheduler:38] freshness :1355251857.1
+    
+[I 121211 10:50:56 web:1447] 200 GET /sensorupdated/10/21.9263491067 (50.131.237.137) 6.32ms
+[I 121211 10:50:56 web:1447] 200 GET /static/chart.css (128.32.45.31) 8.29ms
+[I 121211 10:50:56 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 13.95ms
+[I 121211 10:50:58 scheduler:38] freshness :1355251859.77
+    
+[I 121211 10:50:58 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 7.59ms
+[E 121211 10:50:58 web:727] Uncaught exception in write_error
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 725, in send_error
+        self.write_error(status_code, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 771, in write_error
+        "message": httplib.responses[status_code],
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 701, in finish
+        self.request.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 433, in finish
+        self.connection.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 187, in finish
+        self._finish_request()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 223, in _finish_request
+        self.stream.read_until(b("\r\n\r\n"), self._header_callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 153, in read_until
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:50:58 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[E 121211 10:50:58 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc278a0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1025, in _execute
+        self._handle_request_exception(e)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1061, in _handle_request_exception
+        self.send_error(e.status_code, exc_info=sys.exc_info())
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 729, in send_error
+        self.finish()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 700, in finish
+        self.flush(include_footers=True)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 660, in flush
+        self.request.write(headers + chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 429, in write
+        self.connection.write(chunk, callback=callback)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 177, in write
+        assert self._request, "Request closed"
+    AssertionError: Request closed
+[W 121211 10:50:58 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.43ms
+[I 121211 10:50:58 web:1447] 200 GET /sensorupdated/11/19.4141418098 (50.131.237.137) 6.07ms
+[I 121211 10:50:58 web:1447] 200 GET /sensorupdated/12/23.4058664405 (50.131.237.137) 6.30ms
+[I 121211 10:50:59 web:1447] 200 GET /sensorupdated/13/24.7960859514 (50.131.237.137) 6.35ms
+[W 121211 10:50:59 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.42ms
+[I 121211 10:50:59 web:1447] 200 GET /sensorupdated/14/21.2931104283 (50.131.237.137) 6.38ms
+[I 121211 10:51:00 web:1447] 200 GET /sensorupdated/15/18.9262151287 (50.131.237.137) 6.41ms
+[I 121211 10:51:00 web:1447] 200 GET /sensorupdated/16/18.6519911354 (50.131.237.137) 6.60ms
+[I 121211 10:51:00 web:1447] 200 GET /sensorupdated/17/25.5308421639 (50.131.237.137) 6.22ms
+[I 121211 10:51:00 web:1447] 200 GET /?plant=2 (24.130.25.228) 7.82ms
+[I 121211 10:51:00 web:1447] 200 GET /?plant=2 (24.130.25.228) 7.39ms
+[I 121211 10:51:00 web:1447] 200 GET /sensorupdated/18/21.1156503187 (50.131.237.137) 6.32ms
+[I 121211 10:51:04 scheduler:38] freshness :1355251865.37
+    
+[I 121211 10:51:04 web:1447] 200 GET /sensorupdated/19/23.2987717697 (50.131.237.137) 6.21ms
+[I 121211 10:51:04 web:1447] 200 GET /?plant=5 (24.130.25.228) 6.18ms
+[I 121211 10:51:04 web:1447] 200 GET /?plant=4 (128.32.45.31) 6.13ms
+[W 121211 10:51:04 web:1447] 404 GET /favicon.ico (128.32.45.31) 7.12ms
+[I 121211 10:51:04 web:1447] 304 GET /?plant=5 (24.130.25.228) 7.64ms
+[I 121211 10:51:04 web:1447] 200 GET /sensorupdated/20/25.0828153794 (50.131.237.137) 11.84ms
+[I 121211 10:51:04 web:1447] 200 GET /?plant=4 (128.32.45.31) 6.00ms
+[I 121211 10:51:04 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 7.99ms
+[I 121211 10:51:04 web:1447] 200 GET /sensorupdated/21/23.990909811 (50.131.237.137) 6.37ms
+[I 121211 10:51:09 scheduler:38] freshness :1355251870.09
+    
+[I 121211 10:51:09 web:1447] 200 GET /sensorupdated/22/24.8870640798 (50.131.237.137) 6.07ms
+[I 121211 10:51:09 web:1447] 200 GET /?plant=8 (24.130.25.228) 6.00ms
+[I 121211 10:51:09 web:1447] 200 GET /static/chart.css (128.32.45.31) 7.88ms
+[I 121211 10:51:09 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 7.73ms
+[I 121211 10:51:13 scheduler:38] freshness :1355251874.77
+    
+[I 121211 10:51:13 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 7.55ms
+[I 121211 10:51:13 web:1447] 200 GET /sensorupdated/23/22.7890554475 (50.131.237.137) 8.73ms
+[I 121211 10:51:13 web:1447] 304 GET /?plant=8 (24.130.25.228) 5.88ms
+[W 121211 10:51:13 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.45ms
+[I 121211 10:51:13 web:1447] 200 GET /sensorupdated/24/24.6635801839 (50.131.237.137) 6.29ms
+[E 121211 10:51:14 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:14 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc1be70>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:14 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:14 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc672a0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[W 121211 10:51:14 web:1447] 404 GET /favicon.ico (128.32.45.31) 6.56ms
+[I 121211 10:51:14 web:1447] 200 GET /?plant=7 (128.32.45.31) 9.80ms
+[I 121211 10:51:14 web:1447] 200 GET /?plant=7 (128.32.45.31) 6.64ms
+[I 121211 10:51:14 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 14.12ms
+[I 121211 10:51:14 web:1447] 200 GET /sensorupdated/25/21.7110387446 (50.131.237.137) 6.32ms
+[I 121211 10:51:14 web:1447] 200 GET /sensorupdated/26/22.1308151495 (50.131.237.137) 6.38ms
+[I 121211 10:51:14 web:1447] 200 GET /?plant=10 (24.130.25.228) 5.70ms
+[I 121211 10:51:14 web:1447] 304 GET /?plant=10 (24.130.25.228) 7.25ms
+[I 121211 10:51:14 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 8.80ms
+[I 121211 10:51:14 web:1447] 200 GET /sensorupdated/27/25.4022897877 (50.131.237.137) 7.02ms
+[I 121211 10:51:14 web:1447] 200 GET /static/chart.css (128.32.45.31) 7.48ms
+[I 121211 10:51:14 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 8.51ms
+[I 121211 10:51:20 scheduler:38] freshness :1355251881.37
+    
+[W 121211 10:51:20 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.54ms
+[E 121211 10:51:20 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:20 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc1b3c0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:51:20 web:1447] 200 GET /sensorupdated/28/22.91392134 (50.131.237.137) 6.26ms
+[I 121211 10:51:20 web:1447] 200 GET /?plant=13 (24.130.25.228) 8.56ms
+[I 121211 10:51:20 web:1447] 200 GET /?plant=10 (128.32.45.31) 6.45ms
+[E 121211 10:51:20 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:20 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc4bc90>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:20 web:1447] 200 GET /sensorupdated/29/23.473082219 (50.131.237.137) 7.45ms
+[I 121211 10:51:20 web:1447] 200 GET /?plant=13 (24.130.25.228) 7.40ms
+[I 121211 10:51:20 web:1447] 200 GET /?plant=10 (128.32.45.31) 6.19ms
+[W 121211 10:51:20 web:1447] 404 GET /favicon.ico (128.32.45.31) 6.12ms
+[I 121211 10:51:20 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 7.93ms
+[I 121211 10:51:20 web:1447] 200 GET /sensorupdated/30/21.9087533527 (50.131.237.137) 11.02ms
+[I 121211 10:51:20 web:1447] 200 GET /sensorupdated/31/22.7828467257 (50.131.237.137) 6.49ms
+[E 121211 10:51:20 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:20 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc4b810>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:20 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:20 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc71de0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:20 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 7.63ms
+[I 121211 10:51:20 web:1447] 200 GET /static/chart.css (128.32.45.31) 8.96ms
+[I 121211 10:51:20 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 7.59ms
+[I 121211 10:51:27 scheduler:38] freshness :1355251888.28
+    
+[W 121211 10:51:27 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.32ms
+[I 121211 10:51:27 web:1447] 200 GET /?plant=16 (24.130.25.228) 8.57ms
+[I 121211 10:51:27 web:1447] 200 GET /sensorupdated/32/24.6617689672 (50.131.237.137) 6.18ms
+[I 121211 10:51:27 web:1447] 200 GET /?plant=12 (128.32.45.31) 7.45ms
+[I 121211 10:51:27 web:1447] 200 GET /?plant=2 (50.131.237.137) 6.23ms
+[W 121211 10:51:27 iostream:425] Read error on 37: [Errno 104] Connection reset by peer
+[W 121211 10:51:27 iostream:359] error on read
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 354, in _handle_read
+        if self._read_to_buffer() == 0:
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 421, in _read_to_buffer
+        chunk = self._read_from_socket()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 402, in _read_from_socket
+        chunk = self.socket.recv(self.read_chunk_size)
+    error: [Errno 104] Connection reset by peer
+[I 121211 10:51:27 web:1447] 200 GET /?plant=16 (24.130.25.228) 6.76ms
+[I 121211 10:51:27 web:1447] 200 GET /?plant=2 (50.131.237.137) 5.96ms
+[I 121211 10:51:27 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.30ms
+[I 121211 10:51:27 web:1447] 200 GET /sensorupdated/33/21.5577657529 (50.131.237.137) 6.25ms
+[E 121211 10:51:27 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:27 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc4bae0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:27 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:27 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27db0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:27 web:1447] 200 GET /sensorupdated/34/20.9519892851 (50.131.237.137) 6.16ms
+[W 121211 10:51:27 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.44ms
+[I 121211 10:51:27 web:1447] 200 GET /?plant=12 (128.32.45.31) 17.54ms
+[I 121211 10:51:27 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.61ms
+[I 121211 10:51:27 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 8.23ms
+[I 121211 10:51:27 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.55ms
+[I 121211 10:51:28 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.70ms
+[I 121211 10:51:35 scheduler:38] freshness :1355251896.03
+    
+[I 121211 10:51:35 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 9.06ms
+[W 121211 10:51:35 web:1447] 404 GET /favicon.ico (50.131.237.137) 5.53ms
+[I 121211 10:51:35 web:1447] 200 GET /sensorupdated/35/21.5260082384 (50.131.237.137) 6.25ms
+[I 121211 10:51:35 web:1447] 200 GET /static/chart.css (128.32.45.31) 7.48ms
+[I 121211 10:51:35 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 7.90ms
+[I 121211 10:51:42 scheduler:38] freshness :1355251903.32
+    
+[I 121211 10:51:42 web:1447] 200 GET /?plant=0 (24.130.25.228) 6.25ms
+[W 121211 10:51:42 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.49ms
+[W 121211 10:51:42 web:1447] 404 GET /favicon.ico (50.131.237.137) 5.35ms
+[I 121211 10:51:42 web:1447] 200 GET /sensorupdated/36/22.086384489 (50.131.237.137) 6.16ms
+[I 121211 10:51:42 web:1447] 200 GET /?plant=17 (128.32.45.31) 6.43ms
+[I 121211 10:51:42 web:1447] 200 GET /?plant=0 (24.130.25.228) 6.86ms
+[I 121211 10:51:42 web:1447] 200 GET /?plant=17 (128.32.45.31) 24.39ms
+[I 121211 10:51:42 web:1447] 200 GET /static/tomato_chart.js (128.32.45.31) 8.26ms
+[W 121211 10:51:42 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.58ms
+[E 121211 10:51:42 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:42 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xbf5e40>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:42 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:42 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc4be40>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:42 web:1447] 200 GET /sensorupdated/37/22.6008562786 (50.131.237.137) 6.47ms
+[I 121211 10:51:42 web:1447] 200 GET /static/manual_form.css (128.32.45.31) 7.75ms
+[I 121211 10:51:42 web:1447] 200 GET /static/chart.css (128.32.45.31) 8.63ms
+[I 121211 10:51:42 web:1447] 200 GET /static/H2O_IQ.css (128.32.45.31) 8.27ms
+[I 121211 10:51:50 scheduler:38] freshness :1355251911.46
+    
+[W 121211 10:51:50 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.34ms
+[I 121211 10:51:50 web:1447] 200 GET /?plant=5 (24.130.25.228) 8.24ms
+[I 121211 10:51:50 web:1447] 200 GET /sensorupdated/38/25.1016923606 (50.131.237.137) 6.57ms
+[I 121211 10:51:50 web:1447] 200 GET /?plant=2 (128.32.45.31) 6.00ms
+[I 121211 10:51:50 web:1447] 200 GET /?plant=2 (128.32.45.31) 6.08ms
+[I 121211 10:51:50 web:1447] 200 GET /sensorupdated/39/25.3605286213 (50.131.237.137) 6.33ms
+[W 121211 10:51:50 web:1447] 404 GET /favicon.ico (128.32.45.31) 5.70ms
+[I 121211 10:51:50 web:1447] 200 GET /sensorupdated/40/25.2432173374 (50.131.237.137) 7.56ms
+[I 121211 10:51:50 web:1447] 304 GET /?plant=5 (24.130.25.228) 5.96ms
+[I 121211 10:51:59 scheduler:38] freshness :1355251920.06
+    
+[I 121211 10:51:59 web:1447] 200 GET /?plant=5 (128.32.45.31) 10.84ms
+[I 121211 10:51:59 web:1447] 200 GET /sensorupdated/41/20.4990950589 (50.131.237.137) 6.12ms
+[E 121211 10:51:59 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:59 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27870>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:51:59 web:1447] 200 GET /?plant=8 (24.130.25.228) 16.21ms
+[E 121211 10:51:59 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:59 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc71b40>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:59 web:1447] 200 GET /?plant=5 (128.32.45.31) 7.27ms
+[I 121211 10:51:59 web:1447] 304 GET /?plant=8 (24.130.25.228) 5.86ms
+[I 121211 10:51:59 web:1447] 200 GET /sensorupdated/42/20.862113217 (50.131.237.137) 6.36ms
+[E 121211 10:51:59 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:59 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27d20>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:51:59 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:51:59 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc52c00>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:51:59 web:1447] 200 GET /sensorupdated/43/23.3283086149 (50.131.237.137) 6.29ms
+[I 121211 10:52:08 scheduler:38] freshness :1355251929.39
+    
+[I 121211 10:52:08 web:1447] 200 GET /?plant=8 (128.32.45.31) 8.54ms
+[I 121211 10:52:08 web:1447] 200 GET /sensorupdated/44/26.8830421943 (50.131.237.137) 6.33ms
+[I 121211 10:52:08 web:1447] 200 GET /?plant=11 (24.130.25.228) 6.05ms
+[I 121211 10:52:08 web:1447] 200 GET /?plant=8 (128.32.45.31) 6.02ms
+[I 121211 10:52:08 web:1447] 200 GET /sensorupdated/45/24.1223572661 (50.131.237.137) 6.23ms
+[I 121211 10:52:08 web:1447] 200 GET /?plant=11 (24.130.25.228) 6.50ms
+[I 121211 10:52:08 web:1447] 200 GET /sensorupdated/46/22.9714275315 (50.131.237.137) 6.50ms
+[I 121211 10:52:08 web:1447] 200 GET /sensorupdated/47/19.5027301852 (50.131.237.137) 6.35ms
+[I 121211 10:52:18 scheduler:38] freshness :1355251939.39
+    
+[E 121211 10:52:18 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:52:18 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xb9f7e0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:52:18 web:1447] 200 GET /?plant=9 (128.32.45.31) 8.74ms
+[I 121211 10:52:18 web:1447] 200 GET /?plant=13 (24.130.25.228) 6.04ms
+[I 121211 10:52:18 web:1447] 200 GET /sensorupdated/48/20.4084552745 (50.131.237.137) 6.53ms
+[E 121211 10:52:18 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:52:18 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc1b720>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:52:18 web:1447] 304 GET /?plant=13 (24.130.25.228) 7.15ms
+[I 121211 10:52:18 web:1447] 200 GET /sensorupdated/49/22.733971559 (50.131.237.137) 6.47ms
+[I 121211 10:52:18 web:1447] 200 GET /?plant=9 (128.32.45.31) 5.95ms
+[I 121211 10:52:18 web:1447] 200 GET /sensorupdated/50/24.2586240622 (50.131.237.137) 6.31ms
+[E 121211 10:52:18 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:52:18 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27750>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:52:18 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:52:18 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xbffd80>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:52:29 scheduler:38] freshness :1355251950.12
+    
+[I 121211 10:52:29 web:1447] 200 GET /sensorupdated/51/21.2252326668 (50.131.237.137) 6.41ms
+[I 121211 10:52:29 web:1447] 200 GET /?plant=13 (128.32.45.31) 9.78ms
+[I 121211 10:52:29 web:1447] 200 GET /?plant=17 (24.130.25.228) 6.39ms
+[I 121211 10:52:29 web:1447] 304 GET /?plant=17 (24.130.25.228) 5.83ms
+[I 121211 10:52:29 web:1447] 200 GET /?plant=13 (128.32.45.31) 6.06ms
+[I 121211 10:52:29 web:1447] 200 GET /sensorupdated/52/22.0583208318 (50.131.237.137) 6.97ms
+[E 121211 10:52:29 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:52:29 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27750>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:52:29 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:52:29 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc4bae0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:52:40 scheduler:38] freshness :1355251961.2
+    
+[I 121211 10:52:40 web:1447] 200 GET /?plant=16 (128.32.45.31) 8.63ms
+[I 121211 10:52:40 web:1447] 200 GET /?plant=18 (24.130.25.228) 6.49ms
+[I 121211 10:52:40 web:1447] 200 GET /sensorupdated/53/20.2287505347 (50.131.237.137) 11.29ms
+[I 121211 10:52:40 web:1447] 200 GET /?plant=16 (128.32.45.31) 6.36ms
+[I 121211 10:52:40 web:1447] 200 GET /?plant=18 (24.130.25.228) 6.44ms
+[I 121211 10:52:40 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 8.11ms
+[I 121211 10:52:40 web:1447] 200 GET /sensorupdated/54/23.0919617727 (50.131.237.137) 6.09ms
+[I 121211 10:52:51 scheduler:38] freshness :1355251972.65
+    
+[I 121211 10:52:51 web:1447] 200 GET /sensorupdated/55/21.4793189087 (50.131.237.137) 6.27ms
+[I 121211 10:52:51 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 8.94ms
+[I 121211 10:52:51 web:1447] 200 GET /static/chart.css (24.130.25.228) 8.08ms
+[I 121211 10:53:02 scheduler:38] freshness :1355251983.93
+    
+[I 121211 10:53:02 web:1447] 200 GET /?plant=2 (128.32.45.31) 7.51ms
+[I 121211 10:53:02 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.62ms
+[I 121211 10:53:02 web:1447] 200 GET /sensorupdated/56/25.0614056025 (50.131.237.137) 6.50ms
+[I 121211 10:53:02 web:1447] 304 GET /?plant=2 (128.32.45.31) 5.96ms
+[I 121211 10:53:03 web:1447] 200 GET /sensorupdated/57/19.8601971933 (50.131.237.137) 6.32ms
+[I 121211 10:53:03 web:1447] 200 GET /sensorupdated/58/20.5115367644 (50.131.237.137) 6.78ms
+[W 121211 10:53:03 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.46ms
+[I 121211 10:53:15 scheduler:38] freshness :1355251996.1
+    
+[W 121211 10:53:15 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.37ms
+[I 121211 10:53:15 web:1447] 200 GET /?plant=5 (128.32.45.31) 10.78ms
+[I 121211 10:53:15 web:1447] 200 GET /sensorupdated/59/24.3328565945 (50.131.237.137) 6.39ms
+[I 121211 10:53:15 web:1447] 200 GET /?plant=23 (24.130.25.228) 6.11ms
+[I 121211 10:53:15 web:1447] 304 GET /?plant=5 (128.32.45.31) 5.81ms
+[I 121211 10:53:15 web:1447] 200 GET /sensorupdated/60/23.9792376673 (50.131.237.137) 6.20ms
+[I 121211 10:53:15 web:1447] 200 GET /sensorupdated/61/24.2000343885 (50.131.237.137) 6.45ms
+[I 121211 10:53:15 web:1447] 200 GET /?plant=23 (24.130.25.228) 6.48ms
+[I 121211 10:53:15 web:1447] 200 GET /static/tomato_chart.js (24.130.25.228) 8.74ms
+[I 121211 10:53:15 web:1447] 200 GET /sensorupdated/62/21.1678371314 (50.131.237.137) 6.28ms
+[I 121211 10:53:28 scheduler:38] freshness :1355252009.14
+    
+[I 121211 10:53:28 web:1447] 200 GET /?plant=7 (128.32.45.31) 6.12ms
+[I 121211 10:53:28 web:1447] 200 GET /sensorupdated/63/20.3457336786 (50.131.237.137) 7.43ms
+[I 121211 10:53:28 web:1447] 200 GET /static/chart.css (24.130.25.228) 7.66ms
+[I 121211 10:53:28 web:1447] 200 GET /static/H2O_IQ.css (24.130.25.228) 8.76ms
+[I 121211 10:53:41 scheduler:38] freshness :1355252022.04
+    
+[I 121211 10:53:41 web:1447] 200 GET /static/manual_form.css (24.130.25.228) 7.31ms
+[I 121211 10:53:41 web:1447] 304 GET /?plant=7 (128.32.45.31) 5.80ms
+[I 121211 10:53:41 web:1447] 200 GET /sensorupdated/64/22.0891389867 (50.131.237.137) 6.82ms
+[W 121211 10:53:41 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.47ms
+[W 121211 10:53:41 web:1447] 404 GET /favicon.ico (24.130.25.228) 5.63ms
+[I 121211 10:53:54 scheduler:38] freshness :1355252035.4
+    
+[I 121211 10:53:54 web:1447] 200 GET /sensorupdated/65/22.1401993977 (50.131.237.137) 11.50ms
+[I 121211 10:53:54 web:1447] 200 GET /?plant=9 (128.32.45.31) 6.08ms
+[I 121211 10:53:54 web:1447] 200 GET /?plant=1 (24.130.25.228) 6.18ms
+[I 121211 10:53:54 web:1447] 304 GET /?plant=1 (24.130.25.228) 6.15ms
+[I 121211 10:53:54 web:1447] 304 GET /?plant=9 (128.32.45.31) 5.76ms
+[I 121211 10:54:07 scheduler:38] freshness :1355252048.99
+    
+[W 121211 10:54:07 iostream:547] Write error on 11: [Errno 32] Broken pipe
+[E 121211 10:54:07 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:54:08 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27ae0>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:54:08 web:1447] 200 GET /sensorupdated/66/23.130935275 (50.131.237.137) 6.40ms
+[I 121211 10:54:21 scheduler:38] freshness :1355252062.48
+    
+[I 121211 10:54:21 web:1447] 200 GET /?plant=3 (24.130.25.228) 8.53ms
+[I 121211 10:54:21 web:1447] 200 GET /?plant=1 (128.32.45.31) 6.11ms
+[I 121211 10:54:21 web:1447] 200 GET /sensorupdated/67/22.4667856238 (50.131.237.137) 6.59ms
+[I 121211 10:54:21 web:1447] 200 GET /?plant=1 (128.32.45.31) 8.17ms
+[I 121211 10:54:21 web:1447] 200 GET /sensorupdated/68/22.2589994805 (50.131.237.137) 6.22ms
+[I 121211 10:54:21 web:1447] 200 GET /sensorupdated/69/21.6060219943 (50.131.237.137) 6.28ms
+[I 121211 10:54:35 scheduler:38] freshness :1355252076.87
+    
+[I 121211 10:54:35 web:1447] 200 GET /?plant=3 (128.32.45.31) 7.36ms
+[I 121211 10:54:35 web:1447] 200 GET /?plant=3 (24.130.25.228) 6.53ms
+[I 121211 10:54:35 web:1447] 200 GET /sensorupdated/70/24.2607329434 (50.131.237.137) 6.12ms
+[I 121211 10:54:35 web:1447] 200 GET /?plant=3 (128.32.45.31) 6.46ms
+[I 121211 10:54:36 web:1447] 200 GET /sensorupdated/71/19.8658544101 (50.131.237.137) 6.16ms
+[I 121211 10:54:36 web:1447] 200 GET /sensorupdated/72/22.2544218037 (50.131.237.137) 6.25ms
+[I 121211 10:54:50 scheduler:38] freshness :1355252091.86
+    
+[I 121211 10:54:50 web:1447] 200 GET /sensorupdated/73/22.0703569109 (50.131.237.137) 6.28ms
+[E 121211 10:54:50 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:54:50 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc27420>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 497, in _accept_connection
+        "\r\n" % (self._challenge_response(), subprotocol_header)))
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 196, in write
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:54:50 web:1447] 200 GET /?plant=7 (24.130.25.228) 10.54ms
+[I 121211 10:54:50 web:1447] 200 GET /?plant=8 (128.32.45.31) 6.13ms
+[E 121211 10:54:50 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[E 121211 10:54:50 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc52f90>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 229, in on_connection_close
+        self.on_close()
+      File "server.py", line 107, in on_close
+        del WaterDataSocketHandler.clients[self.plant_num]
+    AttributeError: 'WaterDataSocketHandler' object has no attribute 'plant_num'
+[I 121211 10:54:50 web:1447] 200 GET /sensorupdated/74/25.7272916103 (50.131.237.137) 6.29ms
+[I 121211 10:54:51 web:1447] 200 GET /sensorupdated/75/21.7484683601 (50.131.237.137) 6.35ms
+[I 121211 10:54:51 web:1447] 304 GET /?plant=8 (128.32.45.31) 7.06ms
+[I 121211 10:54:51 web:1447] 200 GET /?plant=7 (24.130.25.228) 6.49ms
+[I 121211 10:54:51 web:1447] 200 GET /sensorupdated/76/26.6366338152 (50.131.237.137) 6.22ms
+[I 121211 10:55:06 scheduler:38] freshness :1355252107.84
+    
+[W 121211 10:55:06 iostream:547] Write error on 14: [Errno 32] Broken pipe
+[E 121211 10:55:06 iostream:307] Uncaught exception, closing connection.
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[E 121211 10:55:06 ioloop:435] Exception in callback <tornado.stack_context._StackContextWrapper object at 0xc52f90>
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 421, in _run_callback
+        callback()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 304, in wrapper
+        callback(*args)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/httpserver.py", line 262, in _on_headers
+        self.request_callback(self._request)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/web.py", line 1412, in __call__
+        handler._execute(transforms, *args, **kwargs)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 123, in _execute
+        self.ws_connection.accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 458, in accept_connection
+        self._accept_connection()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 500, in _accept_connection
+        self._receive_frame()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 529, in _receive_frame
+        self.stream.read_bytes(2, self._on_frame_start)
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 166, in read_bytes
+        self._try_inline_read()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 381, in _try_inline_read
+        self._check_closed()
+      File "/usr/local/lib/python2.7/dist-packages/tornado/iostream.py", line 564, in _check_closed
+        raise IOError("Stream is closed")
+    IOError: Stream is closed
+[I 121211 10:55:06 web:1447] 200 GET /sensorupdated/77/24.926306557 (50.131.237.137) 6.37ms
+[I 121211 10:55:22 scheduler:38] freshness :1355252123.53
+    
+[I 121211 10:55:22 web:1447] 200 GET /?plant=9 (128.32.45.31) 8.50ms
+[I 121211 10:55:22 web:1447] 200 GET /?plant=10 (24.130.25.228) 5.95ms
+[I 121211 10:55:22 web:1447] 200 GET /sensorupdated/78/22.3464849681 (50.131.237.137) 6.19ms
+[I 121211 10:55:22 web:1447] 304 GET /?plant=9 (128.32.45.31) 5.74ms
+[I 121211 10:55:22 web:1447] 200 GET /sensorupdated/79/19.8368922844 (50.131.237.137) 7.73ms
+[I 121211 10:55:38 scheduler:38] freshness :1355252139.97
+    
+[I 121211 10:55:38 web:1447] 200 GET /?plant=12 (128.32.45.31) 11.20ms
+[I 121211 10:55:39 web:1447] 200 GET /sensorupdated/80/22.3271324007 (50.131.237.137) 6.23ms
+[I 121211 10:55:39 web:1447] 304 GET /?plant=10 (24.130.25.228) 6.75ms
+[I 121211 10:55:39 web:1447] 304 GET /?plant=12 (128.32.45.31) 6.37ms
+[I 121211 10:55:39 web:1447] 200 GET /sensorupdated/81/25.8220054307 (50.131.237.137) 6.13ms
+[I 121211 10:55:39 web:1447] 200 GET /sensorupdated/82/22.4294637923 (50.131.237.137) 6.41ms

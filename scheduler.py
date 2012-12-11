@@ -3,14 +3,14 @@ from model.model import Least_Squares, StormHMM
 
 class Scheduler:
 
-  def __init__(self, fname):
+  def __init__(self, fname, logging):
     self.haveFreshSensorData = False
     self.lastFreshSensorDataTime = -1
     self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
     self.model = {}
     self.notUpdatedValues = []
-    self.modelFreshnessWhenServed = open('freshness-data/' + fname, 'w+')
+    self.modelFreshnessWhenServed = logging
     return
 
   def gotSensorEvent(self, plant_num, value):
@@ -34,7 +34,7 @@ class Scheduler:
     self.__dealWithClientRequest__(plant_num)
 
     # Record request freshness
-    self.modelFreshnessWhenServed.write(
+    self.modelFreshnessWhenServed.info("freshness :" +
          str(time.time() - self.modelFreshAtTime) + '\n')
 
     # Return prediction
@@ -75,7 +75,16 @@ class PeriodicScheduler(Scheduler):
     return time.time() - self.lastMLRuntime > LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):
-  periodicScheduler = PeriodicScheduler('ignoreme')
+
+  def __init__(self, fname, logging):
+    self.periodicScheduler = PeriodicScheduler('ignoreme', logging)
+    self.haveFreshSensorData = False
+    self.lastFreshSensorDataTime = -1
+    self.lastMLRuntime = -1
+    self.modelFreshAtTime = -1
+    self.model = {}
+    self.notUpdatedValues = []
+    self.modelFreshnessWhenServed = logging
 
   def isTimeToRunML(self):
     return self.periodicScheduler.timeToRunML()

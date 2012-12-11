@@ -28,7 +28,7 @@ def touch(fname, times=None):
 
 class Application(tornado.web.Application):
   def __init__(self, sched, freshness):
-    self.setScheduler(sched, freshness)
+    self.setScheduler(sched, freshness, logging)
 
     handlers = [
         (r"/plant/(\d*)", WaterDataSocketHandler, dict(scheduler=self.scheduler)),
@@ -44,19 +44,19 @@ class Application(tornado.web.Application):
         )
     tornado.web.Application.__init__(self, handlers, **settings)
 
-  def setScheduler(self, sched, freshness):
+  def setScheduler(self, sched, freshness, logging):
     if sched == 'naive':
-      self.scheduler = NaiveScheduler(freshness)
+      self.scheduler = NaiveScheduler(freshness, logging)
     elif sched == 'periodic':
-      self.scheduler = PeriodicScheduler(freshness)
+      self.scheduler = PeriodicScheduler(freshness, logging)
     elif sched == 'hybrid':
-      self.scheduler = HybridScheduler(freshness)
+      self.scheduler = HybridScheduler(freshness, logging)
     elif sched == 'sensor':
-      self.scheduler = SensorBasedScheduler(freshness)
+      self.scheduler = SensorBasedScheduler(freshness, logging)
     elif sched == 'load':
-      self.scheduler = LowLoadScheduler(freshness)
+      self.scheduler = LowLoadScheduler(freshness, logging)
     elif sched == 'predictive':
-      self.scheduler = PredictiveScheduler(freshness)
+      self.scheduler = PredictiveScheduler(freshness, logging)
 
 class MainHandler(tornado.web.RequestHandler):
   def initialize(self, scheduler):
@@ -100,7 +100,7 @@ class WaterDataSocketHandler(tornado.websocket.WebSocketHandler):
     self.scheduler.gotClientRequest(plant_num)
     WaterDataSocketHandler.clients[plant_num] = self
     self.plant_num = plant_num
-    logging.info("got client for plant " + plant_num)
+    #logging.info("got client for plant " + plant_num)
     WaterDataSocketHandler.send_all_data(plant_num)
 
   def on_close(self):

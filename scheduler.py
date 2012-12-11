@@ -34,7 +34,7 @@ class Scheduler:
 
     # Record request freshness
     self.modelFreshnessWhenServed.info("freshness :" +
-         str(time.time() - self.modelFreshAtTime) + '\n')
+         str(time.time()) + ' ' + str(self.modelFreshAtTime) + '\n')
 
     # Return prediction
     return self.model[plant_num].predict(1)

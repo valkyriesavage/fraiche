@@ -21,7 +21,9 @@ FRAICHE is a system with both sensing and watering capabilities. It can deliver 
 
 We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system, we simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models, and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
 
-We implemented several different possibilities for balancing the loads of serving clients, getting fresh sensor data, and updating the machine-learned data:
+In light of this, we tried multiple options for improving response speed.  We implemented several different schedulers to balance the loads of serving clients, getting fresh sensor data, and updating the machine-learned data.  A second option was moving the machine learning task, which was by far the greatest source of CPU use, to the client side in the JavaScript library.  We also implemented a system whereby multiple Raspberry Pis functioning in separate gardens can load balance between themselves via a central data repository.
+
+Following, we describe the several possibilities for balancing serving clients, getting fresh sensor data, and updating the models:
 
 \begin{itemize}
 
@@ -55,7 +57,9 @@ For virtual machines sharing a physical computer, Xen has explored the resource 
 
 Work on scheduling for parallel clusters has included Lithe \cite{}, use of loosely-synchronized clocks \cite{}, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
 
-\subsection{?}
+\subsection{Load-balancing}
+
+\subsection{Machine Learning}
 
 \section{Background}
 
@@ -78,6 +82,8 @@ The Raspberry Pi is connected to the Internet and also has an XBee mounted in or
 The RPi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
 
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
+
+In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud) which serves as a data repository.  The ????
 
 \section{Implementation}
 
@@ -133,6 +139,10 @@ The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  T
 
 \subsection{Machine Learning Algorithms}
 
+\subsection{Client-side Modeling}
+
+\subsection{Inter-Pi}
+
 \subsection{Simulation Harness}
 
 The simulation harness we constructed is also written in Python.  It builds off the splinter \cite{} library which can instantiate multiple full web browsers.  This feature is necessary for measuring the load time accurately: the client's page is only considered to be "loaded" when the 15 most recent historical data points (transmitted via WebSockets, as described above) are found in the page's JavaScript.
@@ -163,7 +173,7 @@ A small farm comprises many plants and a single farmer.  For our simulation, we 
 
 \subsection{Future Work}
 
-In the future, we would like to explore ...?
+In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks
 
 \bibliography{bib}
 \bibliographystyle{plainnat}

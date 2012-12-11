@@ -11,11 +11,12 @@ class Client():
   def activate(self):
     self.b.visit(self.url + str(random.choice(self.plants)))
     print("url = " + self.url + str(random.choice(self.plants)))
-    while not self.b.evaluate_script("incoming_data.length") > 2:
-      pass
+    #while not self.b.evaluate_script("incoming_data.length") > 2:
+    #  pass
 
   def log(self, timing):
-    self.b.visit(self.logging_url + timing)
+    #self.b.visit(self.logging_url + timing)
+    pass
 
 if __name__ == '__main__':
   c = Client()

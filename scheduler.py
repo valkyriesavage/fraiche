@@ -28,6 +28,8 @@ class Scheduler:
 
   def gotClientRequest(self, plant_name):
     plant_num = plant_name.split('_')[-1]
+    if plant_num not in self.model:
+      self.model[plant_num] = Least_Squares()
     # Apply scheduler specific actions
     self.__dealWithClientRequest__(plant_num)
 

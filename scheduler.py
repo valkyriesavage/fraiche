@@ -6,7 +6,6 @@ class Scheduler:
   def __init__(self, fname, logging):
     self.haveFreshSensorData = False
     self.lastFreshSensorDataTime = -1
-    self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
     self.model = {}
     self.notUpdatedValues = []
@@ -48,9 +47,7 @@ class Scheduler:
     # Periodiclly called by tornado
     if not self.isTimeToRunML():
       return
-    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
-    self.modelFreshAtTime = time.time()
 
   def isTimeToRunML(self):
     # children implement this
@@ -60,13 +57,13 @@ class Scheduler:
     for num in self.model:
       self.model[num].update([val[1] for val in self.notUpdatedValues if val[0] == num])
     self.notUpdatedValues = []
+    self.modelFreshAtTime = time.time()
 
 class NaiveScheduler(Scheduler):
   def isTimeToRunML(self):
     return False
 
   def __dealWithClientRequest__(self, plant_num):
-    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()
 
@@ -74,7 +71,7 @@ class PeriodicScheduler(Scheduler):
   LEARNING_THRESHOLD = 5*60*1000;
 
   def isTimeToRunML(self):
-    return time.time() - self.lastMLRuntime > LEARNING_THRESHOLD
+    return time.time() - self.modelFreshAtTime > LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):
 
@@ -82,17 +79,15 @@ class HybridScheduler(Scheduler):
     self.periodicScheduler = PeriodicScheduler('ignoreme', logging)
     self.haveFreshSensorData = False
     self.lastFreshSensorDataTime = -1
-    self.lastMLRuntime = -1
     self.modelFreshAtTime = -1
     self.model = {}
     self.notUpdatedValues = []
     self.modelFreshnessWhenServed = logging
 
   def isTimeToRunML(self):
-    return self.periodicScheduler.timeToRunML()
+    return self.periodicScheduler.isTimeToRunML()
 
   def __dealWithClientRequest__(self, plant_num):
-    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()
 
@@ -101,7 +96,6 @@ class SensorBasedScheduler(Scheduler):
     return false
 
   def __dealWithSensorEvent__(self, plant_num, value):
-    self.lastMLRuntime = time.time()
     self.__executeMLUpdate__()
     self.modelFreshAtTime = time.time()
 

@@ -27,7 +27,7 @@ class Least_Squares(Model):
         self.av_delta *= (self.history - 1) / self.history
         self.av_delta += delta / self.history
       self.pval = float(nval)
-    time.sleep(0.2)
+      time.sleep(0.002)
 
   def predict(self, steps_ahead):
     if self.pval is None:

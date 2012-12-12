@@ -28,6 +28,7 @@ class Least_Squares(Model):
         self.av_delta += delta / self.history
       self.pval = float(nval)
       time.sleep(0.002)
+    time.sleep(0.01)
 
   def predict(self, steps_ahead):
     if self.pval is None:

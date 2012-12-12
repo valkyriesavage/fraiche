@@ -2,6 +2,10 @@
 \usepackage{microtype}
 \usepackage{mathpazo}
 \usepackage{listings}
+\usepackage{xspace}
+\newcommand{\eg}{e.g.\@\xspace}
+\newcommand{\ie}{i.e.\@\xspace}
+\newcommand{\etc}{etc.\@\xspace}
 \lstset{language=python}
 \begin{document}
 
@@ -14,40 +18,28 @@
 
 \section{Abstract}
 
-FRAICHE is a complete small-scale sensing and watering system for deployment in community gardens.  The goal is to provide gardeners with a web interface detailing the current status of their plants as well as a machine-learned model of how they ought to care for their plants based on data from their historical plant interactions and the interactions of other gardeners with their plants.  FRAICHE is implemented using a Raspberry Pi, a system with minimal computing power, and we want to leverage this power as effectively as possible to deliver the freshest models to clients when they access the web interface.  In order to effectively test the system, we simulated a scaled up version.  We got RESULTS!
+FRAICHE is a complete small-scale sensing and watering system for deployment in community gardens.  The goal is to provide gardeners with sophisticated monitoring and analysis of their garden at low cost in an easy to set up system.  We achieved this by constructing a central server that receives sensors readings, models the environment to makes predictions about future moisture content, and responds to user queries made through a straightforward web interface.  FRAICHE is implemented using a Raspberry Pi, a system with minimal computing power, which poses a challenge since our goal is to provide fresh predictions when queries are received, but with minimal latency.  We considered six methods of scheduling model updates, and tested them under three very different use-case scenarios, finding that in each case we can strike an effective balance between freshness and latency.
 
 \section{Introduction}
 
-Managing a community garden or small farm is currently a process that requires community members or the farmer to directly monitor their land in an ad-hoc manner.  Additionally, beginning gardeners who lack a large base of knowledge sometimes find it difficult to react effectively to the signals they see coming from their plants, watering them to the point of drowning or failing to notice when they are parched.  Computing has been leveraged to improve the ease of interaction with and analysis of many other physical processes, so we brought machine learning into this challenging gardening environment.
+Managing a community garden or small farm is currently a process that requires community members or the farmer to directly monitor their land in an ad-hoc manner.  Additionally, beginning gardeners who lack a large base of knowledge sometimes find it difficult to react effectively to the signals they see coming from their plants, watering them to the point of drowning or failing to notice when they are parched.  Computing has been leveraged to improve the ease of interaction with and analysis of many other physical processes, and is a natural addition here, where continuous monitoring and effective predictions of soil moisture content can provide crucial information.
 
-FRAICHE is a system with both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app.  The same web app allows them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system.  Over time, the web app stores data about which plants the gardener waters under which conditions, and will learn how to initiate watering without prompting.  The app also performs machine learning across gardeners: in this way, beginners are able to learn from the experience of those with more established watering practices.
+FRAICHE is a system with both sensing and watering capabilities. It can deliver information to the owner about a range of factors, such as moisture and temperature status of the soil around different plants, via a web app. The same web app allows them to water plants or schedule their watering, with the actual watering accomplished through a configurable drip irrigation system. The system also provides predictions about future soil moisture content, based on a range of different factors. These predictions are tuned to the particular garden being used, with values predicted based on past observed changes.
 
-We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system, we simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, constructing/updating models, and handling queries from users.  Constantly asking the sensors for new data and reporting it to various clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing the interactions of clients, sensors, and the machine learning tasks becomes a challenge.
+We implemented a complete, small scale system to test computation bottleneck issues for our implementation, particularly for how the sensors being used will manage communication with the central controller. To stress test the system, we simulated a scaled up version. This version involves an extremely large number of sensors working in a star network, with a single central controller receiving data from sensors, updating models, and handling queries from users.  Constantly receiving sensor updates, using them to update the model, and maintaining low latency responses to clients is a reasonably simple problem with low overhead, but when running such a system on a machine like the Raspberry Pi that has little computational headroom, balancing these tasks becomes a challenge.
 
-In light of this, we tried multiple options for improving response speed.  We implemented several different schedulers to balance the loads of serving clients, getting fresh sensor data, and updating the machine-learned data.  A second option was moving the machine learning task, which was by far the greatest source of CPU use, to the client side in the JavaScript library.  We also implemented a system whereby multiple Raspberry Pis functioning in separate gardens can load balance between themselves via a central data repository.
+In light of this, we tried multiple options for improving response speed.  We implemented several different schedulers to balance the loads of serving clients, getting fresh sensor data, and updating the prediction model.  We also implemented a system whereby multiple Raspberry Pis functioning in separate gardens can load balance between themselves via a central data repository.
 
-Following, we describe the several possibilities for balancing serving clients, getting fresh sensor data, and updating the models:
+This work focuses on a particular use-case, gardening, but the question we are addressing is more general.  When using a low-computation device such as a Raspberry Pi what is the best way to schedule expensive computation?  Recent growth in the hobbyist community has seen an enormous range of applications for the device, which often include some form of sensing and a means of communication with users.  The issue of latency that we focus on here could be particularly important for cases such as cooking applications and games that include real-world objects.
 
-\begin{itemize}
-
-\item Na\"{\i}ve method - each time the server is queried by a gardener, the machine learning algorithm is fed all sensor data and the watering prediction algorithm is updated.
-
-\item Periodic offline computation - according to a schedule, the machine learning algorithm is fed blocks of data containing sensor readings and the prediction algorithm is updated.
-
-\item Sensor-triggered updates - the system reads the sensor data periodically, and when particular events are detected, the machine learning algorithm is given fresh data and started.
-
-\item Hybrid cheap/costly modeling - two different machine learning algorithms are used, one which does "online" computation with all new sensor readings and which is cheap but less accurate, and one which receives batched sensor readings as described above on a periodic basis.  These two models are combined before delivery to the gardner.
-
-\item Updates when load is low - when few clients are connected to and querying sensor readings, a machine learning algorithm update is begun with the stored sensor data.
-
-\item Updates prior to predicted high demand - a second machine learning algorithm observes the typical peaks and valleys in client query traffic, and prior to a predicted peak beings running the machine learning algorithm with fresh data.  This should ensure that the maximum number of clients receive the freshest models.
-
-\end{itemize}
+Our experiments show that while all scheduling approaches are effective in small scale situations, as either the number of sensors or the number of users increases the decision of when to make model updates becomes much more important.  Our observations follow expectations, with low latency being easily achievable at the cost of freshness or vice versa, but with more balanced combinations being dependent on the use case.  Finally, we show that by taking traffic patterns into consideration we are able to provide fresh information with low latency.
 
 \section{Related Work}
 
-\subsection{Resource Management}
+While the focus of this work is very specific, it is worth taking a broader view when considering related work.  The general problem of resource management is well-studied, as is load-balancing, which we consider when demonstrating an implementation with multiple Raspberry Pi boards.  For our more specific case of plant monitoring there has been work on various forms of environmental sensing, particularly recently with wireless mesh networks, but we only mention a few specific cases, as generally that work focuses on data collection followed by offline analysis, unlike our setup.
 
+\subsection{Resource Management}
+%TODO: Fill in cites, also make an editing pass
 There has been a bevy of work on resource management for both parallel clusters and multiple virtual machines running on a single physical machine.
 
 The Dominant Resource Fairness algorithm \cite{} is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand; it is a port of max-min allocation \cite{} where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
@@ -67,15 +59,18 @@ software solutions: mechanism of assignment to server
 distributed network
 
 
-\subsection{Machine Learning}
+\subsection{Environmental Monitoring}
+See:
 
-\section{Background}
+http://dl.acm.org/citation.cfm?id=1098918.1098925
+(recommended by Kubi)
 
-??????????
 
-\section{Architecture}
+%%%\section{Background}
 
-FRAICHE is composed of two distinctly different physical systems.  One is the device co-located with plants in the garden.  This device is built on an ATMEL chip.  The second system is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
+\section{Physical Architecture}
+
+FRAICHE is composed of two physically separate system components.  One is the device co-located with plants in the garden, which we built based on an ATMEL chip.  The second component is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
 
 \begin{figure}[h!]
   \centering
@@ -85,7 +80,7 @@ FRAICHE is composed of two distinctly different physical systems.  One is the de
 
 \subsection{In-garden device}
 
-The in-garden device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, an array of sensors for detecting moisture, temperature, etc., of the soil, a battery, and a solar panel.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (i.e. the user need not access the website to adjust watering thresholds: he or she can push a few buttons while looking at the plant if it seems to be too dry or too wet).
+The in-garden device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, a battery, a solar panel, and an array of sensors for detecting moisture, temperature, \etc, of the soil.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (\ie the user need not access the website to adjust watering thresholds: they can push a few buttons while looking at the plant if it seems to be too dry or too wet).
 
 This device awakens from sleep mode approximately once per hour or when the buttons are pushed.  Whenever it is awake, it begins the communication process described below.
 
@@ -93,34 +88,32 @@ This device awakens from sleep mode approximately once per hour or when the butt
 
 The Rapsberry Pi is a low-cost (~USD35), portable single-board computer released in 2012. In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
-The RPi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
+The Raspberry Pi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the Raspberry Pi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
 
-The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the current machine-learned model.
+The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the predictions made by a model of each plant's moisture conditions.
 
-In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcasted to the whole gardening distributed network. 
+In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcast to every Raspberry Pi in the current garden network. 
 
-\section{Implementation}
+\section{Software Implementation}
 
-All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B, running Linux Debian.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W. 
-
-On the client side, the web user interface complies with web standards and runs JavaScript to display the latest data with visual graphs in real-time.
+All systems were implemented in Python 2.7, and all tests were performed on a Raspberry Pi Model B, running Debian Linux.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The Raspberry Pi is rated to 700mA at 3.5W.  On the client side, the web user interface complies with web standards and runs JavaScript to display the latest data with visual graphs in real-time.
 
 \subsection{Webserver}
 
-We elected to use a pre-made open-source webserver for our implementation: Tornado \cite{}.  It was created by Friendfeed for their primary web stack, and later open sourced by Facebook after their acquisition \cite{}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
+We elected to use a pre-made open-source webserver for our implementation: Tornado \cite{Tornado}.  It was created by FriendFeed for their primary web stack, and later open sourced by Facebook after they acquired FriendFeed \cite{TornadoAnnounce}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
 
-The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The most recent 15 historical data points for plant moisture are transmitted when the page is loaded, afterwards sensor and model data are updated whenever new data are available.
+The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The most recent 15 historical data points for plant moisture are transmitted when the page is loaded, afterwards sensor and model data are updated whenever new information is available.
 
 In order to build a test harness which can simulate many sensors and many clients without the need for in-garden devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
 
 \subsection{Schedulers}
 
-Six independent schedulers were built, as described in the Introduction: Na\"{\i}ve, Periodic Offline, Sensor-triggered, Hybrid, Low Load, and Predicted Demand.  The scheduler API is as follows:
+Six independent schedulers were built: Na\"{\i}ve, Periodic Offline, Sensor-triggered, Hybrid, Low Load, and Predicted Demand.  The scheduler API is as follows:
 
 \begin{lstlisting}
-gotSensorEvent(plant_num, value) # by default, does nothing
-gotClientRequest(plant_name) # by default, does nothing
-timeToRunML() # returns bool ; by default, returns false
+gotSensorEvent(plant_num, value)
+gotClientRequest(plant_name)
+timeToRunML() # returns bool
 runMLPredict() # returns float
 runMLUpdate() # returns float
 \end{lstlisting}

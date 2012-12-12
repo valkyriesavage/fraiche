@@ -12,7 +12,7 @@
  * as a callback function.
  * @param timeOutMillis the max amount of time to wait. If not specified, 3 sec is used.
  */
-function waitFor(testFx, onReady, timeOutMillis, whichplant) {
+function waitFor(testFx, onReady, timeOutMillis, whichplant, start) {
     var maxtimeOutMillis = timeOutMillis ? timeOutMillis : 60000, //< Default Max Timout is 60s
         start = new Date().getTime(),
         condition = false,
@@ -27,7 +27,8 @@ function waitFor(testFx, onReady, timeOutMillis, whichplant) {
                     phantom.exit(1);
                 } else {
                     // Condition fulfilled (timeout and/or condition is 'true')
-                    console.log(whichplant + "done at " + Math.round((new Date()).getTime() / 1000));
+                    time = ((new Date()).getTime() - start) / 1000;
+                    console.log("time: " + time);
                     typeof(onReady) === "string" ? eval(onReady) : onReady(); //< Do what it's supposed to do once the condition is fulfilled
                     clearInterval(interval); //< Stop this interval
                 }
@@ -39,6 +40,7 @@ function waitFor(testFx, onReady, timeOutMillis, whichplant) {
 var page = require('webpage').create();
 var system = require('system');
 var whichplant = system.args[1];
+var start = system.args[2];
 
 // Open plant page of random plant, and, onPageLoad, do...
 page.open("http://169.229.63.33:8888/?plant="+whichplant, function (status) {
@@ -53,8 +55,7 @@ page.open("http://169.229.63.33:8888/?plant="+whichplant, function (status) {
                 return incoming_data.length > 2;
             });
         }, function() {
-           console.log("The data came");
            phantom.exit();
-        }, 60000, whichplant);        
+        }, 60000, whichplant, start);        
     }
 });

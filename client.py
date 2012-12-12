@@ -9,8 +9,8 @@ class Client():
 
   def activate(self):
     plant = random.choice(self.plants)
-    print str(plant) + " start at " + str(time.time())
-    params = [Client.PHANTOM, Client.WAITFOR, str(plant)]
+    start = time.time()
+    params = [Client.PHANTOM, Client.WAITFOR, str(plant), str(time)]
     subprocess.check_call(params)
 
 if __name__ == '__main__':

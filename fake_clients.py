@@ -14,7 +14,6 @@ MAX_NUM_CLIENTS = -1
 def main(which_client):
   start = time.time()
   clients[which_client].activate()
-  clients[which_client].log(str(time.time() - start))
 
 def scale(val, src, dst):
   return ((val - src[0]) / (src[1] - src[0])) * (dst[1] - dst[0]) + dst[0]
@@ -28,7 +27,6 @@ def randomize_with_sin(counter):
 if __name__ == '__main__':
   if not len(sys.argv) >= 4:
     print "usage: " + sys.argv[0] + " numclients numplantsperclient delay"
-    print "make sure you ran 'python logging_server.py' beforehand!"
     sys.exit(0)
   MAX_NUM_CLIENTS = int(sys.argv[1])
   plants_per_client = int(sys.argv[2])
@@ -41,8 +39,12 @@ if __name__ == '__main__':
     while counter < 2*pi:
       counter += .1
       client_number = randomize_with_sin(counter)
+      processes = []
       for i in range(client_number):
         p = multiprocessing.Process(target=main, args=(i,))
         p.start()
+        processes.append(p)
+      for p in processes:
         p.join()
+
       time.sleep(delay)

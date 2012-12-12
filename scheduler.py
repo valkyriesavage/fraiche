@@ -76,7 +76,7 @@ class PeriodicScheduler(Scheduler):
   def isTimeToRunML(self):
     if self.modelFreshAtTime < 0:
       return True
-    return time.time() - self.modelFreshAtTime > LEARNING_THRESHOLD
+    return time.time() - self.modelFreshAtTime > self.LEARNING_THRESHOLD
 
 class HybridScheduler(Scheduler):
 
@@ -119,8 +119,8 @@ class LowLoadScheduler(Scheduler):
     '''
     return reduce(lambda x, y: x + y,
                   map(lambda x: 1,
-                      filter(lambda x: x + RECENCY_THRESHOLD > time.time(),
-                             self.recentClientRequests))) < RECENT_REQUESTS_LOW_THRESHOLD
+                      filter(lambda x: x + self.RECENCY_THRESHOLD > time.time(),
+                             self.recentClientRequests))) < self.RECENT_REQUESTS_LOW_THRESHOLD
 
   def isTimeToRunML(self):
     if self.loadIsLow():

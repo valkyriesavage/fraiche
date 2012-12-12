@@ -142,9 +142,11 @@ def main():
   tornado.options.parse_command_line()
   app = Application(options.scheduler, options.freshness)
   app.listen(options.port)
+  main_loop = tornado.ioloop.IOLoop.instance()
   period_ms = 5*1000;
-  periodic = tornado.ioloop.PeriodicCallback(app.scheduler.considerMLUpdate, period_ms, io_loop = app)
-  tornado.ioloop.IOLoop.instance().start()
+  periodic = tornado.ioloop.PeriodicCallback(app.scheduler.considerMLUpdate, period_ms, io_loop = main_loop)
+  periodic.start()
+  main_loop.start()
 
 if __name__ == "__main__":
   main()

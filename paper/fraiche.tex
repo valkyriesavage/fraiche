@@ -57,7 +57,12 @@ For virtual machines sharing a physical computer, Xen has explored the resource 
 
 Work on scheduling for parallel clusters has included Lithe \cite{}, use of loosely-synchronized clocks \cite{}, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
 
-\subsection{Load-balancing}
+\subsection{Load Balancing}
+
+hardware solutions
+software solutions: mechanism of assignment to server
+distributed network
+
 
 \subsection{Machine Learning}
 
@@ -77,7 +82,7 @@ This device awakens from sleep mode approximately once per hour or when the butt
 
 \subsection{Raspberry Pi(s)}
 
-The Rapsberry Pi is a low-cost (~USD35), portable single-board computer that is released earlier this year in 2012. In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
+The Rapsberry Pi is a low-cost (~USD35), portable single-board computer released in 2012. In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
 The RPi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  Since power consumption is tight on the battery-powered systems, this communication takes place about once per hour.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the RPi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
 
@@ -87,7 +92,9 @@ In the scenario we describe with multiple Raspberry Pis, each has a connection t
 
 \section{Implementation}
 
-All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B, running Linu Debian.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W. The web user interface runs Javascript to display the latest data with visual graphs.
+All systems were composed in Python 2.7, and all tests were performed on a Raspberry Pi Model B, running Linux Debian.  Specs of the Raspberry Pi are as follows: 700MHz ARM 1176JZF-S core, Broadcomp VideoCore IV, 512MB SDRAM shared between CPU and GPU, 32GB SD card.  The RPi is rated to 700mA at 3.5W. 
+
+On the client side, the web user interface complies with web standards and runs JavaScript to display the latest data with visual graphs in real-time.
 
 \subsection{Webserver}
 
@@ -141,12 +148,13 @@ The predicted demand scheduler has a meta-scheduler of the na\"{i}ve variety.  T
 
 \subsection{Client-side Modeling}
 
-One inspiration from working with Raaspberry Pi is to leverage computation to the clients, which (blah blah)
-Using Javascript... as we receive the data update
+One inspiration from working with Raaspberry Pi is to leverage computation to the clients, while current web browsers and consumer devices are capable to perform reasonably heavy computation. Therefore, we moved the machine learning task, which was by far the greatest source of CPU use, to the client side in the JavaScript library when receiving the data update. In this way, we reduce the workload of the web server at the cost of repetitive client-side computation. We suspect this is a reasonable tradeoff for a low-cost network system.
 
 \subsection{A World of Multiple Pis}
 
-Consider more devices...
+Moving beyond a scenario of , we consider more devices...
+
+We added an additional Raspberry Pi and facilities for the two to communicate and load balance using Amazon Cloud Services as an intermediary data storage location.  This system is scalable and self-balancing.
 
 Report to the central storage: We chose to use the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud. 
 
@@ -189,9 +197,7 @@ lala
 lala
 graph of latency here
 
-\section{Conclusions}
-
-\subsection{Future Work}
+\section{Conclusions and Future Work}
 
 In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks
 

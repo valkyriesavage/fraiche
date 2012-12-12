@@ -47,7 +47,6 @@ if __name__ == '__main__':
   diffs = [timing[0] + wait_time - timing[-1]]
   for i in xrange(1, len(timing)):
     diffs.append(timing[i] - timing[i-1])
-  print diffs
 
   while True:
     for i in xrange(len(diffs)):

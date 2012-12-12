@@ -28,16 +28,13 @@ do
     cmdpi="python server.py --scheduler=$scheduler --freshness=$gardentype-$scheduler >>nohup-$gardentype-$scheduler.out 2>&1 &"
     ssh pi@169.229.63.33 "cd fraiche; echo $cmdpi > nohup-$gardentype-$scheduler.out; $cmdpi"
     sleep 5
-    python logging_server.py 1&>experiment-results/$gardentype-$scheduler.log &
-    echo $! > logging_server_pid
     python fake_sensors.py $sensornum $sensordelay &
     echo $! > fake_sensors_pid
-    python fake_clients.py $clientnum $plantsperclient $clientdelay &
+    python fake_clients.py $clientnum $plantsperclient $clientdelay 1&>experiment-results/$gardentype-$scheduler.log &
     echo $! > fake_clients_pid
 
     sleep 900
 
-    kill `cat logging_server_pid`
     kill `cat fake_sensors_pid`
     kill `cat fake_clients_pid`
     kill `ps aux | grep firefox | cut -d " " -f 3`
@@ -45,3 +42,5 @@ do
     sleep 5
   done
 done
+rm fake_sensors_pid
+rm fake_clients_pid

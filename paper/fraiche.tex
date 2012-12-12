@@ -9,6 +9,9 @@
 \author{Peggy Chi \and Jonathan Kummerfeld \and Valkyrie Savage}
 \maketitle
 
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
 \section{Abstract}
 
 FRAICHE is a complete small-scale sensing and watering system for deployment in community gardens.  The goal is to provide gardeners with a web interface detailing the current status of their plants as well as a machine-learned model of how they ought to care for their plants based on data from their historical plant interactions and the interactions of other gardeners with their plants.  FRAICHE is implemented using a Raspberry Pi, a system with minimal computing power, and we want to leverage this power as effectively as possible to deliver the freshest models to clients when they access the web interface.  In order to effectively test the system, we simulated a scaled up version.  We got RESULTS!
@@ -73,6 +76,13 @@ distributed network
 \section{Architecture}
 
 FRAICHE is composed of two distinctly different physical systems.  One is the device co-located with plants in the garden.  This device is built on an ATMEL chip.  The second system is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
+
+\begin{figure}[h!]
+  \centering
+    \reflectbox{%
+      \includegraphics[width=0.5\textwidth]{architecture.png}}
+  \caption{Fraiche System Architecture}
+\end{figure}
 
 \subsection{In-garden device}
 

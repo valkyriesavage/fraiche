@@ -11,8 +11,12 @@
 \lstset{language=python}
 \begin{document}
 
-\title{Fast Response And Intelligently Controlled Harvest Environment}
-\author{Peggy Chi \and Jonathan Kummerfeld \and Valkyrie Savage}
+\title{FRAICHE: Fast Response And Intelligently Controlled Harvest Environment}
+\author{\alignauthor Peggy Chi, Jonathan Kummerfeld, Valkyrie Savage \\
+\affaddr{Computer Science Division\\University of California, Berkeley} \\
+\email{\{peggychi, jkk, valkyrie\}@cs.berkeley.edu}\\
+\text{CS262A Final Project, Fall 2012}
+} 
 \maketitle
 
 \setcounter{page}{1}
@@ -44,21 +48,21 @@ While the focus of this work is very specific, it is worth taking a broader view
 %TODO: Fill in cites, also make an editing pass
 There has been a bevy of work on resource management for both parallel clusters and multiple virtual machines running on a single physical machine.
 
-The Dominant Resource Fairness algorithm \cite{} is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand; it is a port of max-min allocation \cite{} where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
+The Dominant Resource Fairness algorithm is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand [Ghodsi et al. 2011]. It is a port of max-min allocation where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
 
-Jockey \cite{} is another resource management system, and it is built to hold processes to particular Service Level Objectives (SLOs).  Jockey uses predictive algorithms to simulate each job and estimate the time to completion.  FRAICHE differs in that we are aiming to serve models that are as fresh as possible to clients, and the access times of clients are not as well- or strictly defined as SLOs.
+Jockey is another resource management system, and it is built to hold processes to particular Service Level Objectives (SLOs) [Ferguson et al. 2012].  Jockey uses predictive algorithms to simulate each job and estimate the time to completion. FRAICHE differs in that we are aiming to serve models that are as fresh as possible to clients, and the access times of clients are not as well - or strictly defined as SLOs.
 
-Lottery scheduling has been put to use for managing resources: the basic idea is to allot a certain number of tickets to each process requiring a resource based on that process's importance and relative need for the resource.  FRAICHE's goals are not to schedule many processes fairly to run in minimal time, but rather to run the model refinement algorithms as close as possible to clients' requests for plant data.
+Lottery scheduling has been put to use for managing resources: the basic idea is to allot a certain number of tickets to each process requiring a resource based on that process's importance and relative need for the resource [Waldspurger and Weihl 1994]. FRAICHE's goals are not to schedule many processes fairly to run in minimal time, but rather to run the model refinement algorithms as close as possible to clients' requests for plant data.
 
-For virtual machines sharing a physical computer, Xen has explored the resource management question.  However their main challenges lay in isolation of the various virtual machines from each other in order to ensure security, while our challenges lay mainly in scheduling.
+For virtual machines sharing a physical computer, Xen has explored the resource management question [Barham et al. 2003].  However their main challenges lay in isolation of the various virtual machines from each other in order to ensure security, while our challenges lay mainly in scheduling.
 
-Work on scheduling for parallel clusters has included Lithe \cite{}, use of loosely-synchronized clocks \cite{}, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
+Work on scheduling for parallel clusters has included Lithe [Pan et al. 2010], use of loosely-synchronized clocks, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
 
-\subsection{Load Balancing}
+\subsection{P2P Network and Load Balancing}
 
-hardware solutions
-software solutions: mechanism of assignment to server
-distributed network
+Sharing available workstations in a shared computing environment has been widely studied in the distributed systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry [Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" [Litzknow et al. 1988]. More recent systems including Pastry [Rowstron and Druschel 2001] and Chord [Stoica et al. 2001] design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. 
+
+Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing by using a trace-driven simulation [1997]. It required no a priori knowledge about the process behaviors in networks of workstations. Harish and Owens [1999] designed load balancing models and algorithms for DNS servers.
 
 
 \subsection{Environmental Monitoring}
@@ -212,6 +216,20 @@ acquiring real-time weather conditions (e.g. weather.com XML format)
 trigger on sensors
 
 compare with other watering systems (ETO)
+
+\section{REFERENCES}
+
+1.	Barham, P., Dragovic, B., Fraser, K., et al. Xen and the art of virtualization. ACM SIGOPS Operating Systems Review 37, 5 (2003), 164–177.\\
+2.	Ferguson, A.D., Bodik, P., Kandula, S., and Boutin, E. Jockey: Guaranteed Job Latency in Data Parallel Clusters. (2012).\\
+3.	Ghodsi, A., Zaharia, M., Hindman, B., and Konwinski, A. Dominant resource fairness: fair allocation of multiple resource types. USENIX, (2011).\\
+4.	Harchol-Balter, M. and Downey, A.B. Exploiting process lifetime distributions for dynamic load balancing. ACM Transactions on Computer Systems 15, 3 (1997), 253–285.\\
+5.	Harish, V.C. and Owens, B. Dynamic Load Balancing DNS. Linux Journal 1999, 64es (1999).\\
+6.	Litzkow, M.J., Livny, M., and Mutka, M.W. Condor-a hunter of idle workstations. Computing Systems, (1988).\\
+7.	Nichols, D. Using idle workstations in a shared computing environment. ACM SIGOPS Operating Systems Review, (1987).\\
+8.	Pan, H., Hindman, B., and Asanovic, K. Composing Parallel Software Efficiently with Lithe. ACM Sigplan Notices, (2010).\\
+9.	Rowstron, A. and Druschel, P. Pastry: Scalable, Decentralized Object Location, and Routing for Large-Scale Peer-to-Peer Systems. In Middleware 2001. Springer Berlin Heidelberg, Berlin, Heidelberg, 2001, 329–350.\\
+10.	Stoica, I., Morris, R., Karger, D., et al. Chord: A scalable peer-to-peer lookup service for internet applications. ACM SIGCOMM Computer Communication Review 31, 4 (2001), 149-160.\\
+11.	Waldspurger, C.A. and Weihl, W.E. Lottery Scheduling: Flexible Proportional-Share Resource Management. (1994).
 
 \bibliography{bib}
 \bibliographystyle{plainnat}

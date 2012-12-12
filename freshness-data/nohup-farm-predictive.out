@@ -1,0 +1,91 @@
+python server.py --scheduler=predictive --freshness=farm-predictive
+[I 121212 04:45:00 web:1447] 200 GET /?plant=78 (50.131.237.137) 70.93ms
+[I 121212 04:45:00 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 103.08ms
+[I 121212 04:45:00 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 9.15ms
+[I 121212 04:45:00 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.71ms
+[I 121212 04:45:00 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.89ms
+[I 121212 04:45:01 scheduler:40] freshness : 0.661190032959
+[I 121212 04:46:07 web:1447] 200 GET /?plant=88 (50.131.237.137) 8.87ms
+[I 121212 04:46:07 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.42ms
+[I 121212 04:46:07 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 8.33ms
+[I 121212 04:46:07 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.74ms
+[I 121212 04:46:07 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.60ms
+[I 121212 04:46:08 scheduler:40] freshness : 67.5860369205
+[I 121212 04:47:14 web:1447] 200 GET /?plant=12 (50.131.237.137) 6.44ms
+[I 121212 04:47:14 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.56ms
+[I 121212 04:47:14 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.48ms
+[I 121212 04:47:14 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.27ms
+[I 121212 04:47:14 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.72ms
+[I 121212 04:47:15 scheduler:40] freshness : 134.516423941
+[I 121212 04:48:21 web:1447] 200 GET /?plant=39 (50.131.237.137) 6.12ms
+[I 121212 04:48:21 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.88ms
+[I 121212 04:48:21 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.31ms
+[I 121212 04:48:21 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.37ms
+[I 121212 04:48:21 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 11.63ms
+[I 121212 04:48:22 scheduler:40] freshness : 201.720749855
+[I 121212 04:49:28 web:1447] 200 GET /?plant=93 (50.131.237.137) 6.52ms
+[I 121212 04:49:28 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.84ms
+[I 121212 04:49:28 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.34ms
+[I 121212 04:49:28 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.56ms
+[I 121212 04:49:28 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.65ms
+[I 121212 04:49:29 scheduler:40] freshness : 268.685658932
+[I 121212 04:50:35 web:1447] 200 GET /?plant=88 (50.131.237.137) 6.51ms
+[I 121212 04:50:35 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.77ms
+[I 121212 04:50:35 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.39ms
+[I 121212 04:50:35 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.54ms
+[I 121212 04:50:35 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 9.36ms
+[I 121212 04:50:36 scheduler:40] freshness : 335.98701787
+[I 121212 04:51:43 web:1447] 200 GET /?plant=39 (50.131.237.137) 6.11ms
+[I 121212 04:51:43 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.94ms
+[I 121212 04:51:43 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.21ms
+[I 121212 04:51:43 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.51ms
+[I 121212 04:51:43 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.75ms
+[I 121212 04:51:43 scheduler:40] freshness : 402.94746995
+[I 121212 04:52:50 web:1447] 200 GET /?plant=18 (50.131.237.137) 11.18ms
+[I 121212 04:52:50 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.47ms
+[I 121212 04:52:50 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.76ms
+[I 121212 04:52:50 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.69ms
+[I 121212 04:52:50 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.30ms
+[I 121212 04:52:50 scheduler:40] freshness : 470.155133963
+[I 121212 04:53:57 web:1447] 200 GET /?plant=53 (50.131.237.137) 6.43ms
+[I 121212 04:53:57 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.77ms
+[I 121212 04:53:57 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.32ms
+[I 121212 04:53:57 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.26ms
+[I 121212 04:53:57 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.77ms
+[I 121212 04:53:57 scheduler:40] freshness : 537.072127819
+[I 121212 04:55:04 web:1447] 200 GET /?plant=16 (50.131.237.137) 6.25ms
+[I 121212 04:55:04 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.95ms
+[I 121212 04:55:04 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.54ms
+[I 121212 04:55:04 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.58ms
+[I 121212 04:55:04 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.86ms
+[I 121212 04:55:04 scheduler:40] freshness : 604.338527918
+[I 121212 04:56:11 web:1447] 200 GET /?plant=75 (50.131.237.137) 6.42ms
+[I 121212 04:56:11 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.86ms
+[I 121212 04:56:11 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.57ms
+[I 121212 04:56:11 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.38ms
+[I 121212 04:56:11 web:1447] 200 GET /static/chart.css (50.131.237.137) 8.90ms
+[I 121212 04:56:11 scheduler:40] freshness : 671.280124903
+[I 121212 04:57:18 web:1447] 200 GET /?plant=87 (50.131.237.137) 6.48ms
+[I 121212 04:57:18 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 10.44ms
+[I 121212 04:57:18 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 8.04ms
+[I 121212 04:57:18 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.45ms
+[I 121212 04:57:18 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.56ms
+[I 121212 04:57:19 scheduler:40] freshness : 738.511417866
+[I 121212 04:58:25 web:1447] 200 GET /?plant=18 (50.131.237.137) 6.41ms
+[I 121212 04:58:25 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.56ms
+[I 121212 04:58:25 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.57ms
+[I 121212 04:58:25 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.79ms
+[I 121212 04:58:25 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.65ms
+[I 121212 04:58:26 scheduler:40] freshness : 805.452888966
+[I 121212 04:59:32 web:1447] 200 GET /?plant=0 (50.131.237.137) 6.38ms
+[I 121212 04:59:32 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.87ms
+[I 121212 04:59:32 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 9.15ms
+[I 121212 04:59:32 web:1447] 200 GET /static/chart.css (50.131.237.137) 12.39ms
+[I 121212 04:59:32 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.71ms
+[I 121212 04:59:34 scheduler:40] freshness : 873.635790825
+[I 121212 04:59:41 web:1447] 200 GET /?plant=27 (50.131.237.137) 6.22ms
+[I 121212 04:59:41 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.69ms
+[I 121212 04:59:41 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.65ms
+[I 121212 04:59:41 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 8.88ms
+[I 121212 04:59:41 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.56ms
+[I 121212 04:59:41 scheduler:40] freshness : 880.981750965

@@ -1,0 +1,1 @@
+2012-12-12 02:41:58.409 phantomjs[76671:2803] In '__CFPasteboardCopyData', file /SourceCache/CF/CF-635.21/AppServices.subproj/CFPasteboard.c, line 2372, during unlock, spin lock 0xe220018 has value 0x0, which is not locked.  The memory has been smashed or the lock is being unlocked when not locked.

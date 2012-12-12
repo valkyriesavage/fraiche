@@ -1,0 +1,1720 @@
+python server.py --scheduler=sensor --freshness=farm-sensor
+[E 121212 03:58:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 03:58:47 web:1447] 200 GET /?plant=23 (50.131.237.137) 69.89ms
+[I 121212 03:58:47 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 95.49ms
+[I 121212 03:58:47 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.83ms
+[I 121212 03:58:47 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.63ms
+[I 121212 03:58:47 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.60ms
+[E 121212 03:58:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 03:58:47 scheduler:37] freshness : NAN
+[E 121212 03:58:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:58:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 03:59:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:00:04 web:1447] 200 GET /?plant=40 (50.131.237.137) 6.70ms
+[I 121212 04:00:04 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.74ms
+[I 121212 04:00:04 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.24ms
+[I 121212 04:00:04 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.42ms
+[I 121212 04:00:04 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.40ms
+[I 121212 04:00:04 scheduler:37] freshness : NAN
+[E 121212 04:00:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:00:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:01:11 web:1447] 200 GET /?plant=22 (50.131.237.137) 6.62ms
+[I 121212 04:01:11 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.74ms
+[I 121212 04:01:11 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.10ms
+[I 121212 04:01:11 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.09ms
+[I 121212 04:01:11 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 8.15ms
+[I 121212 04:01:12 scheduler:37] freshness : NAN
+[E 121212 04:01:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:01:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:02:18 web:1447] 200 GET /?plant=35 (50.131.237.137) 6.56ms
+[I 121212 04:02:18 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.62ms
+[I 121212 04:02:18 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.36ms
+[I 121212 04:02:18 web:1447] 200 GET /static/chart.css (50.131.237.137) 8.95ms
+[I 121212 04:02:18 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.23ms
+[I 121212 04:02:18 scheduler:37] freshness : NAN
+[E 121212 04:02:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:02:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:03:25 web:1447] 200 GET /?plant=38 (50.131.237.137) 6.54ms
+[I 121212 04:03:25 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.89ms
+[I 121212 04:03:25 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 8.07ms
+[I 121212 04:03:25 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.42ms
+[I 121212 04:03:25 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.25ms
+[I 121212 04:03:26 scheduler:37] freshness : NAN
+[E 121212 04:03:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:03:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:04:32 web:1447] 200 GET /?plant=4 (50.131.237.137) 6.88ms
+[I 121212 04:04:32 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.70ms
+[I 121212 04:04:32 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.73ms
+[I 121212 04:04:32 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.18ms
+[I 121212 04:04:32 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.46ms
+[I 121212 04:04:33 scheduler:37] freshness : NAN
+[E 121212 04:04:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:04:40 web:1447] 200 GET /?plant=24 (50.131.237.137) 6.60ms
+[I 121212 04:04:40 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.72ms
+[I 121212 04:04:40 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.76ms
+[I 121212 04:04:40 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.23ms
+[I 121212 04:04:40 web:1447] 200 GET /static/chart.css (50.131.237.137) 12.24ms
+[I 121212 04:04:40 scheduler:37] freshness : NAN
+[E 121212 04:04:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:04:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:05:46 web:1447] 200 GET /?plant=14 (50.131.237.137) 6.67ms
+[I 121212 04:05:46 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.70ms
+[I 121212 04:05:47 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 8.02ms
+[I 121212 04:05:47 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.05ms
+[I 121212 04:05:47 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.51ms
+[E 121212 04:05:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:05:47 scheduler:37] freshness : NAN
+[E 121212 04:05:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:05:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:08 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:06:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:06:54 web:1447] 200 GET /?plant=24 (50.131.237.137) 6.53ms
+[I 121212 04:06:54 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.49ms
+[I 121212 04:06:54 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.20ms
+[I 121212 04:06:54 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.16ms
+[I 121212 04:06:54 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.56ms
+[I 121212 04:06:54 scheduler:37] freshness : NAN
+[E 121212 04:06:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:07:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:08:01 web:1447] 200 GET /?plant=68 (50.131.237.137) 7.09ms
+[I 121212 04:08:01 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 9.86ms
+[I 121212 04:08:01 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.36ms
+[I 121212 04:08:01 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.52ms
+[I 121212 04:08:01 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.78ms
+[I 121212 04:08:01 scheduler:37] freshness : NAN
+[E 121212 04:08:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:08:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:09:08 web:1447] 200 GET /?plant=89 (50.131.237.137) 12.05ms
+[I 121212 04:09:08 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.25ms
+[I 121212 04:09:08 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.26ms
+[I 121212 04:09:08 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.38ms
+[I 121212 04:09:08 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.42ms
+[I 121212 04:09:08 scheduler:37] freshness : NAN
+[E 121212 04:09:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:09:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:10:15 web:1447] 200 GET /?plant=86 (50.131.237.137) 7.01ms
+[I 121212 04:10:15 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 9.18ms
+[I 121212 04:10:15 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.27ms
+[I 121212 04:10:15 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.13ms
+[I 121212 04:10:15 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.37ms
+[I 121212 04:10:16 scheduler:37] freshness : NAN
+[E 121212 04:10:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:10:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:11:22 web:1447] 200 GET /?plant=10 (50.131.237.137) 6.62ms
+[I 121212 04:11:22 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.35ms
+[E 121212 04:11:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:11:22 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.32ms
+[I 121212 04:11:22 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.23ms
+[I 121212 04:11:22 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.51ms
+[I 121212 04:11:22 scheduler:37] freshness : NAN
+[E 121212 04:11:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:11:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:12:29 web:1447] 200 GET /?plant=10 (50.131.237.137) 6.43ms
+[I 121212 04:12:29 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 8.69ms
+[I 121212 04:12:29 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.36ms
+[I 121212 04:12:29 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.43ms
+[I 121212 04:12:29 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 9.04ms
+[I 121212 04:12:30 scheduler:37] freshness : NAN
+[E 121212 04:12:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:47 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:52 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:12:57 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:02 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:07 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:12 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:17 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:22 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:27 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:32 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[I 121212 04:13:36 web:1447] 200 GET /?plant=26 (50.131.237.137) 6.92ms
+[I 121212 04:13:36 web:1447] 200 GET /static/tomato_chart.js (50.131.237.137) 7.84ms
+[I 121212 04:13:36 web:1447] 200 GET /static/chart.css (50.131.237.137) 7.26ms
+[I 121212 04:13:36 web:1447] 200 GET /static/H2O_IQ.css (50.131.237.137) 7.17ms
+[I 121212 04:13:36 web:1447] 200 GET /static/manual_form.css (50.131.237.137) 7.97ms
+[I 121212 04:13:37 scheduler:37] freshness : NAN
+[E 121212 04:13:37 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined
+[E 121212 04:13:42 ioloop:504] Error in periodic callback
+    Traceback (most recent call last):
+      File "/usr/local/lib/python2.7/dist-packages/tornado/ioloop.py", line 502, in _run
+        self.callback()
+      File "/home/pi/fraiche/scheduler.py", line 51, in considerMLUpdate
+        if not self.isTimeToRunML():
+      File "/home/pi/fraiche/scheduler.py", line 101, in isTimeToRunML
+        return false
+    NameError: global name 'false' is not defined

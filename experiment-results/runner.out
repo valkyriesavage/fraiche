@@ -1,0 +1,72 @@
+personal naive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=naive --freshness=personal-naive >>nohup-personal-naive.out 2>&1 & > nohup-personal-naive.out; python server.py --scheduler=naive --freshness=personal-naive >>nohup-personal-naive.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-naive-fs.log  2>experiment-results/personal-naive-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-naive.log  2>experiment-results/personal-naive.err &
+farm naive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=naive --freshness=farm-naive >>nohup-farm-naive.out 2>&1 & > nohup-farm-naive.out; python server.py --scheduler=naive --freshness=farm-naive >>nohup-farm-naive.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-naive-fs.log  2>experiment-results/farm-naive-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-naive.log  2>experiment-results/farm-naive.err &
+community naive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=naive --freshness=community-naive >>nohup-community-naive.out 2>&1 & > nohup-community-naive.out; python server.py --scheduler=naive --freshness=community-naive >>nohup-community-naive.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-naive-fs.log  2>experiment-results/community-naive-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-naive.log  2>experiment-results/community-naive.err &
+personal periodic:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=periodic --freshness=personal-periodic >>nohup-personal-periodic.out 2>&1 & > nohup-personal-periodic.out; python server.py --scheduler=periodic --freshness=personal-periodic >>nohup-personal-periodic.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-periodic-fs.log  2>experiment-results/personal-periodic-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-periodic.log  2>experiment-results/personal-periodic.err &
+farm periodic:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=periodic --freshness=farm-periodic >>nohup-farm-periodic.out 2>&1 & > nohup-farm-periodic.out; python server.py --scheduler=periodic --freshness=farm-periodic >>nohup-farm-periodic.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-periodic-fs.log  2>experiment-results/farm-periodic-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-periodic.log  2>experiment-results/farm-periodic.err &
+community periodic:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=periodic --freshness=community-periodic >>nohup-community-periodic.out 2>&1 & > nohup-community-periodic.out; python server.py --scheduler=periodic --freshness=community-periodic >>nohup-community-periodic.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-periodic-fs.log  2>experiment-results/community-periodic-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-periodic.log  2>experiment-results/community-periodic.err &
+personal hybrid:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=hybrid --freshness=personal-hybrid >>nohup-personal-hybrid.out 2>&1 & > nohup-personal-hybrid.out; python server.py --scheduler=hybrid --freshness=personal-hybrid >>nohup-personal-hybrid.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-hybrid-fs.log  2>experiment-results/personal-hybrid-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-hybrid.log  2>experiment-results/personal-hybrid.err &
+farm hybrid:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=hybrid --freshness=farm-hybrid >>nohup-farm-hybrid.out 2>&1 & > nohup-farm-hybrid.out; python server.py --scheduler=hybrid --freshness=farm-hybrid >>nohup-farm-hybrid.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-hybrid-fs.log  2>experiment-results/farm-hybrid-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-hybrid.log  2>experiment-results/farm-hybrid.err &
+community hybrid:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=hybrid --freshness=community-hybrid >>nohup-community-hybrid.out 2>&1 & > nohup-community-hybrid.out; python server.py --scheduler=hybrid --freshness=community-hybrid >>nohup-community-hybrid.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-hybrid-fs.log  2>experiment-results/community-hybrid-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-hybrid.log  2>experiment-results/community-hybrid.err &
+personal load:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=load --freshness=personal-load >>nohup-personal-load.out 2>&1 & > nohup-personal-load.out; python server.py --scheduler=load --freshness=personal-load >>nohup-personal-load.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-load-fs.log  2>experiment-results/personal-load-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-load.log  2>experiment-results/personal-load.err &
+farm load:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=load --freshness=farm-load >>nohup-farm-load.out 2>&1 & > nohup-farm-load.out; python server.py --scheduler=load --freshness=farm-load >>nohup-farm-load.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-load-fs.log  2>experiment-results/farm-load-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-load.log  2>experiment-results/farm-load.err &
+community load:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=load --freshness=community-load >>nohup-community-load.out 2>&1 & > nohup-community-load.out; python server.py --scheduler=load --freshness=community-load >>nohup-community-load.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-load-fs.log  2>experiment-results/community-load-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-load.log  2>experiment-results/community-load.err &
+personal sensor:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=sensor --freshness=personal-sensor >>nohup-personal-sensor.out 2>&1 & > nohup-personal-sensor.out; python server.py --scheduler=sensor --freshness=personal-sensor >>nohup-personal-sensor.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-sensor-fs.log  2>experiment-results/personal-sensor-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-sensor.log  2>experiment-results/personal-sensor.err &
+farm sensor:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=sensor --freshness=farm-sensor >>nohup-farm-sensor.out 2>&1 & > nohup-farm-sensor.out; python server.py --scheduler=sensor --freshness=farm-sensor >>nohup-farm-sensor.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-sensor-fs.log  2>experiment-results/farm-sensor-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-sensor.log  2>experiment-results/farm-sensor.err &
+community sensor:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=sensor --freshness=community-sensor >>nohup-community-sensor.out 2>&1 & > nohup-community-sensor.out; python server.py --scheduler=sensor --freshness=community-sensor >>nohup-community-sensor.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-sensor-fs.log  2>experiment-results/community-sensor-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-sensor.log  2>experiment-results/community-sensor.err &
+personal predictive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=predictive --freshness=personal-predictive >>nohup-personal-predictive.out 2>&1 & > nohup-personal-predictive.out; python server.py --scheduler=predictive --freshness=personal-predictive >>nohup-personal-predictive.out 2>&1 &'
+python fake_sensors.py 5 15 >experiment-results/personal-predictive-fs.log  2>experiment-results/personal-predictive-fs.err &
+python fake_clients.py 1 5 5 >experiment-results/personal-predictive.log  2>experiment-results/personal-predictive.err &
+farm predictive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=predictive --freshness=farm-predictive >>nohup-farm-predictive.out 2>&1 & > nohup-farm-predictive.out; python server.py --scheduler=predictive --freshness=farm-predictive >>nohup-farm-predictive.out 2>&1 &'
+python fake_sensors.py 100 15 >experiment-results/farm-predictive-fs.log  2>experiment-results/farm-predictive-fs.err &
+python fake_clients.py 1 100 5 >experiment-results/farm-predictive.log  2>experiment-results/farm-predictive.err &
+community predictive:::::::
+ssh pi@169.229.63.33 'cd fraiche; echo python server.py --scheduler=predictive --freshness=community-predictive >>nohup-community-predictive.out 2>&1 & > nohup-community-predictive.out; python server.py --scheduler=predictive --freshness=community-predictive >>nohup-community-predictive.out 2>&1 &'
+python fake_sensors.py 99 15 >experiment-results/community-predictive-fs.log  2>experiment-results/community-predictive-fs.err &
+python fake_clients.py 33 3 5 >experiment-results/community-predictive.log  2>experiment-results/community-predictive.err &

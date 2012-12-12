@@ -33,8 +33,11 @@ class Scheduler:
     self.__dealWithClientRequest__(plant_num)
 
     # Record request freshness
-    self.modelFreshnessWhenServed.info("freshness :" +
-         str(time.time()) + ' ' + str(self.modelFreshAtTime) + '\n')
+    if self.modelFreshAtTime < 0:
+      self.modelFreshnessWhenServed.info("freshness : NAN")
+    else:
+      self.modelFreshnessWhenServed.info("freshness : " +
+           str(time.time() - self.modelFreshAtTime))
 
     # Return prediction
     return self.model[plant_num].predict(1)
@@ -44,7 +47,7 @@ class Scheduler:
     pass
 
   def considerMLUpdate(self):
-    # Periodiclly called by tornado
+    # Periodically called by tornado
     if not self.isTimeToRunML():
       return
     self.__executeMLUpdate__()

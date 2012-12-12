@@ -72,12 +72,6 @@ http://dl.acm.org/citation.cfm?id=1098918.1098925
 
 FRAICHE is composed of two physically separate system components.  One is the device co-located with plants in the garden, which we built based on an ATMEL chip.  The second component is a Raspberry Pi, which is located outside the garden.  The two communicate through an XBee wireless radio.
 
-\begin{figure}[h!]
-  \centering
-      \includegraphics[width=0.5\textwidth]{architecture.png}
-  \caption{Fraiche System Architecture}
-\end{figure}
-
 \subsection{In-garden device}
 
 The in-garden device contains several components within a 3D printed body and is connected to a drip irrigation system.  A servo attached to a valve controls the flow of water in the downstream portions of the irrigation system.  This servo is controlled by an ATMEL chip.  Attached to the circuitboard with the ATMEL chip is an XBee radio for communication, a battery, a solar panel, and an array of sensors for detecting moisture, temperature, \etc, of the soil.  On the top of the device there are also four buttons for managing watering configurations while co-located with the plants (\ie the user need not access the website to adjust watering thresholds: they can push a few buttons while looking at the plant if it seems to be too dry or too wet).
@@ -93,6 +87,12 @@ The Raspberry Pi's communication with the in-garden plant systems takes the form
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the predictions made by a model of each plant's moisture conditions.
 
 In the scenario we describe with multiple Raspberry Pis, each has a connection to a central database (stored in the cloud using Amazon EC2 service) which serves as a data repository. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcast to every Raspberry Pi in the current garden network. 
+
+\begin{figure}[h!]
+  \centering
+      \includegraphics[width=0.5\textwidth]{architecture.png}
+  \caption{Parallel form of the system architecture.}
+\end{figure}
 
 \section{Software Implementation}
 

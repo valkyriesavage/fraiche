@@ -106,7 +106,7 @@ class SensorBasedScheduler(Scheduler):
 
 class LowLoadScheduler(Scheduler):
   RECENCY_THRESHOLD = 10000000
-  RECENT_REQUESTS_LOW_THRESHOLD = 15
+  RECENT_REQUESTS_LOW_THRESHOLD = 3
   recentClientRequests = []
 
   def __dealWithClientRequest__(self, plant_num):
@@ -117,10 +117,11 @@ class LowLoadScheduler(Scheduler):
     load is low iff
     # requests within RECENCY_THRESHOLD < RECENT_REQUESTS_LOW_THRESHOLD
     '''
-    return reduce(lambda x, y: x + y,
-                  map(lambda x: 1,
-                      filter(lambda x: x + self.RECENCY_THRESHOLD > time.time(),
-                             self.recentClientRequests))) < self.RECENT_REQUESTS_LOW_THRESHOLD
+    recent_requests =  reduce(lambda x, y: x + y,
+                              map(lambda x: 1,
+                                  filter(lambda x: x + self.RECENCY_THRESHOLD > time.time(),
+                                         self.recentClientRequests)))
+    return recent_requests < RECENCY_REQUESTS_THRESHOLD
 
   def isTimeToRunML(self):
     if self.loadIsLow():

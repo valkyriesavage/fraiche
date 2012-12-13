@@ -3,7 +3,7 @@ import math, sys
 times = []
 
 for line in sys.stdin:
-  if "freshness :" in line:
+  if "freshness :" in line and not 'NAN' in line:
     times.append(float(line.split("freshness :")[-1]))
 
 average = sum(times)/len(times)

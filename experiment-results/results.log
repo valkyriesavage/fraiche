@@ -1,15 +1,15 @@
-means = [2.421, 2.711, 2.785, 2.905, 2.905, 2.954,
-3.547, 2.847, 4.797, 5.066, 2.893, 3.016,
-48.310, 60, 46.959, 38.819, 39.801, 40.027]
+means = [2.421, 2.711, 2.785, 19.349, 3.337, 2.954,
+3.547, 2.847, 4.797, 59.749, 3.222, 3.016,
+48.310, 60, 46.959, 38.819, 58.982, 40.027]
 
-std_devs = [0.689, 0.221, 0.171, 0.254, 0.282, 0.326,
-4.954, 0.315, 0.620, 1.088, 0.234, 0.333,
-11.046, 0, 9.829, 7.849, 10.406, 5.607]
+std_devs = [0.689, 0.221, 0.171, 1.813, 0.572, 0.326,
+4.954, 0.315, 0.620, 1.796, 0.629, 0.333,
+11.046, 0, 9.829, 7.849, 18.225, 5.607]
 
 bars_with_error(std_devs, means)
 set(gca, 'XTickLabel', {'Personal', 'Farm', 'Community'})
 legend('Naive', 'Periodic', 'Hybrid', 'Sensor', 'Load', 'Predictive')
-ylabel('latency per request (seconds)"
+ylabel('latency per request (seconds)')
 
 **********************************
 
@@ -32,8 +32,8 @@ average : 38.8188928571
 standard deviation : 7.84857618293
 
 community-load.log
-average : 39.8006371681
-standard deviation : 10.4062420039
+average : 58.9818
+standard deviation : 18.225
 
 community-predictive.log
 average : 40.0279032258
@@ -54,12 +54,12 @@ average : 4.79691803279
 standard deviation : 0.620244260892
 
 farm-sensor.log
-average : 5.06561403509
-standard deviation : 1.08815815477
+average : 59.7486923077
+standard deviation : 11.9381201576
 
 farm-load.log
-average : 2.89247540984
-standard deviation : 0.234310734322
+average : 3.222
+standard deviation : 0.629
 
 farm-predictive.log
 average : 3.01557142857
@@ -80,12 +80,12 @@ average : 2.78513333333
 standard deviation : 0.170807500596
 
 personal-sensor.log
-average : 2.90583606557
-standard deviation : 0.254495198404
+average : 19.34909375
+standard deviation : 5.4642306802
 
 personal-load.log
-average : 2.90515
-standard deviation : 0.281953766194
+average : 3.337
+standard deviation : 0.573
 
 personal-predictive.log
 average : 2.953546875

@@ -1,84 +1,61 @@
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-time: 0.5
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-'waitFor()' timeout
-we didn't get a connection within 60s
-TypeError: 'hi shiry' is not a valid argument for 'Function.prototype.apply' (evaluating 'incoming_data')
-
-  http://169.229.63.33:8888/static/tomato_chart.js:80
-  http://169.229.63.33:8888/static/tomato_chart.js:73
-we didn't get a connection within 60s
+time: 2.768
+time: 2.854
+time: 2.812
+time: 3.284
+time: 2.769
+time: 3.565
+time: 2.777
+time: 3.077
+time: 2.612
+time: 3.376
+time: 3.018
+time: 2.781
+time: 2.606
+time: 2.767
+time: 3.274
+time: 2.778
+time: 2.768
+time: 2.289
+time: 2.774
+time: 2.764
+time: 3.369
+time: 2.769
+time: 2.88
+time: 3.337
+time: 2.875
+time: 2.823
+time: 3.037
+time: 2.768
+time: 2.641
+time: 2.769
+time: 2.784
+time: 3.084
+time: 2.822
+time: 2.879
+time: 2.775
+time: 2.767
+time: 2.776
+time: 3.095
+time: 2.763
+time: 2.786
+time: 3.526
+time: 3.03
+time: 2.791
+time: 2.771
+time: 2.82
+time: 2.864
+time: 3.024
+time: 2.827
+time: 3.411
+time: 2.88
+time: 2.831
+time: 2.64
+time: 2.767
+time: 2.905
+time: 2.765
+time: 2.784
+time: 2.78
+time: 2.915
+time: 2.856
+time: 2.884
+time: 2.858

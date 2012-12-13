@@ -1,40 +1,53 @@
-./run-me.sh: line 40: kill: (74896) - No such process
-./run-me.sh: line 5: 74897 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (75062) - No such process
 No matching processes belonging to you were found
-./run-me.sh: line 5: 75063 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (75102) - No such process
-./run-me.sh: line 5: 75103 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (75671) - No such process
+./run-me.sh: line 5: 80411 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 80412 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
 No matching processes belonging to you were found
-./run-me.sh: line 5: 75672 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (75841) - No such process
-./run-me.sh: line 5: 75842 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (75881) - No such process
+./run-me.sh: line 5: 80581 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 80582 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (80743) - No such process
+./run-me.sh: line 5: 80744 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found
 No matching processes belonging to you were found
-./run-me.sh: line 5: 75882 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (76443) - No such process
-./run-me.sh: line 5: 76444 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (76617) - No such process
-./run-me.sh: line 5: 76618 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (76659) - No such process
-./run-me.sh: line 5: 76660 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (77205) - No such process
-./run-me.sh: line 5: 77206 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (77371) - No such process
-./run-me.sh: line 5: 77372 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (77491) - No such process
-./run-me.sh: line 5: 77492 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (78075) - No such process
-./run-me.sh: line 5: 78076 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (78246) - No such process
-./run-me.sh: line 5: 78247 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (78287) - No such process
-./run-me.sh: line 5: 78288 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (78941) - No such process
+./run-me.sh: line 5: 80908 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 80909 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
 No matching processes belonging to you were found
-./run-me.sh: line 5: 78942 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (79106) - No such process
-./run-me.sh: line 5: 79107 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
-./run-me.sh: line 40: kill: (79146) - No such process
-./run-me.sh: line 5: 79147 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 5: 81064 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 81065 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (81236) - No such process
+./run-me.sh: line 5: 81237 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found
+No matching processes belonging to you were found
+./run-me.sh: line 5: 81341 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 81342 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+No matching processes belonging to you were found
+./run-me.sh: line 5: 81518 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 81519 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (81665) - No such process
+./run-me.sh: line 5: 81666 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found
+./run-me.sh: line 5: 81791 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 81792 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+No matching processes belonging to you were found
+./run-me.sh: line 5: 81942 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 81943 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (82100) - No such process
+./run-me.sh: line 5: 82101 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found
+No matching processes belonging to you were found
+./run-me.sh: line 5: 82514 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 82515 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+No matching processes belonging to you were found
+./run-me.sh: line 5: 82672 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 82673 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (82829) - No such process
+./run-me.sh: line 5: 82830 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found
+No matching processes belonging to you were found
+./run-me.sh: line 5: 83004 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 83005 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+No matching processes belonging to you were found
+./run-me.sh: line 5: 83149 Terminated: 15          python fake_sensors.py $sensornum $sensordelay > experiment-results/$gardentype-$scheduler-fs.log 2> experiment-results/$gardentype-$scheduler-fs.err
+./run-me.sh: line 5: 83150 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+./run-me.sh: line 40: kill: (83305) - No such process
+./run-me.sh: line 5: 83306 Terminated: 15          python fake_clients.py $clientnum $plantsperclient $clientdelay > experiment-results/$gardentype-$scheduler.log 2> experiment-results/$gardentype-$scheduler.err
+python: no process found

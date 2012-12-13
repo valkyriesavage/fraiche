@@ -1,9 +1,0 @@
-Traceback (most recent call last):
-  File "fake_sensors.py", line 5, in <module>
-    from server import log_data_file
-  File "/Users/jkk/class/cs262a/project/fraiche/server.py", line 15, in <module>
-    from scheduler import *
-  File "/Users/jkk/class/cs262a/project/fraiche/scheduler.py", line 122
-    for val in self.recentClientRequests))):
-                                        ^
-SyntaxError: invalid syntax

@@ -1,0 +1,92 @@
+means = [2.421, 2.711, 2.785, 2.905, 2.905, 2.954,
+3.547, 2.847, 4.797, 5.066, 2.893, 3.016,
+48.310, 60, 46.959, 38.819, 39.801, 40.027]
+
+std_devs = [0.689, 0.221, 0.171, 0.254, 0.282, 0.326,
+4.954, 0.315, 0.620, 1.088, 0.234, 0.333,
+11.046, 0, 9.829, 7.849, 10.406, 5.607]
+
+bars_with_error(std_devs, means)
+set(gca, 'XTickLabel', {'Personal', 'Farm', 'Community'})
+legend('Naive', 'Periodic', 'Hybrid', 'Sensor', 'Load', 'Predictive')
+ylabel('latency per request (seconds)"
+
+**********************************
+
+community-naive.log
+average : 48.3095
+standard deviation : 11.0462529598
+
+community-periodic.log
+Traceback (most recent call last):
+  File "get_statistics.py", line 9, in <module>
+    average = sum(times)/len(times)
+ZeroDivisionError: integer division or modulo by zero
+
+community-hybrid.log
+average : 46.9594210526
+standard deviation : 9.82917429174
+
+community-sensor.log
+average : 38.8188928571
+standard deviation : 7.84857618293
+
+community-load.log
+average : 39.8006371681
+standard deviation : 10.4062420039
+
+community-predictive.log
+average : 40.0279032258
+standard deviation : 5.6070666981
+
+**********************************
+
+farm-naive.log
+average : 3.54716129032
+standard deviation : 4.95386835167
+
+farm-periodic.log
+average : 2.84678461538
+standard deviation : 0.314873659798
+
+farm-hybrid.log
+average : 4.79691803279
+standard deviation : 0.620244260892
+
+farm-sensor.log
+average : 5.06561403509
+standard deviation : 1.08815815477
+
+farm-load.log
+average : 2.89247540984
+standard deviation : 0.234310734322
+
+farm-predictive.log
+average : 3.01557142857
+standard deviation : 0.333249964997
+
+**********************************
+
+personal-naive.log
+average : 2.42093939394
+standard deviation : 0.688957515242
+
+personal-periodic.log
+average : 2.71120967742
+standard deviation : 0.221363519519
+
+personal-hybrid.log
+average : 2.78513333333
+standard deviation : 0.170807500596
+
+personal-sensor.log
+average : 2.90583606557
+standard deviation : 0.254495198404
+
+personal-load.log
+average : 2.90515
+standard deviation : 0.281953766194
+
+personal-predictive.log
+average : 2.953546875
+standard deviation : 0.327578219409

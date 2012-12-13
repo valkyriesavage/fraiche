@@ -1,0 +1,90 @@
+means = [0, 386.011, 0, 2.639, 0, 387.375,
+0, 445.615, 0, 0.133, 0, 389.499,
+0, 22.538, 0, 7.564, 0, 77.114]
+
+std_devs = [0, 249.581, 0, 2.171, 0, 248.129,
+0, 255.232, 0, 0.128, 0, 244.104,
+0, 6.020, 0, 4.999, 0, 54.956]
+
+bars_with_error(std_devs, means)
+set(gca, 'XTickLabel', {'Personal', 'Farm', 'Community'})
+legend('Naive', 'Periodic', 'Hybrid', 'Sensor', 'Load', 'Predictive')
+ylabel('freshness of model (seconds)')
+
+*************************************
+
+nohup-community-naive.out
+average : 3.83483039008e-05
+standard deviation : 8.50534461622e-06
+
+nohup-community-periodic.out
+average : 22.5376559496
+standard deviation : 6.02027922866
+
+nohup-community-hybrid.out
+average : 3.78033694099e-05
+standard deviation : 5.94416939153e-06
+
+nohup-community-sensor.out
+average : 7.56418155564
+standard deviation : 4.99853771317
+
+nohup-community-load.out
+average : nan
+standard deviation : nan
+
+nohup-community-predictive.out
+average : 77.1143164773
+standard deviation : 54.9561798515
+
+*************************************
+
+nohup-farm-naive.out
+average : 3.54128499185e-05
+standard deviation : 2.25263841696e-06
+
+nohup-farm-periodic.out
+average : 445.615802398
+standard deviation : 255.231537948
+
+nohup-farm-hybrid.out
+average : 3.58761334028e-05
+standard deviation : 4.15140688335e-06
+
+nohup-farm-sensor.out
+average : 0.133446425722
+standard deviation : 0.13808056322
+
+nohup-farm-load.out
+average : nan
+standard deviation : nan
+
+nohup-farm-predictive.out
+average : 389.498508839
+standard deviation : 244.104234659
+
+*************************************
+
+nohup-personal-naive.out
+average : 3.41119188251e-05
+standard deviation : 3.90718082796e-06
+
+nohup-personal-periodic.out
+average : 386.010606793
+standard deviation : 249.581788316
+
+nohup-personal-hybrid.out
+average : 3.54806582133e-05
+standard deviation : 2.32919693812e-06
+
+nohup-personal-sensor.out
+average : 2.63962152356
+standard deviation : 2.17089116365
+
+nohup-personal-load.out
+average : nan
+standard deviation : nan
+
+nohup-personal-predictive.out
+average : 387.374753017
+standard deviation : 248.128762063

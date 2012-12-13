@@ -5,20 +5,10 @@ Traceback (most recent call last):
     alert_server(str(plant_num), state, use_localhost)
   File "fake_sensors.py", line 25, in alert_server
     urllib.urlopen('http://169.229.63.33:8888/sensorupdated/' + plant_num + '/' + sensor_data)
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 86, in urlopen
+  File "/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/urllib.py", line 87, in urlopen
     return opener.open(url)
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 207, in open
+  File "/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/urllib.py", line 203, in open
     return getattr(self, name)(url)
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 345, in open_http
-    errcode, errmsg, headers = h.getreply()
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1102, in getreply
-    response = self._conn.getresponse()
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1030, in getresponse
-    response.begin()
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 407, in begin
-    version, status, reason = self._read_status()
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 365, in _read_status
-    line = self.fp.readline()
-  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 430, in readline
-    data = recv(1)
-IOError: [Errno socket error] [Errno 54] Connection reset by peer
+  File "/System/Library/Frameworks/Python.framework/Versions/2.6/lib/python2.6/urllib.py", line 347, in open_http
+    'got a bad status line', None)
+IOError: ('http protocol error', 0, 'got a bad status line', None)

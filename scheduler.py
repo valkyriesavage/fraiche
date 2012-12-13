@@ -99,7 +99,7 @@ class HybridScheduler(Scheduler):
 
 class SensorBasedScheduler(Scheduler):
   def isTimeToRunML(self):
-    return false
+    return False
 
   def __dealWithSensorEvent__(self, plant_num, value):
     self.__executeMLUpdate__()

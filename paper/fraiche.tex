@@ -152,7 +152,7 @@ The two previous sections described the components of our base system, but in th
 
 \subsection{Client-side Modeling}
 
-One approach we considered using to address the low computation power of the Raspberry Pi was to push computation to the client, as a consumer desktop machine is orders of magnitude more powerful than the Raspberry Pi.  We investigated implementations that pushed the prediction modeling to the user via javascript and found it was effective for our simple prediction model.  However, this approach was not considered worth further investigation as one common use case would be to have client requests coming from mobile devices, which are more powerful than the Raspberry Pi, but not significantly enough to be worth the communication cost.
+One approach we considered using to address the low computation power of the Raspberry Pi was to push computation to the client, as a consumer desktop machine is orders of magnitude more powerful than the Raspberry Pi.  We investigated implementations that pushed the prediction modeling to the user via JavaScript and found it was effective for our simple prediction model.  However, this approach was not considered worth further investigation as one common use case would be to have client requests coming from mobile devices, which are more powerful than the Raspberry Pi, but not significantly enough to be worth the communication cost.
 
 \subsection{System Expansion}
 
@@ -198,12 +198,19 @@ A small farm comprises many plants and a single farmer.  For our simulation, we 
 
 \subsection{Client-side Modeling}
 
-lala
+To evaluate the effectiveness of pushing the prediction modeling to the client browser, we ran an experiment that simulated a personal garden of five plants using the naive scheduler.  Using this approach, the average latency was X. We found this result (...)
 
 \subsection{Load Balancing Between Pis}
 
-lala
-graph of latency here
+Finally, we evaluated how the load balancing mechanism performed between multiple web servers. To simplify the scenario, we ran the experiment with two Raspberry Pis. We simulated a heavy loaded community garden condition with 50 clients requesting information to one RPi of 100 plants. This web server would redirect the overflow client request to another RPi that has low workload. We examined if the latency decreases after the targeted web server started forwarding the requests.
+
+Figure~\ref{fig:parallel_result} shows the result of our experiment. (...)
+
+\begin{figure}
+  \centering
+      \includegraphics[width=0.5\textwidth]{multiplePis.png}
+  \caption{\label{fig:parallel_result}Client request latency with load balancing between two web servers. [THIS FIGURE IS A PLACE HOLDER]}
+\end{figure}
 
 \section{Conclusions and Future Work}
 

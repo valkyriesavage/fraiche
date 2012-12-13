@@ -60,17 +60,15 @@ Work on scheduling for parallel clusters has included Lithe [Pan et al. 2010], u
 
 \subsection{P2P Network and Load Balancing}
 
-Sharing available workstations in a shared computing environment has been widely studied in the distributed systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry [Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" [Litzknow et al. 1988]. More recent systems including Pastry [Rowstron and Druschel 2001] and Chord [Stoica et al. 2001] design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. 
+Sharing available workstations in a distributed computing environment has been widely studied in the systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry [Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" [Litzknow et al. 1988]. More recent systems including Pastry [Rowstron and Druschel 2001] and Chord [Stoica et al. 2001] design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. The multiple Pis scenario of FRAICHE consider these system designs to leverage the workload of one web server to other idle machines.
 
-Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing by using a trace-driven simulation [1997]. It required no a priori knowledge about the process behaviors in networks of workstations. Harish and Owens [1999] designed load balancing models and algorithms for DNS servers.
-
+Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing using a trace-driven simulation [1997]. It required no a priori knowledge about the process behaviors in networks of workstations, which matches our scenario where community clients can freely access the plant data. Harish and Owens [1999] designed load balancing models and algorithms for DNS servers, which is a simple but effective mechanism.
 
 \subsection{Environmental Monitoring}
-See:
 
-http://dl.acm.org/citation.cfm?id=1098918.1098925
-(recommended by Kubi)
+There are several monitoring systems that share the similar purposes as ours. Macroscope is a wireless sensor network deployed in a 70-meter tall redwood tree [Tolle et al. 2005]. The measured data included air temperature, relative humidity, and solar radiation. Their case study in practice addressed challenges of extracting meaningful information from the collected data and physical installation. 
 
+Other sensor network systems targeted on different scenarios: Cardell-Oliver et al. designed an event-driven network to monitor soil moisture to measure water flow [2004]. Their environment reactive design consider the rainfall conditions: only when rain falls that causes rapid soil moisture changes, the measurements are collected frequently. PipeProbe is a mobile sensor system that constructs spatial topology of water pipelines by reading sensor capsule data [Lai et al. 2010]. These projects demonstrated the practical designs deployed in the real world, and therefore inspired us to monitor and provide prediction by modeling the moisture data.
 
 %%%\section{Background}
 
@@ -86,9 +84,9 @@ This device awakens from sleep mode approximately once per hour or when the butt
 
 \subsection{Raspberry Pi(s)}
 
-The Rapsberry Pi is a low-cost (~USD35), portable single-board computer released in 2012. In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
+The Rapsberry Pi is a low-cost, portable single-board computer released in 2012 (USD35, about credit-card sized: 3.370 by 2.125 inches). In our system, the Raspberry Pi is connected to the Internet and also has an XBee mounted in order to communicate with the in-garden devices.  It serves three purposes: it maintains communication with all in-garden plant systems, it provides a web interface for gardeners to monitor their plants and update their watering configurations, and it maintains models of the typical watering patterns of the plants.
 
-The Raspberry Pi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the Raspberry Pi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgement character.
+The Raspberry Pi's communication with the in-garden plant systems takes the form of a very brief exchange initiated by those systems.  To differentiate between readings, messages sent by each in-garden device are preceded by that device's unique ID.  When a reading is received by the Raspberry Pi, it either sends the most recent watering instruction it received from the gardener via the website or a single acknowledgment character.
 
 The Raspberry Pi also runs a simple webserver which allows gardeners to track the measured readings of their plant along with a display of the predictions made by a model of each plant's moisture conditions.
 
@@ -102,7 +100,7 @@ All systems were implemented in Python 2.7, and all tests were performed on a Ra
 
 We elected to use a pre-made open-source webserver for our implementation: Tornado \cite{Tornado}.  It was created by FriendFeed for their primary web stack, and later open sourced by Facebook after they acquired FriendFeed \cite{TornadoAnnounce}.  Tornado allows for different handlers to be attached to different web addresses.  One of these is the plant data page, which is loaded by each client; one is a WebSockets endpoint, which is connected to by the main page upon loading; and one is a sensor update endpoint for testing.
 
-The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in Javascript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The most recent 15 historical data points for plant moisture are transmitted when the page is loaded, afterwards sensor and model data are updated whenever new information is available.
+The plant data page contains a graph, powered by the Google Stocks API, of historical plant water data and also a display of the predicted water model.  It has a form by which the client can send explicit instructions for desired watering specifications to the in-garden device and toggle automatic watering.  The WebSockets connection is created in JavaScript when this main page is loaded: the WebSockets pipe is used for transmission of plant and model data to the client and instructions transmission from the client.  The most recent 15 historical data points for plant moisture are transmitted when the page is loaded, afterwards sensor and model data are updated whenever new information is available.
 
 In order to build a test harness which can simulate many sensors and many clients without the need for in-garden devices, our other endpoint is a sensor update endpoint.  From here, we log the data from incoming sensors to a file for later access.  This endpoint also updates the schedulers with information about when new sensor data are available.
 
@@ -219,17 +217,20 @@ compare with other watering systems (ETO)
 
 \section{REFERENCES}
 
-1.	Barham, P., Dragovic, B., Fraser, K., et al. Xen and the art of virtualization. ACM SIGOPS Operating Systems Review 37, 5 (2003), 164–177.\\
-2.	Ferguson, A.D., Bodik, P., Kandula, S., and Boutin, E. Jockey: Guaranteed Job Latency in Data Parallel Clusters. (2012).\\
-3.	Ghodsi, A., Zaharia, M., Hindman, B., and Konwinski, A. Dominant resource fairness: fair allocation of multiple resource types. USENIX, (2011).\\
-4.	Harchol-Balter, M. and Downey, A.B. Exploiting process lifetime distributions for dynamic load balancing. ACM Transactions on Computer Systems 15, 3 (1997), 253–285.\\
-5.	Harish, V.C. and Owens, B. Dynamic Load Balancing DNS. Linux Journal 1999, 64es (1999).\\
-6.	Litzkow, M.J., Livny, M., and Mutka, M.W. Condor-a hunter of idle workstations. Computing Systems, (1988).\\
-7.	Nichols, D. Using idle workstations in a shared computing environment. ACM SIGOPS Operating Systems Review, (1987).\\
-8.	Pan, H., Hindman, B., and Asanovic, K. Composing Parallel Software Efficiently with Lithe. ACM Sigplan Notices, (2010).\\
-9.	Rowstron, A. and Druschel, P. Pastry: Scalable, Decentralized Object Location, and Routing for Large-Scale Peer-to-Peer Systems. In Middleware 2001. Springer Berlin Heidelberg, Berlin, Heidelberg, 2001, 329–350.\\
-10.	Stoica, I., Morris, R., Karger, D., et al. Chord: A scalable peer-to-peer lookup service for internet applications. ACM SIGCOMM Computer Communication Review 31, 4 (2001), 149-160.\\
-11.	Waldspurger, C.A. and Weihl, W.E. Lottery Scheduling: Flexible Proportional-Share Resource Management. (1994).
+1.	Barham, P., Dragovic, B., Fraser, K., et al. Xen and the art of virtualization. ACM SIGOPS Operating Systems Review 37, 5 (2003), 164-177.\\
+2.	Cardell-Oliver, R., Smettem, K., and Kranz, M. Field testing a wireless sensor network for reactive environmental monitoring. International Conference on Intelligent Sensors, Sensor Networks and Information Processing, (2004).\\
+3.	Ferguson, A.D., Bodik, P., Kandula, S., and Boutin, E. Jockey: Guaranteed Job Latency in Data Parallel Clusters. (2012).\\
+4.	Ghodsi, A., Zaharia, M., Hindman, B., and Konwinski, A. Dominant resource fairness: fair allocation of multiple resource types. the USENIX Symposium on Networked Systems Design and Implementation (NSDI), (2011).\\
+5.	Harchol-Balter, M. and Downey, A.B. Exploiting process lifetime distributions for dynamic load balancing. ACM Transactions on Computer Systems 15, 3 (1997), 253-285.\\
+6.	Harish, V.C. and Owens, B. Dynamic Load Balancing DNS. Linux Journal 1999, 64es (1999).\\
+7.	Lai, T.-T.T., Chen, Y.-H.T., Huang, P., and Chu, H.-H. PipeProbe. ACM Press (2010), 113-126.\\
+8.	Litzkow, M.J., Livny, M., and Mutka, M.W. Condor-a hunter of idle workstations. the 8th International Conference on Distributed Computing Systems, (1988).\\
+9.	Nichols, D. Using idle workstations in a shared computing environment. ACM SIGOPS Operating Systems Review, (1987).\\
+10.	Pan, H., Hindman, B., and Asanović, K. Composing Parallel Software Efficiently with Lithe. ACM Sigplan Notices, (2010).\\
+11.	Rowstron, A. and Druschel, P. Pastry: Scalable, Decentralized Object Location, and Routing for Large-Scale Peer-to-Peer Systems. In Middleware 2001. Middleware '01: the IFIP/ACM International Conference on Distributed Systems Platforms Heidelberg, Berlin, Heidelberg, 2001, 329-350.\\
+12.	Stoica, I., Morris, R., Karger, D., et al. Chord: A scalable peer-to-peer lookup service for internet applications. ACM SIGCOMM Computer Communication Review 31, 4 (2001), 149-160.
+13.	Tolle, G., Polastre, J., Szewczyk, R., and Culler, D. A macroscope in the redwoods. (2005).\\
+14.	Waldspurger, C.A. and Weihl, W.E. Lottery Scheduling: Flexible Proportional-Share Resource Management. (1994).
 
 \bibliography{bib}
 \bibliographystyle{plainnat}

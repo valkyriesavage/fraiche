@@ -10,7 +10,7 @@ class Scheduler:
     self.model = {}
     self.notUpdatedValues = []
     self.modelFreshnessWhenServed = logging
-    self.recentClientRequests = []
+    self.recentClientRequests = [0]
     return
 
   def gotSensorEvent(self, plant_num, value):
@@ -106,20 +106,20 @@ class SensorBasedScheduler(Scheduler):
     self.modelFreshAtTime = time.time()
 
 class LowLoadScheduler(Scheduler):
-  RECENCY_THRESHOLD = 10000000
-  RECENT_REQUESTS_LOW_THRESHOLD = 3
 
   def __dealWithClientRequest__(self, plant_num):
     self.recentClientRequests.append(time.time())
 
   def loadIsLow(self):
+    RECENCY_THRESHOLD = 10000000
+    RECENT_REQUESTS_LOW_THRESHOLD = 3
     '''
     load is low iff
     # requests within RECENCY_THRESHOLD < RECENT_REQUESTS_LOW_THRESHOLD
     '''
     recent_requests =  reduce(lambda x, y: x + y,
                               map(lambda x: 1,
-                                  filter(lambda x: x + self.RECENCY_THRESHOLD > time.time(),
+                                  filter(lambda x: x + RECENCY_THRESHOLD > time.time(),
                                          self.recentClientRequests)))
     return recent_requests < RECENT_REQUESTS_LOW_THRESHOLD
 

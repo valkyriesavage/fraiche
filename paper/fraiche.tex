@@ -11,6 +11,13 @@
 \lstset{language=python}
 \begin{document}
 
+%%%Kubi+Anthony comments
+%%%trigger on sensors
+%%%us vs. other watering systems (ETO)
+%%%weather.com XML weather
+%%%we can provide the cloud
+%%%more pics
+
 \title{FRAICHE: Fast Response And Intelligently Controlled Harvest Environment}
 \author{\alignauthor Peggy Chi, Jonathan Kummerfeld, Valkyrie Savage \\
 \affaddr{Computer Science Division\\University of California, Berkeley} \\
@@ -181,6 +188,18 @@ We simulated three scenarios for FRAICHE: personal garden, community garden, and
 Client request batches were issued in 15 second time steps.  A sine curve with some noise determined how many clients made fresh requests at each step.
 
 Sensor update batches were also issued in 15 second time steps.  All sensors reported new data at each time step.
+
+\begin{figure}
+  \centering
+      \includegraphics[width=\linewidth]{freshness.png}
+  \caption{\label{fig:freshness}Freshness results.}
+\end{figure}
+
+\begin{figure}
+  \centering
+      \includegraphics[width=\linewidth]{latency_for_schedulers.png}
+  \caption{\label{fig:latency}Latency results.}
+\end{figure}
 
 \subsection{Personal Garden}
 

@@ -10,7 +10,7 @@ class Scheduler:
     self.model = {}
     self.notUpdatedValues = []
     self.modelFreshnessWhenServed = logging
-    self.recentClientRequests = []
+    self.recentClientRequests = [0]
     return
 
   def gotSensorEvent(self, plant_num, value):

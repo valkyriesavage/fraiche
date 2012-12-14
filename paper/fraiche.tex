@@ -153,6 +153,10 @@ The predicted demand scheduler has a meta-scheduler of the \naive variety.  This
 
 \subsection{Prediction Model}
 
+A key part of the motivation for this project is the use of a model that makes predictions about future water moisture levels, to allow gardeners to make more informed watering decisions.  However, the actual quality of the model used is not one of our metrics.  We implemented a linear regression model with forgetful updates (rather than using the standard online updates to the mean values of $x$ and $x^2$ the value for the count of observed items is assigned a fixed value, which effectively gives older values progressively less weight).
+
+We also considered more complex models, such as a Kalman Filter \cite{kalman}, but found constructing an effective model difficult as our simulated world data was not well represented by a hidden markov model.  Rather than changing our simulation to suit our model we decided to stick with the simpler regression model and use time delays to simulate more sophisticated processing, a fixed delay of two milliseconds per measurement per update and an added delay of ten milliseconds per update.
+
 \section{System Extensions}
 
 The two previous sections described the components of our base system, but in the process of implementing these it became clear that there were drawbacks with our architecture.  In particular, the limited computation on the Raspberry Pi was still an issue, and we had concerns about scaling beyond what a single device could handle.  Below we describe our investigation of ways to address these concerns.
@@ -173,6 +177,13 @@ In a real-world scenario we would expect that user demands would gradually incre
 
 Our example implementation involved two additional Raspberry Pi boards and facilities for them to communicate and load balance using Amazon Cloud Services as an intermediary data storage location.  This system is scalable and self-balancing.  Report to the central storage is done via the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud.  Inter-Pi communication occurs using http requests over web sockets, as an addition to the current server infrastructure.
 
+\begin{figure*}
+  \centering
+      \includegraphics[width=0.48\linewidth]{freshness.png}
+      \includegraphics[width=0.48\linewidth]{latency_for_schedulers.png}
+  \caption{\label{fig:main-results}Freshness (left) and latency (right) measurements for the six schedulers under three load types: personal, single user and five sensors, farm, single user and one hundred sensors, and community, fifty clients and one hundred sensors.}
+\end{figure*}
+
 \section{Evaluation}
 
 It was not feasible to set up multiple sensors and run a live test over weeks, so we implemented a simulation harness to emulate the sensors and clients.  We ran all simulations with the server on the Raspberry Pi, and the mock sensors and clients on our own laptops. 
@@ -185,21 +196,9 @@ Client processes are forked from the main process: each client has a configurabl
 
 We simulated three scenarios for FRAICHE: personal garden, community garden, and small farm.  Each of these scenarios has a distinctive balance between clients and plants.  All simulations were performed on the Raspberry Pi with client requests and sensor updates issued from a MacBook Pro.
 
-Client request batches were issued in 15 second time steps.  A sine curve with some noise determined how many clients made fresh requests at each step.
+Client request batches were issued in 15 second time steps.  The number of clients making fresh requests was set to follow a sinusoidal pattern with some added noise.  Sensor update batches were also issued in 15 second time steps.  All sensors reported new data in every time period, though the updates were randomly spread across the period, to model the fact that the sensors would all be reporting periodically, but not be in sync.
 
-Sensor update batches were also issued in 15 second time steps.  All sensors reported new data at each time step.
-
-\begin{figure}
-  \centering
-      \includegraphics[width=\linewidth]{freshness.png}
-  \caption{\label{fig:freshness}Freshness results.}
-\end{figure}
-
-\begin{figure}
-  \centering
-      \includegraphics[width=\linewidth]{latency_for_schedulers.png}
-  \caption{\label{fig:latency}Latency results.}
-\end{figure}
+Figure~\ref{fig:main-results} shows average results for measurements over fifteen minutes for each condition.  Freshness was tracked server side by the scheduler and logged every time a request is made.  Latency was measured on the client side and logged for each request.
 
 \subsection{Personal Garden}
 

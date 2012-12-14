@@ -188,7 +188,7 @@ Our example implementation involved two additional Raspberry Pi boards and facil
 
 It was not feasible to set up multiple sensors and run a live test over weeks, so we implemented a simulation harness to emulate the sensors and clients.  We ran all simulations with the server on the Raspberry Pi, and the mock sensors and clients on our own laptops. 
 
-The harness was written in Python, using Tornado to manage queries.  We experimented with two methods of simulating clients, first with splinter \cite{} running actual firefox instances, to maximise realism, then with phantomjs \cite{}, which made large scale simulations much easier.  It was necessary to use a system capable of running JavaScript as the client's page is only considered to be "loaded" when the 15 most recent historical data points (transmitted via WebSockets, as described earlier) are delivered via JavaScript.
+The harness was written in Python, using Tornado to manage queries.  We experimented with two methods of simulating clients, first with splinter \cite{Splinter} running actual firefox instances, to maximise realism, then with phantomjs \cite{phantomjs}, which made large scale simulations much easier.  It was necessary to use a system capable of running JavaScript as the client's page is only considered to be "loaded" when the 15 most recent historical data points (transmitted via WebSockets, as described earlier) are delivered via JavaScript.
 
 Client processes are forked from the main process: each client has a configurable list of plants from which list one plant is chosen randomly to query at each time step.  
 
@@ -202,17 +202,23 @@ Figure~\ref{fig:main-results} shows average results for measurements over fiftee
 
 \subsection{Personal Garden}
 
-A personal garden is characterized by a single person caring for a small number of plants.  For the purposes of our simulation, we chose 5 to be a small number of plants: this scenario has one client and five plants.
+A personal garden is characterized by a single person caring for a small number of plants.  For the purposes of our simulation, we used queries from a single client and sensor readings from five sensors.  The results are shown in the first sections of each of the two plots in Figure~\ref{fig:main-results}.
 
-\subsection{Community Garden}
-
-PhantomJS
-
-A community garden is made up of many people tending many plants.  We simulated 50 clients and 100 plants.
+The \naive, hybrid, and load schedulers all perform very similarly, and any of them would be acceptable.  These conditions simply aren't taxing enough for the cost of updates to impact performance.  The poorer results for sensor-based scheduling reflect the fact that there is no batching of readings, and so the effective computation cost of the updates is greater, leading to worse latency.  Meanwhile, the freshness results follow the trends we had anticipated, with periodic and predictive having much worse freshness.  Since there is no latency gain to be had by switching to these schedulers they provide no benefit.
 
 \subsection{Small Farm}
 
-A small farm comprises many plants and a single farmer.  For our simulation, we ran one client and 100 plants.
+One direction in which the system could be scaled is the number of sensors.  In our second set of experiments we considered the setting of a small farm, where there is still a single client (the farmer), but now there are one hundred sensors reporting back to the Raspberry Pi.
+
+Comparing the results in Figure~\ref{fig:main-results} for these conditions (in the middle) and the personal garden (on the left), it is clear that the addition of many sensors has a limited impact on performance.  The worse result for freshness of the periodic model is within the bounds of error.  At first glance the results for latency also seem comparable, with the exception of the sensor-triggered updates, which of course has a worse results because there are now more updates occurring, and so the chance of a collision in timing between an update and the client request is higher.  The interesting result here is the increased variance for the \naive approach, which also influences the hybrid result.  This is reflecting the same factors that negatively impact the sensor-based update approach, though in a more limited manner.
+
+\subsection{Community Garden}
+
+Finally, we considered expansion along the number of clients axis, running an experiment with fifty clients simulated by phantomjs, and oen hundred sensors.  These results are significantly different, showing several interesting variations.
+
+Focusing first on the freshness results, we see that all except load and predictive are extremely good.  The worse result for load based scheduling reflects the fact that there are fewer times at which load is deemed low.  The predictive result is not good, but better than the results for the previous experiments, which is caused by the greater information available about user behaviour, leading to better predictions regarding timing of user requests.  The most surprising result is for the periodic scheduler, though this may be partially attributed to the timing patterns of requests, which may have conveniently peaked at the right time, an effect that is amplified by the number of clients.
+
+The latency results are a much less positive story, with significant costs for all cases.  This shows a source of computation cost that we had not anticipated -- the network communication with clients.  In this case the clear winner is the sensor based approach, which effectivly spreads the load of updates across time, rather than concentrating it, as cached updates do.  This leads to a decreased impact overall on clients, and a lower variance as no single client is making a query at the time of a large update.
 
 \subsection{Client-side Modeling}
 
@@ -236,7 +242,7 @@ In the future, we think it would be valuable to explore the space of very small 
 
 acquiring real-time weather conditions (e.g. weather.com XML format)
 
-trigger on sensors
+trigger on sensors, good for multi-user scenarios, not so good for single user scenario (a naive, or hybrid naive+periodic approach is fine)
 
 compare with other watering systems (ETO)
 

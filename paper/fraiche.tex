@@ -176,7 +176,25 @@ In a real-world scenario we would expect that user demands would gradually incre
 
 Our example implementation involved two additional Raspberry Pi boards and facilities for them to communicate and load balance. Each web server has a connection to a central data repository using Amazon Cloud Services as an intermediary data storage location. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcast to every Raspberry Pi in the current garden network. Each RPi records this information as a resource list (\lstinline|DeviceList|).
 
-Clients connecting to a server (e.g. \lstinline|RPi A|) for local plant information will be served with local repository. When the server receives too many client requests over its client capacity, it randomly selects one RPi (e.g. \lstinline|RPi B|) on the network from the received resource list \lstinline|DeviceList|. To keep the system design simple, it redirects the overflow clients to this selected \lstinline|RPi B| without asking for permission. The clients are redirected to make a new http address with the new IP of \lstinline|RPi B| and the requested plant info (\lstinline|RPi A| and \lstinline|plant_num|). When \lstinline|RPi B| receives this  request, it pulls the plant information from the central storage and responds to the client. If \lstinline|RPi B| happens to be overloaded, it then randomly selects another server \lstinline|RPi C| and attaches its own IP into the ignored list, to prevent to be redirected again for this same request.
+Clients connecting to a server (e.g. \lstinline|RPi A|) for local plant information will be served with local repository. When the server receives too many client requests over its client capacity, it randomly selects one web server (e.g. \lstinline|RPi B|) in the current network from the received resource list \lstinline|DeviceList|. To keep the system design simple, it redirects the overflow clients to this selected \lstinline|RPi B| without asking for permission in advance. The clients are redirected to a http address with the new IP of \lstinline|RPi B| and the requested plant info (\lstinline|RPi A| and \lstinline|plant_num|). When \lstinline|RPi B| receives this  request, it pulls the plant information from the central storage and responds to the client. If \lstinline|RPi B| happens to be overloaded, it then randomly selects another server \lstinline|RPi C| and attaches its own IP into the ignored list, to prevent to be redirected again for the same request.
+
+Below shows these two major components in our system:
+\begin{description}
+  \item[A central storage on Amazon EC2 ] \hfill
+  \begin{itemize}
+    \item receive registration and broadcast the list to every RPi
+    \item update the sensor log from RPi to storage
+    \item retrieve the sensor log for a RPi from the storage
+  \end{itemize}
+  \item[Web server on Pi] \hfill
+  \begin{itemize}
+    \item register and record the device list
+    \item serve local clients with local storage
+    \item serve redirected clients by retrieving log from the central storage
+    \item redirect clients to other pis if overloading
+  \end{itemize}
+\end{description}
+
 
 This system is scalable and self-balancing.  Report to the central storage is done via the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud.  Inter-Pi communication occurs using http requests over web sockets, as an addition to the current server infrastructure.
 
@@ -225,13 +243,17 @@ The latency results are a much less positive story, with significant costs for a
 
 \subsection{Client-side Modeling}
 
-To evaluate the effectiveness of pushing the prediction modeling to the client browser, we ran an experiment that simulated a personal garden of five plants using the naive scheduler.  However, we did not find the latency significantly improved. 
+To evaluate the effectiveness of pushing the prediction modeling to the client browser, we ran an experiment that simulated a personal garden of five plants using the naive scheduler.  However, we did not find the latency significantly improved. It is possible that the performance would increase when the conditions are more heavy loading.
+
+% I'll probably run another test tomorrow... 
 
 \subsection{Load Balancing Between Pis}
 
-Finally, we evaluated how the load balancing mechanism performed between multiple web servers. To simplify the scenario, we ran the experiment with two Raspberry Pis. We simulated a heavy loaded community garden condition with 100 clients, each making one request for a unique plant to one RPi. This web server then redirects the overflow client requests to another RPi that has low workload. In our experiment, we assume this second Pi as totally idle without performing other work. It pulls out the latest information from the central storage to respond to these redirected clients. To stress test the system, client requests were issued in 0.5 second. The clients never leave the system so the servers would have to keep updating the latest sensor data when available. We examined if the latency decreases after the targeted web server started forwarding the requests.
+Finally, we evaluated how the load balancing mechanism performed between multiple web servers. To simplify the scenario, we ran the experiment with two Raspberry Pis. We simulated a heavy loaded community garden condition with 100 clients, each making one request for a unique plant to one RPi. The web server on this RPi then redirects the overflow client requests to another RPi that has low workload. In our experiment, we assume this second Pi as totally idle without performing other work. It pulls out the latest information from the central storage to respond to these redirected clients. 
 
-Figure~\ref{fig:parallel_result} shows the result of our experiment. The baseline in red shows that the latency increases as more clients are connected. The load balancing result in green shows how the latency drops when the clients are redirected to an idle server. We suspect that the overhead of accessing data from the central storage increases the response time, and therefore results in insignificant improvement in general. However, this design is scalable and would be promising when introducing more devices on the network.
+To stress test the system, new client requests were issued in 0.5 second. The clients never leave the system so the servers would have to keep updating the latest sensor data when available. We examined if the latency decreases after the targeted web server started forwarding the requests.
+
+Figure~\ref{fig:parallel_result} shows the result of our experiment. The baseline in red shows that the latency increases as more clients are connected, especially after serving 80 clients. The load balancing result in green shows how the latency drops when the clients are redirected to an idle server when over 50 clients are connected. We suspect that the overhead of accessing data from the central storage increases the response time, and therefore results in insignificant improvement in general. However, this design is scalable and would be promising when introducing more devices in the network.
 
 \begin{figure}
   \centering
@@ -241,9 +263,9 @@ Figure~\ref{fig:parallel_result} shows the result of our experiment. The baselin
 
 \section{Conclusions and Future Work}
 
-In this paper, we presented FRAICHE, a complete small-scale sensing and watering system for deployment in community gardens.  We considered six methods of scheduling model updates, and tested them under three very different use-case scenarios, finding that in each case we can strike an effective balance between freshness and latency. We also expanded our system to a multiple device scenario for load balancing.
+In this paper, we presented FRAICHE, a complete small-scale sensing and watering system for deployment in community gardens.  We designed six methods of scheduling model updates, and tested them under three very different use-case scenarios, finding that in each case we can strike an effective balance between freshness and latency. We also expanded our system to a multiple device scenario for load balancing.
 
-In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks. Furthermore, we are interested in acquiring real-time weather conditions to improve prediction, such as from weather.com. We'd also like to conduct a more thorough evaluation to compare with other watering systems.
+In the future, it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks. Furthermore, we are interested in acquiring real-time weather conditions to improve prediction, such as real-time data from Weather.com. We'd also like to conduct a more thorough evaluation to compare our low-cost, scalable system design with other existing watering systems on the market.
 
 % trigger on sensors, good for multi-user scenarios, not so good for single user scenario (a naive, or hybrid naive+periodic approach is fine)
 

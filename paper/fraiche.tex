@@ -66,7 +66,7 @@ Work on scheduling for parallel clusters has included Lithe \cite{Pan:2010wo}, u
 
 \subsection{P2P Network and Load Balancing}
 
-Sharing available workstations in a distributed computing environment has been widely studied in the systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry \cite{}[Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" \cite{Litzkow:1988wd}. More recent systems including Pastry \cite{Rowstron:2001ea} and Chord \cite{Stoica:2001dj} design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. The multiple Pis scenario of FRAICHE consider these system designs to leverage the workload of one web server to other idle machines.
+Sharing available workstations in a distributed computing environment has been widely studied in the systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry \cite{Nichols:1987tp}. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" \cite{Litzkow:1988wd}. More recent systems including Pastry \cite{Rowstron:2001ea} and Chord \cite{Stoica:2001dj} design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. The multiple Pis scenario of FRAICHE consider these system designs to leverage the workload of one web server to other idle machines.
 
 Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing using a trace-driven simulation \cite{HarcholBalter:1997wo}. It required no a priori knowledge about the process behaviors in networks of workstations, which matches our scenario where community clients can freely access the plant data. Harish and Owens \cite{Harish:1999wt} designed load balancing models and algorithms for DNS servers, which is a simple but effective mechanism.
 
@@ -164,6 +164,13 @@ The two previous sections described the components of our base system, but in th
 
 One approach we considered using to address the low computation power of the Raspberry Pi was to push computation to the client, as a consumer desktop machine is orders of magnitude more powerful than the Raspberry Pi.  We investigated implementations that pushed the prediction modeling to the user via JavaScript and found it was effective for our simple prediction model.  However, this approach was not considered worth further investigation as one common use case would be to have client requests coming from mobile devices, which are more powerful than the Raspberry Pi, but not significantly enough to be worth the communication cost.
 
+\begin{figure*}
+  \centering
+      \includegraphics[width=0.48\linewidth]{freshness.png}
+      \includegraphics[width=0.48\linewidth]{latency_for_schedulers.png}
+  \caption{\label{fig:main-results}Freshness (left) and latency (right) measurements for the six schedulers under three load types: personal, single user and five sensors, farm, single user and one hundred sensors, and community, fifty clients and one hundred sensors.}
+\end{figure*}
+
 \subsection{System Expansion}
 
 \begin{figure}
@@ -195,15 +202,7 @@ Below shows these two major components in our system:
   \end{itemize}
 \end{description}
 
-
 This system is scalable and self-balancing.  Report to the central storage is done via the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud.  Inter-Pi communication occurs using http requests over web sockets, as an addition to the current server infrastructure.
-
-\begin{figure*}
-  \centering
-      \includegraphics[width=0.48\linewidth]{freshness.png}
-      \includegraphics[width=0.48\linewidth]{latency_for_schedulers.png}
-  \caption{\label{fig:main-results}Freshness (left) and latency (right) measurements for the six schedulers under three load types: personal, single user and five sensors, farm, single user and one hundred sensors, and community, fifty clients and one hundred sensors.}
-\end{figure*}
 
 \section{Evaluation}
 
@@ -269,9 +268,6 @@ In the future, it would be valuable to explore the space of very small commodity
 
 % trigger on sensors, good for multi-user scenarios, not so good for single user scenario (a naive, or hybrid naive+periodic approach is fine)
 
-\section{REFERENCES}
-
-\bibliographystyle{plainnat}
+\bibliographystyle{abbrv}
 \bibliography{fraiche}
-\bibliography{ref}
 \end{document}

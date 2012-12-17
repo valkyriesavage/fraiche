@@ -52,30 +52,29 @@ Our experiments show that while all scheduling approaches are effective in small
 While the focus of this work is very specific, it is worth taking a broader view when considering related work.  The general problem of resource management is well-studied, as is load-balancing, which we consider when demonstrating an implementation with multiple Raspberry Pi boards.  For our more specific case of plant monitoring there has been work on various forms of environmental sensing, particularly recently with wireless mesh networks, but we only mention a few specific cases, as generally that work focuses on data collection followed by offline analysis, unlike our setup.
 
 \subsection{Resource Management}
-%TODO: Fill in cites, also make an editing pass
 There has been a bevy of work on resource management for both parallel clusters and multiple virtual machines running on a single physical machine.
 
-The Dominant Resource Fairness algorithm is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand [Ghodsi et al. 2011]. It is a port of max-min allocation where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
+The Dominant Resource Fairness algorithm is designed to help allocate resources fairly in multi-resource systems where processes have heterogeneous demand \cite{Ghodsi:2011vm}. It is a port of max-min allocation where instead of considering a process's overall needs they are measured as vectors with entries per resource.  However, DRF is designed to work in a system where there are sufficient resources to satisfy all processes' needs, which is different from our situation on the Raspberry Pi.
 
-Jockey is another resource management system, and it is built to hold processes to particular Service Level Objectives (SLOs) [Ferguson et al. 2012].  Jockey uses predictive algorithms to simulate each job and estimate the time to completion. FRAICHE differs in that we are aiming to serve models that are as fresh as possible to clients, and the access times of clients are not as well - or strictly defined as SLOs.
+Jockey is another resource management system, and it is built to hold processes to particular Service Level Objectives (SLOs) \cite{Ferguson:2012tx}.  Jockey uses predictive algorithms to simulate each job and estimate the time to completion. FRAICHE differs in that we are aiming to serve models that are as fresh as possible to clients, and the access times of clients are not as well - or strictly defined as SLOs.
 
-Lottery scheduling has been put to use for managing resources: the basic idea is to allot a certain number of tickets to each process requiring a resource based on that process's importance and relative need for the resource [Waldspurger and Weihl 1994]. FRAICHE's goals are not to schedule many processes fairly to run in minimal time, but rather to run the model refinement algorithms as close as possible to clients' requests for plant data.
+Lottery scheduling has been put to use for managing resources: the basic idea is to allot a certain number of tickets to each process requiring a resource based on that process's importance and relative need for the resource \cite{Waldspurger:1994we}. FRAICHE's goals are not to schedule many processes fairly to run in minimal time, but rather to run the model refinement algorithms as close as possible to clients' requests for plant data.
 
-For virtual machines sharing a physical computer, Xen has explored the resource management question [Barham et al. 2003].  However their main challenges lay in isolation of the various virtual machines from each other in order to ensure security, while our challenges lay mainly in scheduling.
+For virtual machines sharing a physical computer, Xen has explored the resource management question \cite{Barham:2003cj}.  However their main challenges lay in isolation of the various virtual machines from each other in order to ensure security, while our challenges lay mainly in scheduling.
 
-Work on scheduling for parallel clusters has included Lithe [Pan et al. 2010], use of loosely-synchronized clocks, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
+Work on scheduling for parallel clusters has included Lithe \cite{Pan:2010wo}, use of loosely-synchronized clocks, and others.  The goal for scheduling with parallel clusters, however, is based mainly on ordering of events when processes don't share a clock.  In contrast, FRAICHE focuses on just one machine on which events take place.
 
 \subsection{P2P Network and Load Balancing}
 
-Sharing available workstations in a distributed computing environment has been widely studied in the systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry [Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" [Litzknow et al. 1988]. More recent systems including Pastry [Rowstron and Druschel 2001] and Chord [Stoica et al. 2001] design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. The multiple Pis scenario of FRAICHE consider these system designs to leverage the workload of one web server to other idle machines.
+Sharing available workstations in a distributed computing environment has been widely studied in the systems community. Nichols discussed a mechanism to run network server programs on idle workstations considering process invocation and machine registry \cite{}[Nichols 1987]. Condor is a scheduling system that aims to utilize the performance by assigning background jobs to those idle workstations it "hunted" \cite{Litzkow:1988wd}. More recent systems including Pastry \cite{Rowstron:2001ea} and Chord \cite{Stoica:2001dj} design routing mechanisms to limit hops for a query in a peer-to-peer (P2P) framework. The multiple Pis scenario of FRAICHE consider these system designs to leverage the workload of one web server to other idle machines.
 
-Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing using a trace-driven simulation [1997]. It required no a priori knowledge about the process behaviors in networks of workstations, which matches our scenario where community clients can freely access the plant data. Harish and Owens [1999] designed load balancing models and algorithms for DNS servers, which is a simple but effective mechanism.
+Our work is closely related to load balancing and load sharing designs in distributed networks. Harchol-Balter and Downey proposed a preemptive migration scheme for CPU load balancing using a trace-driven simulation \cite{HarcholBalter:1997wo}. It required no a priori knowledge about the process behaviors in networks of workstations, which matches our scenario where community clients can freely access the plant data. Harish and Owens \cite{Harish:1999wt} designed load balancing models and algorithms for DNS servers, which is a simple but effective mechanism.
 
 \subsection{Environmental Monitoring}
 
-There are several monitoring systems that share the similar purposes as ours. Macroscope is a wireless sensor network deployed in a 70-meter tall redwood tree [Tolle et al. 2005]. The measured data included air temperature, relative humidity, and solar radiation. Their case study in practice addressed challenges of extracting meaningful information from the collected data and physical installation. 
+There are several monitoring systems that share the similar purposes as ours. Macroscope is a wireless sensor network deployed in a 70-meter tall redwood tree \cite{Tolle:2005wk}. The measured data included air temperature, relative humidity, and solar radiation. Their case study in practice addressed challenges of extracting meaningful information from the collected data and physical installation. 
 
-Other sensor network systems targeted on different scenarios: Cardell-Oliver et al. designed an event-driven network to monitor soil moisture to measure water flow [2004]. Their environment reactive design consider the rainfall conditions: only when rain falls that causes rapid soil moisture changes, the measurements are collected frequently. PipeProbe is a mobile sensor system that constructs spatial topology of water pipelines by reading sensor capsule data [Lai et al. 2010]. These projects demonstrated the practical designs deployed in the real world, and therefore inspired us to monitor and provide prediction by modeling the moisture data.
+Other sensor network systems targeted on different scenarios: Cardell-Oliver et al. designed an event-driven network to monitor soil moisture to measure water flow \cite{CardellOliver:2004wg}. Their environment reactive design consider the rainfall conditions: only when rain falls that causes rapid soil moisture changes, the measurements are collected frequently. PipeProbe is a mobile sensor system that constructs spatial topology of water pipelines by reading sensor capsule data \cite{Lai:2010gn}. These projects demonstrated the practical designs deployed in the real world, and therefore inspired us to monitor and provide prediction by modeling the moisture data.
 
 %%%\section{Background}
 
@@ -175,7 +174,11 @@ One approach we considered using to address the low computation power of the Ras
 
 In a real-world scenario we would expect that user demands would gradually increase, with more sensors and more clients.  With this in mind we experimented with easy expansion of our system.  Our approach was a simple load-balanced division of sensors and clients, with a broadcast announcement when new devices are added, as illustrated in Figure~\ref{fig:parallel}.
 
-Our example implementation involved two additional Raspberry Pi boards and facilities for them to communicate and load balance using Amazon Cloud Services as an intermediary data storage location.  This system is scalable and self-balancing.  Report to the central storage is done via the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud.  Inter-Pi communication occurs using http requests over web sockets, as an addition to the current server infrastructure.
+Our example implementation involved two additional Raspberry Pi boards and facilities for them to communicate and load balance. Each web server has a connection to a central data repository using Amazon Cloud Services as an intermediary data storage location. The system is designed to be scalable: when a new device connects to the system, it registers with its IP address and the information is broadcast to every Raspberry Pi in the current garden network. Each RPi records this information as a resource list (\lstinline|DeviceList|).
+
+Clients connecting to a server (e.g. \lstinline|RPi A|) for local plant information will be served with local repository. When the server receives too many client requests over its client capacity, it randomly selects one RPi (e.g. \lstinline|RPi B|) on the network from the received resource list \lstinline|DeviceList|. To keep the system design simple, it redirects the overflow clients to this selected \lstinline|RPi B| without asking for permission. The clients are redirected to make a new http address with the new IP of \lstinline|RPi B| and the requested plant info (\lstinline|RPi A| and \lstinline|plant_num|). When \lstinline|RPi B| receives this  request, it pulls the plant information from the central storage and responds to the client. If \lstinline|RPi B| happens to be overloaded, it then randomly selects another server \lstinline|RPi C| and attaches its own IP into the ignored list, to prevent to be redirected again for this same request.
+
+This system is scalable and self-balancing.  Report to the central storage is done via the free tier of the Amazon EC2 (Elastic Compute Cloud) service that provides flexible and scalable capacity in the cloud.  Inter-Pi communication occurs using http requests over web sockets, as an addition to the current server infrastructure.
 
 \begin{figure*}
   \centering
@@ -214,55 +217,39 @@ Comparing the results in Figure~\ref{fig:main-results} for these conditions (in 
 
 \subsection{Community Garden}
 
-Finally, we considered expansion along the number of clients axis, running an experiment with fifty clients simulated by phantomjs, and oen hundred sensors.  These results are significantly different, showing several interesting variations.
+Finally, we considered expansion along the number of clients axis, running an experiment with fifty clients simulated by PhantomJs, and one hundred sensors.  These results are significantly different, showing several interesting variations.
 
 Focusing first on the freshness results, we see that all except load and predictive are extremely good.  The worse result for load based scheduling reflects the fact that there are fewer times at which load is deemed low.  The predictive result is not good, but better than the results for the previous experiments, which is caused by the greater information available about user behaviour, leading to better predictions regarding timing of user requests.  The most surprising result is for the periodic scheduler, though this may be partially attributed to the timing patterns of requests, which may have conveniently peaked at the right time, an effect that is amplified by the number of clients.
 
-The latency results are a much less positive story, with significant costs for all cases.  This shows a source of computation cost that we had not anticipated -- the network communication with clients.  In this case the clear winner is the sensor based approach, which effectivly spreads the load of updates across time, rather than concentrating it, as cached updates do.  This leads to a decreased impact overall on clients, and a lower variance as no single client is making a query at the time of a large update.
+The latency results are a much less positive story, with significant costs for all cases.  This shows a source of computation cost that we had not anticipated -- the network communication with clients.  In this case the clear winner is the sensor based approach, which effectively spreads the load of updates across time, rather than concentrating it, as cached updates do.  This leads to a decreased impact overall on clients, and a lower variance as no single client is making a query at the time of a large update.
 
 \subsection{Client-side Modeling}
 
-To evaluate the effectiveness of pushing the prediction modeling to the client browser, we ran an experiment that simulated a personal garden of five plants using the naive scheduler.  Using this approach, the average latency was X. We found this result (...)
+To evaluate the effectiveness of pushing the prediction modeling to the client browser, we ran an experiment that simulated a personal garden of five plants using the naive scheduler.  However, we did not find the latency significantly improved. 
 
 \subsection{Load Balancing Between Pis}
 
-Finally, we evaluated how the load balancing mechanism performed between multiple web servers. To simplify the scenario, we ran the experiment with two Raspberry Pis. We simulated a heavy loaded community garden condition with 50 clients requesting information to one RPi of 100 plants. This web server would redirect the overflow client request to another RPi that has low workload. We examined if the latency decreases after the targeted web server started forwarding the requests.
+Finally, we evaluated how the load balancing mechanism performed between multiple web servers. To simplify the scenario, we ran the experiment with two Raspberry Pis. We simulated a heavy loaded community garden condition with 100 clients, each making one request for a unique plant to one RPi. This web server then redirects the overflow client requests to another RPi that has low workload. In our experiment, we assume this second Pi as totally idle without performing other work. It pulls out the latest information from the central storage to respond to these redirected clients. To stress test the system, client requests were issued in 0.5 second. The clients never leave the system so the servers would have to keep updating the latest sensor data when available. We examined if the latency decreases after the targeted web server started forwarding the requests.
 
-Figure~\ref{fig:parallel_result} shows the result of our experiment. (...)
+Figure~\ref{fig:parallel_result} shows the result of our experiment. The baseline in red shows that the latency increases as more clients are connected. The load balancing result in green shows how the latency drops when the clients are redirected to an idle server. We suspect that the overhead of accessing data from the central storage increases the response time, and therefore results in insignificant improvement in general. However, this design is scalable and would be promising when introducing more devices on the network.
 
 \begin{figure}
   \centering
-      \includegraphics[width=0.5\textwidth]{multiplePis.png}
-  \caption{\label{fig:parallel_result}Client request latency with load balancing between two web servers. [THIS FIGURE IS A PLACE HOLDER]}
+      \includegraphics[width=0.5\textwidth]{two_pis.png}
+  \caption{\label{fig:parallel_result}Client request latency with load balancing between two web servers.}
 \end{figure}
 
 \section{Conclusions and Future Work}
 
-In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks
+In this paper, we presented FRAICHE, a complete small-scale sensing and watering system for deployment in community gardens.  We considered six methods of scheduling model updates, and tested them under three very different use-case scenarios, finding that in each case we can strike an effective balance between freshness and latency. We also expanded our system to a multiple device scenario for load balancing.
 
-acquiring real-time weather conditions (e.g. weather.com XML format)
+In the future, we think it would be valuable to explore the space of very small commodity computers further.  There are many open questions relating to their performance for tasks. Furthermore, we are interested in acquiring real-time weather conditions to improve prediction, such as from weather.com. We'd also like to conduct a more thorough evaluation to compare with other watering systems.
 
-trigger on sensors, good for multi-user scenarios, not so good for single user scenario (a naive, or hybrid naive+periodic approach is fine)
-
-compare with other watering systems (ETO)
+% trigger on sensors, good for multi-user scenarios, not so good for single user scenario (a naive, or hybrid naive+periodic approach is fine)
 
 \section{REFERENCES}
 
-1.	Barham, P., Dragovic, B., Fraser, K., et al. Xen and the art of virtualization. ACM SIGOPS Operating Systems Review 37, 5 (2003), 164-177.\\
-2.	Cardell-Oliver, R., Smettem, K., and Kranz, M. Field testing a wireless sensor network for reactive environmental monitoring. International Conference on Intelligent Sensors, Sensor Networks and Information Processing, (2004).\\
-3.	Ferguson, A.D., Bodik, P., Kandula, S., and Boutin, E. Jockey: Guaranteed Job Latency in Data Parallel Clusters. (2012).\\
-4.	Ghodsi, A., Zaharia, M., Hindman, B., and Konwinski, A. Dominant resource fairness: fair allocation of multiple resource types. the USENIX Symposium on Networked Systems Design and Implementation (NSDI), (2011).\\
-5.	Harchol-Balter, M. and Downey, A.B. Exploiting process lifetime distributions for dynamic load balancing. ACM Transactions on Computer Systems 15, 3 (1997), 253-285.\\
-6.	Harish, V.C. and Owens, B. Dynamic Load Balancing DNS. Linux Journal 1999, 64es (1999).\\
-7.	Lai, T.-T.T., Chen, Y.-H.T., Huang, P., and Chu, H.-H. PipeProbe. ACM Press (2010), 113-126.\\
-8.	Litzkow, M.J., Livny, M., and Mutka, M.W. Condor-a hunter of idle workstations. the 8th International Conference on Distributed Computing Systems, (1988).\\
-9.	Nichols, D. Using idle workstations in a shared computing environment. ACM SIGOPS Operating Systems Review, (1987).\\
-10.	Pan, H., Hindman, B., and Asanović, K. Composing Parallel Software Efficiently with Lithe. ACM Sigplan Notices, (2010).\\
-11.	Rowstron, A. and Druschel, P. Pastry: Scalable, Decentralized Object Location, and Routing for Large-Scale Peer-to-Peer Systems. In Middleware 2001. Middleware '01: the IFIP/ACM International Conference on Distributed Systems Platforms Heidelberg, Berlin, Heidelberg, 2001, 329-350.\\
-12.	Stoica, I., Morris, R., Karger, D., et al. Chord: A scalable peer-to-peer lookup service for internet applications. ACM SIGCOMM Computer Communication Review 31, 4 (2001), 149-160.
-13.	Tolle, G., Polastre, J., Szewczyk, R., and Culler, D. A macroscope in the redwoods. (2005).\\
-14.	Waldspurger, C.A. and Weihl, W.E. Lottery Scheduling: Flexible Proportional-Share Resource Management. (1994).
-
-\bibliography{fraiche}
 \bibliographystyle{plainnat}
+\bibliography{fraiche}
+\bibliography{ref}
 \end{document}
